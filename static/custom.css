@@ -1,0 +1,16 @@
+@font-face {
+	/* Reference name */
+	font-family: 'LaBelleAurore';
+	/* For multiple files use commas, ex: url(), url(), ... */
+	src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
+}
+
+html, body{
+	@apply h-full overflow-hidden
+}
+
+
+/*:root [data-theme='wedding_theme'] {
+    --theme-font-family-base: 'LaBelleAurore', sans-serif;
+    --theme-font-family-heading: 'LaBelleAurore', sans-serif;
+}*/

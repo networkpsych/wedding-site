@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+    @font-face {
+        /* Reference name */
+        font-family: 'LaBelleAurore';
+        font-style: normal;
+        /* For multiple files use commas, ex: url(), url(), ... */
+        src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
+    }
+
+}
+
+:root [data-theme='wedding-theme'] {
+    --theme-font-family-labelle: 'LaBelleAurore';
+}
+
+html, body{
+    @apply h-full overflow-hidden
+}
+
+header {
+	view-transition-name: header;
+}
