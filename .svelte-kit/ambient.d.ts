@@ -58,6 +58,7 @@ declare module '$env/static/private' {
 	export const ProgramData: string;
 	export const ProgramFiles: string;
 	export const ProgramW6432: string;
+	export const PROMPT: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
 	export const SESSIONNAME: string;
@@ -73,6 +74,7 @@ declare module '$env/static/private' {
 	export const WSLENV: string;
 	export const WT_PROFILE_ID: string;
 	export const WT_SESSION: string;
+	export const __FIREBASE_DEFAULTS__: string;
 }
 
 /**
@@ -136,6 +138,7 @@ declare module '$env/dynamic/private' {
 		ProgramData: string;
 		ProgramFiles: string;
 		ProgramW6432: string;
+		PROMPT: string;
 		PSModulePath: string;
 		PUBLIC: string;
 		SESSIONNAME: string;
@@ -151,6 +154,7 @@ declare module '$env/dynamic/private' {
 		WSLENV: string;
 		WT_PROFILE_ID: string;
 		WT_SESSION: string;
+		__FIREBASE_DEFAULTS__: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

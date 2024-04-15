@@ -3,7 +3,7 @@
     import type { SubmitFunction } from '@sveltejs/kit'
     import {InputChip, ListBox, RadioGroup, RadioItem} from '@skeletonlabs/skeleton'
 	import { assets } from '$app/paths';
-    import wedding_icon from "$lib/assets/wedding-svgrepo-com.svg";
+    import wedding_icon from "$lib/assets/icons/wedding-svgrepo-com.svg";
     import hug_photo from "$lib/assets/aug_hug_2020.jpg";
 
 
