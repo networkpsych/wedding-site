@@ -5,6 +5,43 @@
 	src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
 }
 
+@font-face {
+	font-family: 'Inspiration';
+	src: url('/fonts/Inpiration/Inspiraiton-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-regular.otf');
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-Bold.otf');
+	font-weight: bold;
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-BoldItalic.otf');
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-Italic.otf');
+	font-style: italic;
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-Light.otf');
+	font-weight: light;
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/Quicksand/Quicksand-LightItalic.otf');
+	font-weight: light;
+	font-style: italic;
+}
+
 html, body{
 	@apply h-full overflow-hidden
 }

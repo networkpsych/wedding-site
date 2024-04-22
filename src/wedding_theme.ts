@@ -5,55 +5,55 @@ export const wedding_theme: CustomThemeConfig = {
     name: 'wedding-theme',
 	properties: {
 		// =~= Theme Properties =~=
-		"--theme-font-family-base": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-		"--theme-font-family-heading": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+		"--theme-font-family-base": `Quicksand, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+		"--theme-font-family-heading": `Quicksand, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		"--theme-font-color-base": "0 0 0",
 		"--theme-font-color-dark": "255 255 255",
 		"--theme-rounded-base": "8px",
 		"--theme-rounded-container": "16px",
 		"--theme-border-base": "1px",
-		// =~= Theme On-X Colors =~=
-		"--on-primary": "255 255 255",
+		// =~= Theme On-X Colors =~=	
+		"--on-primary": "0 0 0",
 		"--on-secondary": "0 0 0",
-		"--on-tertiary": "255 255 255",
+		"--on-tertiary": "0 0 0",
 		"--on-success": "0 0 0",
 		"--on-warning": "0 0 0",
-		"--on-error": "0 0 0",
+		"--on-error": "255 255 255",
 		"--on-surface": "0 0 0",
 		// =~= Theme Colors  =~=
-		// primary | #0F2439 
-		"--color-primary-50": "219 222 225", // #dbdee1
-		"--color-primary-100": "207 211 215", // #cfd3d7
-		"--color-primary-200": "195 200 206", // #c3c8ce
-		"--color-primary-300": "159 167 176", // #9fa7b0
-		"--color-primary-400": "87 102 116", // #576674
-		"--color-primary-500": "15 36 57", // #0F2439
-		"--color-primary-600": "14 32 51", // #0e2033
-		"--color-primary-700": "11 27 43", // #0b1b2b
-		"--color-primary-800": "9 22 34", // #091622
-		"--color-primary-900": "7 18 28", // #07121c
-		// secondary | #E8CD73 
-		"--color-secondary-50": "252 248 234", // #fcf8ea
-		"--color-secondary-100": "250 245 227", // #faf5e3
-		"--color-secondary-200": "249 243 220", // #f9f3dc
-		"--color-secondary-300": "246 235 199", // #f6ebc7
-		"--color-secondary-400": "239 220 157", // #efdc9d
-		"--color-secondary-500": "232 205 115", // #E8CD73
-		"--color-secondary-600": "209 185 104", // #d1b968
-		"--color-secondary-700": "174 154 86", // #ae9a56
-		"--color-secondary-800": "139 123 69", // #8b7b45
-		"--color-secondary-900": "114 100 56", // #726438
-		// tertiary | #AB3F21 
-		"--color-tertiary-50": "242 226 222", // #f2e2de
-		"--color-tertiary-100": "238 217 211", // #eed9d3
-		"--color-tertiary-200": "234 207 200", // #eacfc8
-		"--color-tertiary-300": "221 178 166", // #ddb2a6
-		"--color-tertiary-400": "196 121 100", // #c47964
-		"--color-tertiary-500": "171 63 33", // #AB3F21
-		"--color-tertiary-600": "154 57 30", // #9a391e
-		"--color-tertiary-700": "128 47 25", // #802f19
-		"--color-tertiary-800": "103 38 20", // #672614
-		"--color-tertiary-900": "84 31 16", // #541f10
+		// primary | #479AF5 
+		"--color-primary-50": "227 240 254", // #e3f0fe
+		"--color-primary-100": "218 235 253", // #daebfd
+		"--color-primary-200": "209 230 253", // #d1e6fd
+		"--color-primary-300": "181 215 251", // #b5d7fb
+		"--color-primary-400": "126 184 248", // #7eb8f8
+		"--color-primary-500": "71 154 245", // #479AF5
+		"--color-primary-600": "64 139 221", // #408bdd
+		"--color-primary-700": "53 116 184", // #3574b8
+		"--color-primary-800": "43 92 147", // #2b5c93
+		"--color-primary-900": "35 75 120", // #234b78
+		// secondary | #F5D62D 
+		"--color-secondary-50": "254 249 224", // #fef9e0
+		"--color-secondary-100": "253 247 213", // #fdf7d5
+		"--color-secondary-200": "253 245 203", // #fdf5cb
+		"--color-secondary-300": "251 239 171", // #fbefab
+		"--color-secondary-400": "248 226 108", // #f8e26c
+		"--color-secondary-500": "245 214 45", // #F5D62D
+		"--color-secondary-600": "221 193 41", // #ddc129
+		"--color-secondary-700": "184 161 34", // #b8a122
+		"--color-secondary-800": "147 128 27", // #93801b
+		"--color-secondary-900": "120 105 22", // #786916
+		// tertiary | #B9B950 
+		"--color-tertiary-50": "245 245 229", // #f5f5e5
+		"--color-tertiary-100": "241 241 220", // #f1f1dc
+		"--color-tertiary-200": "238 238 211", // #eeeed3
+		"--color-tertiary-300": "227 227 185", // #e3e3b9
+		"--color-tertiary-400": "206 206 133", // #cece85
+		"--color-tertiary-500": "185 185 80", // #B9B950
+		"--color-tertiary-600": "167 167 72", // #a7a748
+		"--color-tertiary-700": "139 139 60", // #8b8b3c
+		"--color-tertiary-800": "111 111 48", // #6f6f30
+		"--color-tertiary-900": "91 91 39", // #5b5b27
 		// success | #98D102 
 		"--color-success-50": "240 248 217", // #f0f8d9
 		"--color-success-100": "234 246 204", // #eaf6cc
@@ -65,17 +65,17 @@ export const wedding_theme: CustomThemeConfig = {
 		"--color-success-700": "114 157 2", // #729d02
 		"--color-success-800": "91 125 1", // #5b7d01
 		"--color-success-900": "74 102 1", // #4a6601
-		// warning | #E0D232 
-		"--color-warning-50": "250 248 224", // #faf8e0
-		"--color-warning-100": "249 246 214", // #f9f6d6
-		"--color-warning-200": "247 244 204", // #f7f4cc
-		"--color-warning-300": "243 237 173", // #f3edad
-		"--color-warning-400": "233 224 112", // #e9e070
-		"--color-warning-500": "224 210 50", // #E0D232
-		"--color-warning-600": "202 189 45", // #cabd2d
-		"--color-warning-700": "168 158 38", // #a89e26
-		"--color-warning-800": "134 126 30", // #867e1e
-		"--color-warning-900": "110 103 25", // #6e6719
+		// warning | #ff8040 
+		"--color-warning-50": "255 236 226", // #ffece2
+		"--color-warning-100": "255 230 217", // #ffe6d9
+		"--color-warning-200": "255 223 207", // #ffdfcf
+		"--color-warning-300": "255 204 179", // #ffccb3
+		"--color-warning-400": "255 166 121", // #ffa679
+		"--color-warning-500": "255 128 64", // #ff8040
+		"--color-warning-600": "230 115 58", // #e6733a
+		"--color-warning-700": "191 96 48", // #bf6030
+		"--color-warning-800": "153 77 38", // #994d26
+		"--color-warning-900": "125 63 31", // #7d3f1f
 		// error | #B42400 
 		"--color-error-50": "244 222 217", // #f4ded9
 		"--color-error-100": "240 211 204", // #f0d3cc
@@ -87,17 +87,16 @@ export const wedding_theme: CustomThemeConfig = {
 		"--color-error-700": "135 27 0", // #871b00
 		"--color-error-800": "108 22 0", // #6c1600
 		"--color-error-900": "88 18 0", // #581200
-		// surface | #AF9AB2 
-		"--color-surface-50": "243 240 243", // #f3f0f3
-		"--color-surface-100": "239 235 240", // #efebf0
-		"--color-surface-200": "235 230 236", // #ebe6ec
-		"--color-surface-300": "223 215 224", // #dfd7e0
-		"--color-surface-400": "199 184 201", // #c7b8c9
-		"--color-surface-500": "175 154 178", // #AF9AB2
-		"--color-surface-600": "158 139 160", // #9e8ba0
-		"--color-surface-700": "131 116 134", // #837486
-		"--color-surface-800": "105 92 107", // #695c6b
-		"--color-surface-900": "86 75 87", // #564b57
-		
+		// surface | #E07615 
+		"--color-surface-50": "250 234 220", // #faeadc
+		"--color-surface-100": "249 228 208", // #f9e4d0
+		"--color-surface-200": "247 221 197", // #f7ddc5
+		"--color-surface-300": "243 200 161", // #f3c8a1
+		"--color-surface-400": "233 159 91", // #e99f5b
+		"--color-surface-500": "224 118 21", // #E07615
+		"--color-surface-600": "202 106 19", // #ca6a13
+		"--color-surface-700": "168 89 16", // #a85910
+		"--color-surface-800": "134 71 13", // #86470d
+		"--color-surface-900": "110 58 10", // #6e3a0a
 	}
 }

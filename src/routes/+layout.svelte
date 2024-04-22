@@ -1,12 +1,24 @@
 <script lang="ts">
 	import '../app.postcss';
 	import {onNavigate} from '$app/navigation';
-	import {LightSwitch} from '@skeletonlabs/skeleton';
-	import {AppShell } from '@skeletonlabs/skeleton'
-	import { TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores';
+	import { AppShell, AppBar, initializeStores, Drawer, getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
+	import Navigation from '$lib/Navigation.svelte';
+	import logo from "$lib/assets/B&M.png"
+	import main_image from "$lib/assets/icons/main_image.svg"
+	import venueLoc from '$lib/assets/icons/map-svgrepo-com.svg';
+	import pizza from '$lib/assets/icons/pizza-svgrepo-com.svg';
+	//import { TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
+	//import { page } from '$app/stores';
 	//import Header from '$lib/header.svelte';
 	// import {page} from '$app/stores';
+	initializeStores();
+	const weddingDrawer = getDrawerStore();
+
+	function drawerOpen(): void {
+		weddingDrawer.open({});
+	}
+
+
 	onNavigate((navigation) => {
         //@ts-ignore
         if (!document.startViewTransition){
@@ -24,8 +36,40 @@
 	let tabSet = 0;
 
 </script>
+<Drawer>
+	<Navigation />
+</Drawer>
 
-<AppShell class="flex justify-center">
+
+<AppShell class="flex justify-center" slotSidebarLeft="w-56 p-4 hidden lg:block" slotPageHeader="p-4 bg-transparent">
+	<svelte:fragment slot="pageHeader">
+		<AppBar slotDefault="place-self-center" background="bg-transparent">
+			<svelte:fragment slot="lead">
+				<div class="flex items-center">
+					<button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
+						<span>
+							<svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
+								<rect width="100" height="20" />
+								<rect y="30" width="100" height="20" />
+								<rect y="60" width="100" height="20" />
+							</svg>
+						</span>
+					</button>
+				</div>
+			</svelte:fragment>
+			<img src="{logo}" alt="logo pic" class="size-fit"/>
+			<svelte:fragment slot="trail">
+				<LightSwitch />
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<svelte:fragment slot="sidebarLeft">
+		<Navigation />
+	</svelte:fragment>
+	<slot />
+</AppShell>
+<!--
+<AppShell >
 	<svelte:fragment slot="header">
 		<TabGroup justify='justify-center' padding='px-10 py-4' spacing='space-y-3'>
 			<TabAnchor href='/' selected={$page.url.pathname === '/'}>
@@ -40,21 +84,23 @@
 			<TabAnchor href='/memories' selected={$page.url.pathname === '/memories'}>
 					<svelte:fragment slot='lead'><a id='nav-registry' href='/memories' class='h3'>Memories</a></svelte:fragment>
 			</TabAnchor>
-			<!--href needs to match, otherwise it will occasionally show a 404--> 
+			
 			<TabAnchor href='/rsvp' selected={$page.url.pathname === '/rsvp'}>
 					<svelte:fragment slot='lead'><a id='nav-registry' href='/rsvp' class='h3'>Reservation</a></svelte:fragment>
 			</TabAnchor>
 		</TabGroup>
 		<LightSwitch />
 	</svelte:fragment>
-	<!--<ViewTransition url={$page.url}>
+	
+	
+</AppShell>
+-->
+<!--<ViewTransition url={$page.url}>
 	</ViewTransition>
 	-->
-	<slot />
-	<!--Router Slot-->
-</AppShell>
+	<!--href needs to match, otherwise it will occasionally show a 404--> 
 
-<style>
+<!--<style>
 	@keyframes fade-in {
 		from {
 			opacity: 0;
@@ -88,3 +134,4 @@
 				slide-from-right;
 	}
 </style>
+-->

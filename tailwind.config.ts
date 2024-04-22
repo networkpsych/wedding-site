@@ -13,7 +13,12 @@ export default {
 			}
 		},
 		fontFamily: {
-			'labelle': ['LaBelleAurore']
+			'labelle': ['LaBelleAurore'],
+			'inspiration': ['Inspiration'],
+			'base':['Quicksand']
+		},
+		transformOrigin: {
+			'top-left-1/3-3/4': '33% 75%',
 		}
 	},
 	plugins: [
