@@ -19,6 +19,7 @@
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/eslint": "^8.56.0",
+    "@types/formidable": "^3.4.5",
     "@types/node": "^20.12.2",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
@@ -26,6 +27,8 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.35.1",
+    "firebase-admin": "^12.1.0",
+    "formidable": "^3.5.1",
     "postcss": "8.4.38",
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
@@ -41,10 +44,12 @@
   "type": "module",
   "dependencies": {
     "firebase": "^10.11.0",
+    "firebase-tools": "^13.7.3",
+    "protobufjs": "^7.2.6",
     "svelte-carousel": "^1.0.25"
   },
   "exports": {
-    "." : {
+    ".": {
       "svelte": "./src/lib/carousel.svelte"
     }
   }

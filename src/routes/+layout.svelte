@@ -4,9 +4,8 @@
 	import { AppShell, AppBar, initializeStores, Drawer, getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation.svelte';
 	import logo from "$lib/assets/B&M.png"
-	import main_image from "$lib/assets/icons/main_image.svg"
-	import venueLoc from '$lib/assets/icons/map-svgrepo-com.svg';
-	import pizza from '$lib/assets/icons/pizza-svgrepo-com.svg';
+	import {fbApp} from "$lib/firebase/firebase.app"
+	import { onMount } from 'svelte';
 	//import { TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
 	//import { page } from '$app/stores';
 	//import Header from '$lib/header.svelte';
@@ -18,6 +17,9 @@
 		weddingDrawer.open({});
 	}
 
+	onMount(() => {
+		fbApp
+	})
 
 	onNavigate((navigation) => {
         //@ts-ignore
@@ -57,7 +59,7 @@
 					</button>
 				</div>
 			</svelte:fragment>
-			<img src="{logo}" alt="logo pic" class="size-fit"/>
+				<img src="{logo}" alt="logo pic" class="size-fit"/>
 			<svelte:fragment slot="trail">
 				<LightSwitch />
 			</svelte:fragment>

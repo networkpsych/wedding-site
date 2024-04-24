@@ -26,50 +26,32 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const VITE_ADMIN_KEY: string;
+	export const VITE_API_KEY: string;
+	export const VITE_AUTH_DOMAIN: string;
+	export const VITE_PROJECT_ID: string;
+	export const VITE_STORAGE_BUCKET: string;
+	export const VITE_MESSAGING_SENDER_ID: string;
+	export const VITE_APP_ID: string;
+	export const VITE_MEASUREMENT_ID: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
 	export const ChocolateyLastPathUpdate: string;
-	export const COLOR: string;
 	export const CommonProgramFiles: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
 	export const DriverData: string;
-	export const EDITOR: string;
 	export const GOPATH: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
-	export const INIT_CWD: string;
+	export const IS_FIREBASE_CLI: string;
 	export const JAVA_HOME: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
-	export const NODE: string;
 	export const NODE_ENV: string;
-	export const NODE_EXE: string;
-	export const NPM_CLI_JS: string;
-	export const npm_command: string;
-	export const npm_config_cache: string;
-	export const npm_config_engine_strict: string;
-	export const npm_config_globalconfig: string;
-	export const npm_config_global_prefix: string;
-	export const npm_config_init_module: string;
-	export const npm_config_local_prefix: string;
-	export const npm_config_node_gyp: string;
-	export const npm_config_noproxy: string;
-	export const npm_config_npm_version: string;
-	export const npm_config_prefix: string;
-	export const npm_config_userconfig: string;
-	export const npm_config_user_agent: string;
-	export const npm_execpath: string;
-	export const npm_lifecycle_event: string;
-	export const npm_lifecycle_script: string;
-	export const npm_node_execpath: string;
-	export const npm_package_json: string;
-	export const npm_package_name: string;
-	export const npm_package_version: string;
-	export const NPM_PREFIX_NPM_CLI_JS: string;
 	export const NUMBER_OF_PROCESSORS: string;
 	export const OneDrive: string;
 	export const OneDriveConsumer: string;
@@ -101,6 +83,7 @@ declare module '$env/static/private' {
 	export const WSLENV: string;
 	export const WT_PROFILE_ID: string;
 	export const WT_SESSION: string;
+	export const __FIREBASE_DEFAULTS__: string;
 }
 
 /**
@@ -132,50 +115,32 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		VITE_ADMIN_KEY: string;
+		VITE_API_KEY: string;
+		VITE_AUTH_DOMAIN: string;
+		VITE_PROJECT_ID: string;
+		VITE_STORAGE_BUCKET: string;
+		VITE_MESSAGING_SENDER_ID: string;
+		VITE_APP_ID: string;
+		VITE_MEASUREMENT_ID: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
 		ChocolateyLastPathUpdate: string;
-		COLOR: string;
 		CommonProgramFiles: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
 		DriverData: string;
-		EDITOR: string;
 		GOPATH: string;
 		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
-		INIT_CWD: string;
+		IS_FIREBASE_CLI: string;
 		JAVA_HOME: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
-		NODE: string;
 		NODE_ENV: string;
-		NODE_EXE: string;
-		NPM_CLI_JS: string;
-		npm_command: string;
-		npm_config_cache: string;
-		npm_config_engine_strict: string;
-		npm_config_globalconfig: string;
-		npm_config_global_prefix: string;
-		npm_config_init_module: string;
-		npm_config_local_prefix: string;
-		npm_config_node_gyp: string;
-		npm_config_noproxy: string;
-		npm_config_npm_version: string;
-		npm_config_prefix: string;
-		npm_config_userconfig: string;
-		npm_config_user_agent: string;
-		npm_execpath: string;
-		npm_lifecycle_event: string;
-		npm_lifecycle_script: string;
-		npm_node_execpath: string;
-		npm_package_json: string;
-		npm_package_name: string;
-		npm_package_version: string;
-		NPM_PREFIX_NPM_CLI_JS: string;
 		NUMBER_OF_PROCESSORS: string;
 		OneDrive: string;
 		OneDriveConsumer: string;
@@ -207,6 +172,7 @@ declare module '$env/dynamic/private' {
 		WSLENV: string;
 		WT_PROFILE_ID: string;
 		WT_SESSION: string;
+		__FIREBASE_DEFAULTS__: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

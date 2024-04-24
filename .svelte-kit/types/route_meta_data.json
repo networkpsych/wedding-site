@@ -1,9 +1,9 @@
 {
-	"/": [],
-	"/about": [],
-	"/memories": [
-		"src/routes/memories/+page.server.ts"
+	"/": [
+		"src/routes/+page.server.ts"
 	],
+	"/about": [],
+	"/memories": [],
 	"/registry": [],
 	"/rsvp": [
 		"src/routes/rsvp/+page.server.ts"
