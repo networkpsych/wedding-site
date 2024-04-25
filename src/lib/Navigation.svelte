@@ -20,12 +20,12 @@
 </script>
 
 <nav class="list-nav p-5 py-20">
-	<ul class="text-xl font-bold align-middle">
-		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300"><a href="/" on:click={drawerClose} >Home</a></li>
-		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300"><a href="/about" on:click={drawerClose}>About</a></li>
-		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300"><a href="/registry" on:click={drawerClose}>Registry</a></li>
-		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300"><a href="/memories" on:click={drawerClose}>Memories</a></li>
-		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300"><a href="/rsvp" on:click={drawerClose}>Reservation</a></li>
+	<ul class="text-xl font-medium align-middle">
+		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300 hover:variant-filled-surface hover:opacity-50 dark:hover:variant-filled-primary rounded-lg"><a href="/" on:click={drawerClose} >Home</a></li>
+		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300 hover:variant-filled-surface hover:opacity-50 dark:hover:variant-filled-primary rounded-lg"><a href="/about" on:click={drawerClose}>About</a></li>
+		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300 hover:variant-filled-surface hover:opacity-50 dark:hover:variant-filled-primary rounded-lg"><a href="/rsvp" on:click={drawerClose}>Reservation</a></li>
+		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300 hover:variant-filled-surface hover:opacity-50 dark:hover:variant-filled-primary rounded-lg"><a href="/memories" on:click={drawerClose}>Memories</a></li>
+		<li class="hover:translate-x-3 hover:-translate-y-2 hover:ease-in-out duration-300 hover:variant-filled-surface hover:opacity-50 dark:hover:variant-filled-primary rounded-lg"><a href="/links" on:click={drawerClose}>Links</a></li>
 	</ul>
 </nav>
 

@@ -18,39 +18,7 @@
         src: url('/fonts/Inspiration/Inspiration-Regular.ttf');
     }
 
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-regular.otf') format('otf');
-    }
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-Bold.otf') format('otf');
-        font-weight: bold;
-        font-weight: 800;
-    }
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-BoldItalic.otf') format('otf');
-        font-weight: 800;
-        font-style: italic;
-    }
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-Italic.otf') format('otf');
-        font-style: italic;
-    }
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-Light.otf') format('otf');
-        font-weight: 300;
-        font-style: light;
-    }
-    @font-face {
-        font-family: 'Quicksand';
-        src: url('/fonts/Quicksand/Quicksand-LightItalic.otf') format('otf');
-        font-weight: 300;
-        font-style: italic light;
-    }
+
 }
 
 :root [data-theme='wedding-theme'] {
@@ -59,6 +27,8 @@
 
 html, body{
     @apply h-full overflow-hidden;
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
+    @apply dark:bg-gradient-to-r dark:from-surface-700 dark:to-primary-900;
 }
 /*
 body {

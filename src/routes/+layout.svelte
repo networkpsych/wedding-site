@@ -5,13 +5,27 @@
 		initializeStores, Drawer, 
 		getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation.svelte';
-	import logo from "$lib/assets/B&M.png"
+	import logo_light from "$lib/assets/B&M.png"
+	import logo_dark from "$lib/assets/B&M_dark.png"
 	import {fbApp} from "$lib/firebase/firebase.app"
 	import { onMount } from 'svelte';
-	//import { TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
-	//import { page } from '$app/stores';
-	//import Header from '$lib/header.svelte';
-	// import {page} from '$app/stores';
+	import { browser } from "$app/environment"
+
+	$: currMode = 'fuck';
+
+	function currModeChange(){
+		// This is pure jank..?
+		if (browser){
+			let elem = document.getElementsByClassName('dark').item(0)
+			if (!elem)
+				currMode = ''
+			else
+				currMode = 'dark'
+		}
+	}
+
+
+
 	initializeStores();
 	const weddingDrawer = getDrawerStore();
 
@@ -37,13 +51,11 @@
         })
         }
     )
-	let tabSet = 0;
 
 </script>
 <Drawer>
 	<Navigation />
 </Drawer>
-
 
 <AppShell class="flex justify-center" slotSidebarLeft="w-56 p-4 hidden lg:block" slotPageHeader="p-4 bg-transparent">
 	<svelte:fragment slot="pageHeader">
@@ -61,9 +73,15 @@
 					</button>
 				</div>
 			</svelte:fragment>
-				<img src="{logo}" alt="logo pic" class="size-fit"/>
+			<div>
+				{#if currMode === 'dark'}
+					<img src="{logo_light}" alt="logo pic" class="size-3/4"/>
+				{:else}
+					<img src="{logo_dark}" alt="logo pic" class="size-3/4"/>
+				{/if}
+			</div>
 			<svelte:fragment slot="trail">
-				<LightSwitch />
+				<LightSwitch on:click={currModeChange}/>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

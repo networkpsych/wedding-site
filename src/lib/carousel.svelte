@@ -69,7 +69,7 @@
             <img src={leftArrow} alt="previous" />
         </button>
     <div bind:this={elemCarousel} class="h-[200px] w-[300px] lg:h-[500px] lg:w-[700px] bg-transparent flex justify-center">
-        <div class="size-2/3">
+        <div class="size-2/3 md:size-3/4">
             <img 
                 class="rounded-container-token" 
                 src={imgCurr}

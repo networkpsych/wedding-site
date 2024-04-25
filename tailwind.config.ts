@@ -14,8 +14,7 @@ export default {
 		},
 		fontFamily: {
 			'labelle': ['LaBelleAurore'],
-			'inspiration': ['Inspiration'],
-			'base':['Quicksand']
+			'inspiration': ['Inspiration']
 		},
 		transformOrigin: {
 			'top-left-1/3-3/4': '33% 75%',

@@ -166,7 +166,7 @@
             </div>
         </div>
         <hr />
-        <div>
+        <div class="pb-6">
             <Carousel />
         </div>
     <FileDropzone 
