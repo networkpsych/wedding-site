@@ -17,8 +17,6 @@ const fbConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENT_ID
 };
 
-console.log(fbConfig)
-
 // Initialize Firebase
 let fbApp: FirebaseApp | undefined;
 let fbStorage: FirebaseStorage | undefined;

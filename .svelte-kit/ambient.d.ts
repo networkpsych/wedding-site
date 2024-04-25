@@ -34,6 +34,7 @@ declare module '$env/static/private' {
 	export const VITE_MESSAGING_SENDER_ID: string;
 	export const VITE_APP_ID: string;
 	export const VITE_MEASUREMENT_ID: string;
+	export const BUCKET_PATH: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -123,6 +124,7 @@ declare module '$env/dynamic/private' {
 		VITE_MESSAGING_SENDER_ID: string;
 		VITE_APP_ID: string;
 		VITE_MEASUREMENT_ID: string;
+		BUCKET_PATH: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;

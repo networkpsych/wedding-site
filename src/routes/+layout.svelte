@@ -1,7 +1,9 @@
 <script lang="ts">
 	import '../app.postcss';
 	import {onNavigate} from '$app/navigation';
-	import { AppShell, AppBar, initializeStores, Drawer, getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, 
+		initializeStores, Drawer, 
+		getDrawerStore, LightSwitch } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation.svelte';
 	import logo from "$lib/assets/B&M.png"
 	import {fbApp} from "$lib/firebase/firebase.app"
