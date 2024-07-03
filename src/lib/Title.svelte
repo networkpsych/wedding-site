@@ -1,19 +1,18 @@
 <script lang="ts">
-    // TODO :: Evaluate need of file
-    
-    import { onMount } from 'svelte';
-    import logo from "$lib/assets/B&M.png"
-    import title from '$lib/assets/icons/title.svg'
+	// TODO :: Evaluate need of file
 
-    let canvas: any;
-    
+	import { onMount } from 'svelte';
+	import logo from '$lib/assets/B&M.png';
+	import title from '$lib/assets/icons/title.svg';
 
-    onMount(() => {
-        const ctx = canvas.getContext('2d');
-        let frame: any;
+	let canvas: any;
 
-        (function loop() {
-            frame = requestAnimationFrame(loop);
+	onMount(() => {
+		const ctx = canvas.getContext('2d');
+		let frame: any;
+
+		(function loop() {
+			frame = requestAnimationFrame(loop);
 
 			const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -33,39 +32,27 @@
 				imageData.data[p + 2] = b;
 				imageData.data[p + 3] = 255;
 			}
-            ctx.putImageData(imageData, 0, 0);
-        })();
+			ctx.putImageData(imageData, 0, 0);
+		})();
 
-        return () => {
-            cancelAnimationFrame(frame);
-        };
-    });
+		return () => {
+			cancelAnimationFrame(frame);
+		};
+	});
 
-    $: innerWidth = 0;
+	$: innerWidth = 0;
 </script>
-<svelte:window bind:innerWidth />
 
-<canvas bind:this={canvas} width={350} height={200} class=""/>
+<canvas bind:this={canvas} width={400} height={350} />
 
-{#if innerWidth <= 1024}
-    <img src="{logo}" alt="title pic" />
-    <style>
-        canvas {display: hidden;}
-    </style>
-{/if}
 <style>
-    canvas {
-        width: 100%;
-        height: 100%;
-        opacity: 100%;
-        filter: drop-shadow(5px 5px 3px #E8CD73);
-        background-color: #AF9AB2;
-        -webkit-mask: url($lib/assets/B&M.png) no-repeat;
-        mask: url($lib/assets/B&M.png) no-repeat;
-    }
+	canvas {
+		width: 200%;
+		height: 200%;
+		opacity: 100%;
+		filter: drop-shadow(5px 5px 3px #e8cd73);
+		background-color: #af9ab2;
+		-webkit-mask: url($lib/assets/icons/title.svg) no-repeat;
+		mask: url($lib/assets/icons/title.svg) no-repeat;
+	}
 </style>
-
-
-
-
-

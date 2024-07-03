@@ -4,31 +4,36 @@
 @tailwind variants;
 
 @layer base {
-    @font-face {
-        /* Reference name */
-        font-family: 'LaBelleAurore';
-        font-style: normal;
-        /* For multiple files use commas, ex: url(), url(), ... */
-        src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
-    }
+	@font-face {
+		/* Reference name */
+		font-family: 'LaBelleAurore';
+		font-style: normal;
+		/* For multiple files use commas, ex: url(), url(), ... */
+		src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
+	}
 
-    @font-face {
-        font-family: 'Inspiration';
-        font-style: cursive;
-        src: url('/fonts/Inspiration/Inspiration-Regular.ttf');
-    }
+	@font-face {
+		font-family: 'Inspiration';
+		font-style: cursive;
+		src: url('/fonts/Inspiration/Inspiration-Regular.ttf');
+	}
 
-
+	@font-face {
+		font-family: 'BungeeShade';
+		font-style: normal;
+		src: url('/fonts/BungeeShade-Regular/BungeeShade-Regular.ttf')
+	}
 }
 
 :root [data-theme='wedding-theme'] {
-    --theme-font-family-labelle: 'LaBelleAurore';
+	--theme-font-family-labelle: 'LaBelleAurore';
 }
 
-html, body{
-    @apply h-full overflow-hidden;
-    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
-    @apply dark:bg-gradient-to-r dark:from-surface-700 dark:to-primary-900;
+html,
+body {
+	@apply h-full overflow-hidden;
+	/*@apply bg-gradient-to-b from-tertiary-500 to-primary-500;
+	@apply dark:bg-gradient-to-b dark:from-surface-700 dark:to-primary-900;*/
 }
 /*
 body {

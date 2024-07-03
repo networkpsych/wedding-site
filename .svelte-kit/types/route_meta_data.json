@@ -1,11 +1,32 @@
 {
-	"/": [
-		"src/routes/+page.server.ts"
+	"/(wedding)": [
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
 	],
-	"/about": [],
-	"/links": [],
-	"/memories": [],
-	"/rsvp": [
-		"src/routes/rsvp/+page.server.ts"
+	"/(errors)": [],
+	"/": [],
+	"/(errors)/404": [],
+	"/(wedding)/about": [
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
+	],
+	"/(wedding)/home": [
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
+	],
+	"/(landing)/landing": [],
+	"/(wedding)/links": [
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
+	],
+	"/(wedding)/memories": [
+		"src/routes/(wedding)/memories/+page.ts",
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
+	],
+	"/(wedding)/rsvp": [
+		"src/routes/(wedding)/rsvp/+page.server.ts",
+		"src/routes/(wedding)/+layout.ts",
+		"src/routes/(wedding)/+layout.server.ts"
 	]
 }

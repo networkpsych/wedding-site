@@ -1,0 +1,135 @@
+.Frame_1 {
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+
+
+
+
+
+
+
+
+
+.C {
+	animation: 1s linear 0s 1 normal forwards running C;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes C {
+	0% {
+		transform: translateX(0px) translateY(0px);
+	}
+	100% {
+		transform: translateX(-98.26999999999998px) translateY(-106.91px);
+	}
+}
+
+
+
+
+
+.o {
+	animation: 1s linear 0s 1 normal forwards running o;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes o {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-113.42999999999998px) translateY(-133.55px) rotate(15.999999999999993deg);
+	}
+}
+.m {
+	animation: 1s linear 0s 1 normal forwards running m;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes m {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-98.35999999999999px) translateY(-145.09px) rotate(18.999999999999993deg);
+	}
+}
+.e {
+	animation: 1s linear 0s 1 normal forwards running e;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes e {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-68.35999999999999px) translateY(-168.09px) rotate(35.99999999999999deg);
+	}
+}
+.o {
+	animation: 1s linear 0s 1 normal forwards running o;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes o {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-39.43999999999997px) translateY(-180.8px) rotate(35.99999999999999deg);
+	}
+}
+.n {
+	animation: 1s linear 0s 1 normal forwards running n;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes n {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(-9.620000000000005px) translateY(-192.66px) rotate(56.99999999999999deg);
+	}
+}
+.i {
+	animation: 1s linear 0s 1 normal forwards running i;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes i {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(8.25px) translateY(-194.81px) rotate(46deg);
+	}
+}
+.n {
+	animation: 1s linear 0s 1 normal forwards running n;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes n {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(34.03000000000003px) translateY(-202.93px) rotate(67deg);
+	}
+}
+. {
+	animation: 1s linear 0s 1 normal forwards running ;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes  {
+	0% {
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(42.670000000000016px) translateY(-198.86px) rotate(56.99999999999999deg);
+	}
+}

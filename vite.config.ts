@@ -5,5 +5,5 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit(), purgeCss(), enhancedImages()],
-	assetsInclude:['./src/public/carousel/*.jpg']
+	assetsInclude: ['./src/public/carousel/*.jpg']
 });

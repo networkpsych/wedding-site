@@ -31,10 +31,22 @@ declare module '$env/static/private' {
 	export const VITE_AUTH_DOMAIN: string;
 	export const VITE_PROJECT_ID: string;
 	export const VITE_STORAGE_BUCKET: string;
+	export const VITE_DATABASE_URL: string;
 	export const VITE_MESSAGING_SENDER_ID: string;
 	export const VITE_APP_ID: string;
 	export const VITE_MEASUREMENT_ID: string;
 	export const BUCKET_PATH: string;
+	export const VITE_FB_ADMIN_TYPE: string;
+	export const VITE_FB_ADMIN_PROJECT_ID: string;
+	export const VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
+	export const VITE_FB_ADMIN_PRIVATE_KEY: string;
+	export const VITE_FB_ADMIN_CLIENT_EMAIL: string;
+	export const VITE_FB_ADMIN_CLIENT_ID: string;
+	export const VITE_FB_ADMIN_AUTH_URI: string;
+	export const VITE_FB_ADMIN_TOKEN_URI: string;
+	export const VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
+	export const VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
+	export const VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -84,7 +96,6 @@ declare module '$env/static/private' {
 	export const WSLENV: string;
 	export const WT_PROFILE_ID: string;
 	export const WT_SESSION: string;
-	export const __FIREBASE_DEFAULTS__: string;
 }
 
 /**
@@ -121,10 +132,22 @@ declare module '$env/dynamic/private' {
 		VITE_AUTH_DOMAIN: string;
 		VITE_PROJECT_ID: string;
 		VITE_STORAGE_BUCKET: string;
+		VITE_DATABASE_URL: string;
 		VITE_MESSAGING_SENDER_ID: string;
 		VITE_APP_ID: string;
 		VITE_MEASUREMENT_ID: string;
 		BUCKET_PATH: string;
+		VITE_FB_ADMIN_TYPE: string;
+		VITE_FB_ADMIN_PROJECT_ID: string;
+		VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
+		VITE_FB_ADMIN_PRIVATE_KEY: string;
+		VITE_FB_ADMIN_CLIENT_EMAIL: string;
+		VITE_FB_ADMIN_CLIENT_ID: string;
+		VITE_FB_ADMIN_AUTH_URI: string;
+		VITE_FB_ADMIN_TOKEN_URI: string;
+		VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
+		VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
+		VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
@@ -174,7 +197,6 @@ declare module '$env/dynamic/private' {
 		WSLENV: string;
 		WT_PROFILE_ID: string;
 		WT_SESSION: string;
-		__FIREBASE_DEFAULTS__: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
