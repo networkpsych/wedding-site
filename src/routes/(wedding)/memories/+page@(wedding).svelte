@@ -173,7 +173,7 @@
 	<div class="flex flex-col items-center justify-center px-12 pb-52">
 		<div class="flex flex-col items-center text-black">
 			<div class="space-y-2 text-4xl font-semibold">Want to share a photo?</div>
-			<div class="w-3/4 text-balance text-center text-2xl m-5 ">
+			<div class="w-3/4 text-balance text-center text-2xl m-5">
 				<span>
 					If you do, we would like to share those photos during the reception! These photos can
 					include any moment that has Brayden and/or Madeline.
@@ -181,15 +181,11 @@
 			</div>
 		</div>
 		<hr />
-		<div class="pb-1">
-			<Carousel />
-		</div>
 		<FileDropzone
-			class="variant-glass-surface dark:variant-glass-tertiary 
-			dark:border-tertiary-600 w-[200px] md:w-[700px] text-primary-900 dark:text-surface-200"
+			class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
 			id="file-dropzone"
 			border="border-solid"
-			slotMeta="opacity-90 text-md text-primary-900 dark:text-surface-200"
+			slotMeta="opacity-90 text-md text-primary-900"
 			name="files"
 			accept="image/*"
 			bind:files
@@ -197,6 +193,6 @@
 			multiple
 		>
 			<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
-		</FileDropzone>
+		</FileDropzone>		
 	</div>
 {/if}

@@ -46,25 +46,24 @@ export const actions: Actions = {
 		}
 
 		// TODO: fix attendance variables logic
-		let attendance =
-			Boolean(form.get('attending')) === true
+		let attendance = Boolean(form.get('attending'))
+			/*Boolean(form.get('attending')) === true
 				? Boolean(form.get('attending'))
-				: Boolean(form.get('not_attending'));
+				: Boolean(form.get('not_attending'));*/
 
-		if (!form.get('not_attending')) {
+		if (!attendance) {
 			// logical not operator was doing the opposite of what I wanted????
 			const guests = Number(form.get('guests'));
 			addRSVP(name, email, attendance, guests);
 			
 		} else {
-			attendance = false;
 			// 0 == zero guests
 			addRSVP(name, email, attendance, 0);
 		}
 		
 		data.success = true;
 		//rsvpForm = formData.getAll('chips');
-		console.log(form);
+		// console.log(form);
 		// console.log(getRSVP());
 		// console.log(name, email, attendance, address, city, state, zipcode, guests);
 		form.get('chips');

@@ -6,19 +6,12 @@
 		initializeStores,
 		Drawer,
 		getDrawerStore,
-		LightSwitch
 	} from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { fbApp } from '$lib/firebase/firebase.app';
-
-	import Frame from '$lib/Frame.svelte';
-	import Countdown from '$lib/countdown.svelte';
 	import Navigation from '$lib/Navigation.svelte';
-	import logo_light from '$lib/assets/B&M.png';
-	import logo_dark from '$lib/assets/B&M_dark.png';
-	import bnm_bg from '$lib/assets/bnm_bg.jpg'
 
 	$: currMode = 'fuck';
 	export let data;
@@ -99,13 +92,6 @@
 	</div>
 </header>
 
-<div>
-	{#if currMode === 'dark'}
-		<img src={logo_light} alt="logo pic" class="size-1" />
-	{:else}
-		<img src={logo_dark} alt="logo pic" class="size-1" />
-	{/if}
-</div>
 <div>
 {#key pathname}
 	<div

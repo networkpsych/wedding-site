@@ -21,25 +21,26 @@ export async function addRSVP(name: string, email: string, attendance: boolean, 
 
 	try {
 		
-		const fbDB = getFirestore("reservations-db");
+		//const db = getFirestore(fbDB);
 
-		await addDoc(collection(fbDB, "wedding_rsvp"), {
+		/*await addDoc(collection(fbDB, "wedding_rsvp"), {
 			attending: attendance, 
 			date: Timestamp.fromDate(new Date(Date.now())),
 			name: name,
 			email: email,
 			guests: guests ? guests : 0
-		});
+		});*/
 
-		/*const item = await addDoc(collection(adminDB, "test_collection"), {
+		const item = await addDoc(collection(fbDB, "test_collection"), {
 			attending: attendance, 
 			date: Timestamp.fromDate(new Date(Date.now())),
 			name: name,
 			email: email,
 			guests: guests
-		});*/
+		});
 
-		
+		console.log(item)
+		console.log(item.id)
 		console.log("Added item");
 
 	}

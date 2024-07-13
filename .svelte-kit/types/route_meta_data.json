@@ -14,7 +14,6 @@
 		"src/routes/(wedding)/+layout.ts",
 		"src/routes/(wedding)/+layout.server.ts"
 	],
-	"/(landing)/landing": [],
 	"/(wedding)/links": [
 		"src/routes/(wedding)/+layout.ts",
 		"src/routes/(wedding)/+layout.server.ts"

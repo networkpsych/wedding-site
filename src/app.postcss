@@ -3,25 +3,73 @@
 @tailwind utilities;
 @tailwind variants;
 
-@layer base {
-	@font-face {
-		/* Reference name */
-		font-family: 'LaBelleAurore';
-		font-style: normal;
-		/* For multiple files use commas, ex: url(), url(), ... */
-		src: url('/fonts/LaBelleAurore/LaBelleAurore-Regular.ttf');
-	}
+/* licensing
 
-	@font-face {
-		font-family: 'Inspiration';
-		font-style: cursive;
-		src: url('/fonts/Inspiration/Inspiration-Regular.ttf');
-	}
+Font: 		National Forest
+Style(s): 		Regular, Print Regular, Extra Bold
+URL: 		https://www.youworkforthem.com/font/T15180/national-forest-font-duo
+Foundry: 	Rachel Kick
+Foundry-link: 	https://www.youworkforthem.com/designer/1582/rachel-kick
+Copyright:	
+Version: 	17
+Created:	December 14, 2021
+License: 	https://www.youworkforthem.com/font-license 
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted 
+			from using the WebFonts(s) listed without a purchased license. 
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@layer base {
 
 	@font-face {
 		font-family: 'BungeeShade';
 		font-style: normal;
 		src: url('/fonts/BungeeShade-Regular/BungeeShade-Regular.ttf')
+	}
+	@font-face {
+		font-family: 'NationalForestRegular';
+		src: url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.eot');
+		src: url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.woff2') format('woff2'),
+			 url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.woff') format('woff'),
+			 url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.ttf') format('truetype'),
+			 url('/fonts/NationalPark/national-forest-regular/webfonts/national-forest-regular.svg#youworkforthem') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	@font-face {
+		font-family: 'NationalForestPrintRegular';
+		src: url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.eot');
+		src: url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.woff2') format('woff2'),
+			 url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.woff') format('woff'),
+			 url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.ttf') format('truetype'),
+			 url('/fonts/NationalPark/national-forest-print-regular/webfonts/national-forest-print-regular.svg#youworkforthem') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	@font-face {
+		font-family: 'NationalForestBold';
+		src: url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.eot');
+		src: url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.woff2') format('woff2'),
+			 url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.woff') format('woff'),
+			 url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.ttf') format('truetype'),
+			 url('/fonts/NationalPark/national-forest-print-bold/webfonts/national-forest-print-bold.svg#youworkforthem') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	@font-face {
+		font-family: 'NationalForestExtraBold';
+		src: url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.eot');
+		src: url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.woff2') format('woff2'),
+			 url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.woff') format('woff'),
+			 url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.ttf') format('truetype'),
+			 url('/fonts/NationalPark/national-forest-extra-bold/webfonts/national-forest-extra-bold.svg#youworkforthem') format('svg');
+		font-weight: normal;
+		font-style: normal;
 	}
 }
 
@@ -32,6 +80,7 @@
 html,
 body {
 	@apply h-full overflow-hidden;
+	@apply font-nfPrintRegular
 	/*@apply bg-gradient-to-b from-tertiary-500 to-primary-500;
 	@apply dark:bg-gradient-to-b dark:from-surface-700 dark:to-primary-900;*/
 }

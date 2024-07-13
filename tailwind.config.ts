@@ -17,9 +17,11 @@ export default {
 			}
 		},
 		fontFamily: {
-			labelle: ['LaBelleAurore'],
-			inspiration: ['Inspiration'],
-			bungeeshade: ['BungeeShade']
+			bungeeshade: ['BungeeShade'],
+			nfRegular: ['NationalForestRegular'],
+			nfPrintRegular: ['NationalForestPrintRegular'],
+			nfPrintBold: ['NationalForestExtraBold'],
+			nfExtraBold: ['NationalForestExtraBold']
 		},
 		transformOrigin: {
 			'top-left-1/3-3/4': '33% 75%'

@@ -36,7 +36,7 @@
 	});
 </script>
 <div class="hidden lg:block">
-	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-bungeeshade text-tertiary-900">
+	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfPrintRegular text-primary-700">
 		{#each dates as { id, time }}
 			{#if time > 1}
 				<span class="row-start-1 text-center align-baseline">{id}s</span>

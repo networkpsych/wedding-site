@@ -10,19 +10,18 @@
 	}
 </script>
 
-<div class="lg:flex lg:m-3 lg:p-4 lg:pr-10 gap-x-2 text-left h-20 w-full">
-	<span class="grow"></span>
+<div class="lg:flex lg:justify-start lg:m-3 lg:p-4 lg:pl-10 gap-x-2 text-left h-20 w-full">
 {#each links as [key, val]}
 	<div class="size-fit p-4 text-left text-2xl
-	font-bold
-	text-tertiary-900
+	font-nfExtraBold
+	text-secondary-500
 	rounded-2xl
-	hover:variant-glass-secondary
+	hover:variant-ghost-primary
 	hover:scale-110
-	hover:translate-y-4
+	hover:translate-y-2
 	hover:duration-500
 	hover:ease-in-out
-	duration-500
+	duration-700
 	">
 		<a
 			href={val}

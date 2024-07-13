@@ -7,9 +7,8 @@
 	<div class="flex flex-col justify-center items-center text-center">
 		<div class="
 			rounded-lg
-			justify-center text-wrap text-4xl 
-			lg:text-6xl text-black lg:text-tertiary-900 
-			font-labelle lg:font-bungeeshade">
+			justify-center text-wrap text-6xl text-primary-600 
+			font-nfRegular">
 			<p class="p-2">Brayden & Madeline</p>
 			<p class="p-2">05/31/2025</p>
 		</div>
