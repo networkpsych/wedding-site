@@ -4,7 +4,9 @@
 		"src/routes/(wedding)/+layout.server.ts"
 	],
 	"/(errors)": [],
-	"/": [],
+	"/": [
+		"src/routes/+page.server.ts"
+	],
 	"/(errors)/404": [],
 	"/(wedding)/about": [
 		"src/routes/(wedding)/+layout.ts",

@@ -10,18 +10,20 @@ export const nodes = [
 	() => import('./nodes/6'),
 	() => import('./nodes/7'),
 	() => import('./nodes/8'),
-	() => import('./nodes/9')
+	() => import('./nodes/9'),
+	() => import('./nodes/10')
 ];
 
 export const server_loads = [3];
 
 export const dictionary = {
-		"/(errors)/404": [4,[2]],
-		"/(wedding)/about": [5,[3]],
-		"/(wedding)/home": [6,[3]],
-		"/(wedding)/links": [7,[3]],
-		"/(wedding)/memories": [8,[3]],
-		"/(wedding)/rsvp": [~9,[3]]
+		"/": [~4],
+		"/(errors)/404": [5,[2]],
+		"/(wedding)/about": [6,[3]],
+		"/(wedding)/home": [7,[3]],
+		"/(wedding)/links": [8,[3]],
+		"/(wedding)/memories": [9,[3]],
+		"/(wedding)/rsvp": [~10,[3]]
 	};
 
 export const hooks = {
