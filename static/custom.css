@@ -48,12 +48,3 @@
 	font-style: normal;
 }
 
-html,
-body {
-	@apply h-full overflow-hidden;
-}
-
-/*:root [data-theme='wedding_theme'] {
-    --theme-font-family-base: 'LaBelleAurore', sans-serif;
-    --theme-font-family-heading: 'LaBelleAurore', sans-serif;
-}*/
