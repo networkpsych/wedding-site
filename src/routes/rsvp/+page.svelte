@@ -5,21 +5,9 @@
 	import { assets } from '$app/paths';
 	import wedding_icon from '$lib/assets/icons/wedding-svgrepo-com.svg';
 
-	const defaults = {
-		attendance: false
-	};
-
-	const formData = {
-		name: '',
-		email: '',
-		attendance: defaults.attendance,
-		guests: 0
-	};
-
-	$: attendance = false;
-
+	$: attendance = false
+	
 	const onFormSubmit: SubmitFunction = () => {
-		formData.attendance = defaults.attendance;
 		return async ({ update }) => {
 			await update({ reset: false });
 		};

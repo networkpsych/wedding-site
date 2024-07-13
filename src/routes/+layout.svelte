@@ -3,6 +3,7 @@
 	import { onNavigate } from '$app/navigation';
 	import {
 		initializeStores,
+		Modal,
 		Drawer,
 		getDrawerStore,
 	} from '@skeletonlabs/skeleton';
@@ -11,6 +12,8 @@
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { fbApp } from '$lib/firebase/firebase.app';
 	import Navigation from '$lib/Navigation.svelte';
+	import bg_standard from '$lib/assets/bnm_bg.jpg';
+	import bg_mobile from '$lib/assets/bnm_bg_mobile.jpg';
 
 	export let data;
 	$: pathname = data.pathname
@@ -52,7 +55,7 @@
 </script>
 <style lang="postcss">
 	:global(body){
-		@apply bg-bnm-mobile lg:bg-bnm-bg bg-cover;
+		@apply bg-cover bg-bnm-mobile lg:bg-bnm-bg;
 	}
 
 </style>
@@ -80,7 +83,7 @@
 		<Navigation links={wedding_links}/>
 	</div>
 </header>
-
+<main>
 <div>
 {#key pathname}
 	<div
@@ -91,3 +94,4 @@
 	</div>
 {/key}
 </div>
+</main>

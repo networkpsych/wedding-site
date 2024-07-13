@@ -1,7 +1,5 @@
 import type { Actions } from '@sveltejs/kit';
-import { collection, query, doc, 
-	getDocs, setDoc, addDoc, getFirestore, Timestamp} from 'firebase/firestore';
-import { addRSVP, getRSVP, clearRSVP, type Reservation } from '$lib/firebase/database';
+import { addRSVP, type Reservation } from '$lib/firebase/database';
 
 let reserved: Reservation;
 
@@ -23,6 +21,41 @@ function validateEmail(email: string){
 }
 
 export const actions: Actions = {
+	default: async({ request }) => {
+		const data = await request.formData();
+
+		const status: Data = {
+			success: false,
+			errors: {}
+		};
+
+		if (!data) {
+			status.errors.status = '400';
+			status.errors.rsvpForm = 'required';
+			return status;
+		}
+
+		if (!validateEmail(String(data.get('email')))){
+			status.errors.status = '400';
+			status.errors.email = 'email is invalid';
+			return status;
+		}
+
+		const reservation: Reservation = {
+			name: String(data.get('name')),
+			email: String(data.get('email')),
+			attendance: Boolean(data.get('attending')),
+			guests: Number(data.get('guests')),
+		}
+		addRSVP(reservation);
+		status.success = true;
+		console.log(reservation)
+		return status
+	}
+}
+
+
+/*export const actions: Actions = {
 	default: async (event) => {
 		const form = await event.request.formData();
 
@@ -45,12 +78,6 @@ export const actions: Actions = {
 			data.errors.rsvpForm = 'Validation error'
 		}
 
-		// TODO: fix attendance variables logic
-		let attendance = Boolean(form.get('attending'))
-			/*Boolean(form.get('attending')) === true
-				? Boolean(form.get('attending'))
-				: Boolean(form.get('not_attending'));*/
-
 		if (!attendance) {
 			// logical not operator was doing the opposite of what I wanted????
 			const guests = Number(form.get('guests'));
@@ -67,8 +94,9 @@ export const actions: Actions = {
 		// console.log(getRSVP());
 		// console.log(name, email, attendance, address, city, state, zipcode, guests);
 		form.get('chips');
+		event
 		// clearRSVP();
 		return data;
 		//return json(data)
 	}
-};
+};*/
