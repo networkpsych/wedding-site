@@ -12,8 +12,8 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'bnm-bg': "url('./src/lib/assets/bnm_bg.jpg')",
-				'bnm-mobile': "url('./src/lib/assets/bnm_bg_mobile.jpg')"
+				'bnm-bg': "url('/src/lib/assets/bnm_bg.jpg')",
+				'bnm-mobile': "url('/src/lib/assets/bnm_bg_mobile.jpg')"
 			}
 		},
 		fontFamily: {
