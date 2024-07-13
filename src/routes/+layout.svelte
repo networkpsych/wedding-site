@@ -1,7 +1,6 @@
 <script lang="ts">
-	import '../../app.postcss';
+	import '../app.postcss';
 	import { onNavigate } from '$app/navigation';
-	import { browser } from '$app/environment';
 	import {
 		initializeStores,
 		Drawer,
@@ -13,27 +12,17 @@
 	import { fbApp } from '$lib/firebase/firebase.app';
 	import Navigation from '$lib/Navigation.svelte';
 
-	$: currMode = 'fuck';
 	export let data;
 	$: pathname = data.pathname
 
 	let wedding_links: string[][] = [
-		['Home', '/home'],
+		['Home', '/'],
 		['About', '/about'],
 		['Reserve', '/rsvp'],
 		['Memories', '/memories'],
 		['Links', '/links']
 	];
 	// console.log(wedding_links);
-
-	function currModeChange() {
-		// This is pure jank..?
-		if (browser) {
-			let elem = document.getElementsByClassName('dark').item(0);
-			if (!elem) currMode = '';
-			else currMode = 'dark';
-		}
-	}
 
 	initializeStores();
 	const weddingDrawer = getDrawerStore();
