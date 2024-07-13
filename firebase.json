@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "bnm2025",
-    "public": "./src",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
