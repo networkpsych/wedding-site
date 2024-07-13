@@ -1,33 +1,34 @@
 {
-	"/(wedding)": [
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/(errors)": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(errors)": [],
 	"/": [
-		"src/routes/+page.server.ts"
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(errors)/404": [],
-	"/(wedding)/about": [
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/(errors)/404": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(wedding)/home": [
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/about": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(wedding)/links": [
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/links": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(wedding)/memories": [
-		"src/routes/(wedding)/memories/+page.ts",
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/memories": [
+		"src/routes/memories/+page.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	],
-	"/(wedding)/rsvp": [
-		"src/routes/(wedding)/rsvp/+page.server.ts",
-		"src/routes/(wedding)/+layout.ts",
-		"src/routes/(wedding)/+layout.server.ts"
+	"/rsvp": [
+		"src/routes/rsvp/+page.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
 	]
 }

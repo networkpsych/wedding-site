@@ -1,9 +1,9 @@
 <script lang="ts">
-	import '../../app.postcss';
+	import '../app.postcss';
 	import { onNavigate } from '$app/navigation';
-	import { browser } from '$app/environment';
 	import {
 		initializeStores,
+		Modal,
 		Drawer,
 		getDrawerStore,
 	} from '@skeletonlabs/skeleton';
@@ -12,28 +12,20 @@
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { fbApp } from '$lib/firebase/firebase.app';
 	import Navigation from '$lib/Navigation.svelte';
+	import bg_standard from '$lib/assets/bnm_bg.jpg';
+	import bg_mobile from '$lib/assets/bnm_bg_mobile.jpg';
 
-	$: currMode = 'fuck';
 	export let data;
 	$: pathname = data.pathname
 
 	let wedding_links: string[][] = [
-		['Home', '/home'],
+		['Home', '/'],
 		['About', '/about'],
 		['Reserve', '/rsvp'],
 		['Memories', '/memories'],
 		['Links', '/links']
 	];
 	// console.log(wedding_links);
-
-	function currModeChange() {
-		// This is pure jank..?
-		if (browser) {
-			let elem = document.getElementsByClassName('dark').item(0);
-			if (!elem) currMode = '';
-			else currMode = 'dark';
-		}
-	}
 
 	initializeStores();
 	const weddingDrawer = getDrawerStore();
@@ -63,7 +55,7 @@
 </script>
 <style lang="postcss">
 	:global(body){
-		@apply bg-bnm-mobile lg:bg-bnm-bg bg-cover;
+		@apply bg-cover bg-bnm-mobile lg:bg-bnm-bg;
 	}
 
 </style>
@@ -91,7 +83,7 @@
 		<Navigation links={wedding_links}/>
 	</div>
 </header>
-
+<main>
 <div>
 {#key pathname}
 	<div
@@ -102,3 +94,4 @@
 	</div>
 {/key}
 </div>
+</main>
