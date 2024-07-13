@@ -74,13 +74,14 @@ License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
 }
 
 :root [data-theme='wedding-theme'] {
-	--theme-font-family-labelle: 'LaBelleAurore';
+	--theme-font-family-nfPrintRegular: 'NationalForestPrintRegular'
 }
 
 html,
 body {
 	@apply h-full overflow-hidden;
-	@apply font-nfPrintRegular
+	@apply font-nfPrintRegular;
+	@apply bg-bnm-mobile lg:bg-bnm-bg bg-cover;
 	/*@apply bg-gradient-to-b from-tertiary-500 to-primary-500;
 	@apply dark:bg-gradient-to-b dark:from-surface-700 dark:to-primary-900;*/
 }
