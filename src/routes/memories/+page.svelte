@@ -154,19 +154,19 @@
 		</div>
 	</div>
 	<hr />
-	<FileDropzone
-		class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
-		id="file-dropzone"
-		border="border-solid"
-		slotMeta="opacity-90 text-md text-primary-900"
-		name="files"
-		accept="image/*"
-		bind:files
-		on:change={onChangeHandler}
-		multiple
-	>
-		<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
-	</FileDropzone>		
+		<FileDropzone
+			class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
+			border="border-solid"
+			slotMeta="opacity-90 text-md text-primary-900"
+			name="files"
+			accept="image/*"
+			bind:files
+			on:change={onChangeHandler}
+			multiple
+		>
+	
+			<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
+		</FileDropzone>		
 </div>
 <!--
 {#if triggeredEvent}
