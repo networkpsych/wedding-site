@@ -2,7 +2,7 @@
 	import { FileDropzone, ProgressBar } from '@skeletonlabs/skeleton';
 	import { fade } from 'svelte/transition'
 	import { getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-	import Carousel from '$lib/carousel.svelte';
+	import {getModalStore, type ModalSettings} from '@skeletonlabs/skeleton'
 	import Errors from '$lib/Errors.svelte';
 	import Warnings from '$lib/Warnings.svelte';
 
@@ -18,6 +18,15 @@
 	$: images = [];
 	$: uploadProgress = 0;
 	$: uploadStatus = '';
+	$: err = false;
+
+	const modalStore = getModalStore();
+    
+    const modal: ModalSettings = {
+        type: 'component',
+        component: 'status',
+		meta: {active:false}
+    }
 
 	function makeid(length: number) {
 		let result = '';
@@ -90,7 +99,9 @@
 					console.log(`Upload is ${progress}% done`);
 					switch (snapshot.state) {
 						case 'paused':
-							uploadStatus = 'paused';
+							modal.title = "Paused"
+							modal.body = "Upload has been paused."
+							modalStore.trigger(modal)
 							break;
 						case 'running':
 							console.log('Upload is running');
@@ -98,55 +109,73 @@
 					}
 				},
 				(error) => {
+					err = true
+					modal.backdropClasses = '!variant-glass-error'
+					// modal.title = "The submission had an error!"
+					// modal.body = `${respData.errors.reason}`
+					// modalStore.trigger(modal);
 					switch (error.code) {
 						case 'storage/unauthorized':
-							uploadStatus = 'unauthorized';
+							modal.title = 'Unauthorized';
+							modal.body = "You are not authorized to upload. Please contact site admin."
 							break;
 						case 'storage/canceled':
+							modal.title = 'Cancellation';
+							modal.body = "Upload has been canceled. If this was unintentional, then please contact site admin."
 							uploadStatus = 'canceled';
 							break;
 						case 'storage/unknown':
+							modal.title = 'Unknown';
+							modal.body = "An unknown error occured. Please contact site admin."
 							uploadStatus = 'unknown';
 							break;
 					}
 				}
 			);
 		}
+		if (!err){
+		modal.backdropClasses = '!variant-glass-success'
+		modal.title = "Files Uploaded"
+		modal.meta = {active:true, files:filesArr}
+		}
+		modalStore.trigger(modal)
 	}
+
 </script>
 
-{#if triggeredEvent}
-	{#if uploadStatus !== ''}
-		{#if uploadStatus === 'paused'}
-			<Warnings bind:this={sacVal}>
-				<div class="alert-actions">
-					<button
-						type="button"
-						class="variant-filled-warning absolute inset-x-32 bottom-0 rounded-lg p-1 font-bold shadow-md duration-300 hover:variant-filled-warning hover:scale-110 hover:opacity-75 hover:ease-in-out"
-						on:click={() => sacVal.$destroy()}>Close</button
-					>
-				</div>
-			</Warnings>
-		{:else if uploadStatus === 'unauthorized' || uploadStatus === 'canceled' || uploadStatus === 'unknown'}
-			<Errors status={uploadStatus} bind:this={sacVal}>
-				<div class="alert-actions">
-					<button
-						type="button"
-						class="variant-filled-error absolute inset-x-32 bottom-0 rounded-lg p-1 font-bold shadow-md duration-300 hover:variant-filled-error hover:scale-110 hover:opacity-75 hover:ease-in-out"
-						on:click={() => sacVal.$destroy()}>Close</button
-					>
-				</div>
-			</Errors>
-		{/if}
-	{/if}
-	<div transition:fade={{duration:400, delay:400}}>
-		<div class="w-96">
-			<ProgressBar
-				value={uploadProgress}
-				meter="bg-primary-900-50-token"
-				track="bg-primary-300-600-token"
-			/>
+<div class="flex flex-col items-center justify-center px-12 pb-52">
+	<div class="flex flex-col items-center text-black">
+		<div class="space-y-2 text-4xl font-semibold">Want to share a photo?</div>
+		<div class="w-3/4 text-balance text-center text-2xl m-5">
+			<span>
+				If you do, we would like to share those photos during the reception! These photos can
+				include any moment that has Brayden and/or Madeline.
+			</span>
 		</div>
+	</div>
+	<hr />
+	<FileDropzone
+		class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
+		id="file-dropzone"
+		border="border-solid"
+		slotMeta="opacity-90 text-md text-primary-900"
+		name="files"
+		accept="image/*"
+		bind:files
+		on:change={onChangeHandler}
+		multiple
+	>
+		<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
+	</FileDropzone>		
+</div>
+<!--
+{#if triggeredEvent}
+	<div class="w-auto h-auto variant-glass-surface">
+		<ProgressBar
+			value={uploadProgress}
+			meter="bg-primary-900-50-token"
+			track="bg-primary-300-600-token"
+		/>
 		<div class="p-3">
 			<button
 				type="button"
@@ -154,45 +183,16 @@
 				on:click={resetPage}>Reset Screen</button
 			>
 		</div>
-		<div>
-			<div class="size-1/2 pb-3">
+			<div class="grid grid-flow-row pb-3">
 				{#each filesArr as file, i}
-					<ul class="list">
-						<li class="p-4">
-							<span><img class="size-24 space-y-2 rounded-full" src={images[i]} alt="" /></span>
-							<span class="flex-auto text-lg font-bold"
-								>{file.name} - {(file.size / (1024 * 1024)).toFixed(2)}MB</span
-							>
-						</li>
-					</ul>
+					<span>
+						<img class="size-24 space-y-2 rounded-full" src={images[i]} alt="" />
+					</span>
+					<span class="flex-auto text-lg font-bold">
+						{file.name} - {(file.size / (1024 * 1024)).toFixed(2)}MB
+					</span>
 				{/each}
 			</div>
-		</div>
-	</div>
-{:else}
-	<div class="flex flex-col items-center justify-center px-12 pb-52">
-		<div class="flex flex-col items-center text-black">
-			<div class="space-y-2 text-4xl font-semibold">Want to share a photo?</div>
-			<div class="w-3/4 text-balance text-center text-2xl m-5">
-				<span>
-					If you do, we would like to share those photos during the reception! These photos can
-					include any moment that has Brayden and/or Madeline.
-				</span>
-			</div>
-		</div>
-		<hr />
-		<FileDropzone
-			class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
-			id="file-dropzone"
-			border="border-solid"
-			slotMeta="opacity-90 text-md text-primary-900"
-			name="files"
-			accept="image/*"
-			bind:files
-			on:change={onChangeHandler}
-			multiple
-		>
-			<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
-		</FileDropzone>		
 	</div>
 {/if}
+-->

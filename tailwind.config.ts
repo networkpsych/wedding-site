@@ -17,7 +17,6 @@ export default {
 			}
 		},
 		fontFamily: {
-			bungeeshade: ['BungeeShade'],
 			nfRegular: ['NationalForestRegular'],
 			nfPrintRegular: ['NationalForestPrintRegular'],
 			nfPrintBold: ['NationalForestExtraBold'],

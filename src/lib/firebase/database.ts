@@ -14,15 +14,9 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 
 	try {
 		
-		//const db = getFirestore(fbDB);
-
-		/*await addDoc(collection(fbDB, "wedding_rsvp"), {
-			attending: attendance, 
-			date: Timestamp.fromDate(new Date(Date.now())),
-			name: name,
-			email: email,
-			guests: guests ? guests : 0
-		});*/
+		if(reservation){
+			
+		}
 
 		const item = await addDoc(collection(fbDB, "test_collection"), {
 			date: Timestamp.fromDate(new Date(Date.now())),
@@ -32,9 +26,9 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 			guests: reservation.guests,
 		});
 
-		console.log(item)
-		console.log(item.id)
-		console.log("Added item");
+		//console.log(item)
+		//console.log(item.id)
+		//console.log("Added item");
 
 	}
 	catch (e: any) {

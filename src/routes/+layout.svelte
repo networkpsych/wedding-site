@@ -1,19 +1,26 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { fbApp } from '$lib/firebase/firebase.app';
+	import {
+    initializeStores,
+    Drawer, getDrawerStore,
+	Toast, getToastStore,
+	Modal, type ModalComponent
+	} from '@skeletonlabs/skeleton';
+	import modalStatus from '$lib/modalStatus.svelte'
+
+	initializeStores();
+
+	onMount(() => {
+		fbApp;
+	});
+
 	import '../app.postcss';
 	import { onNavigate } from '$app/navigation';
-	import {
-		initializeStores,
-		Modal,
-		Drawer,
-		getDrawerStore,
-	} from '@skeletonlabs/skeleton';
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { cubicIn, cubicOut } from 'svelte/easing';
-	import { fbApp } from '$lib/firebase/firebase.app';
 	import Navigation from '$lib/Navigation.svelte';
-	import bg_standard from '$lib/assets/bnm_bg.jpg';
-	import bg_mobile from '$lib/assets/bnm_bg_mobile.jpg';
+
 
 	export let data;
 	$: pathname = data.pathname
@@ -25,19 +32,18 @@
 		['Memories', '/memories'],
 		['Links', '/links']
 	];
-	// console.log(wedding_links);
-
-	initializeStores();
+	
+	const modalRegistry: Record<string, ModalComponent> = {
+		status: { ref: modalStatus },
+	}
+	
 	const weddingDrawer = getDrawerStore();
 
 	function drawerOpen(): void {
 		weddingDrawer.open({});
 	}
 
-	onMount(() => {
-		fbApp;
-	});
-
+	
 	onNavigate((navigation) => {
 		//@ts-ignore
 		if (!document.startViewTransition) {
@@ -85,6 +91,7 @@
 </header>
 <main>
 <div>
+<Modal height="h-42" components={modalRegistry} />
 {#key pathname}
 	<div
 	in:fade={{ easing: cubicIn, duration:700, delay:500}} 
@@ -93,5 +100,6 @@
 		<slot />
 	</div>
 {/key}
+<Toast position="t" />
 </div>
 </main>
