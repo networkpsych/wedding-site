@@ -31,7 +31,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 
 	try {
 
-		const { error } = await supabase
+		const { data, error } = await supabase
 			.from(supabaseDB)
 			.insert([{
 				name: reservation.name,
@@ -42,7 +42,10 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 			.select()
 
 		console.log(reservation)
-		console.log(error)
+		console.log(data)
+		if (error){
+			console.log(error)
+		}
 		//const item = await addDoc(collection(fbDB, "test_collection"), {
 		//	date: Timestamp.fromDate(new Date(Date.now())),
 		//	attendance: reservation.attendance,

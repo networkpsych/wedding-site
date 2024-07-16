@@ -46,6 +46,7 @@ export const actions: Actions = {
 				attending: Boolean(data.get('attending')),
 				guests: Number(data.get('guests')),
 			}
+			
 			addRSVP(reserved);
 			form.success = true;
 			console.log(reserved)
