@@ -39,6 +39,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 				attending: reservation.attending,
 				guests: reservation.guests,
 			}])
+			.select()
 
 		console.log(reservation)
 		console.log(error)
