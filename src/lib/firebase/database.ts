@@ -18,7 +18,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 			
 		}
 
-		const item = await addDoc(collection(fbDB, "test_collection"), {
+		const item = await addDoc(collection(fbDB, "wedding_rsvp"), {
 			date: Timestamp.fromDate(new Date(Date.now())),
 			attendance: reservation.attendance,
 			name: reservation.name,
