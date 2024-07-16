@@ -26,6 +26,29 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const VITE_ADMIN_KEY: string;
+	export const VITE_API_KEY: string;
+	export const VITE_AUTH_DOMAIN: string;
+	export const VITE_PROJECT_ID: string;
+	export const VITE_STORAGE_BUCKET: string;
+	export const VITE_DATABASE_URL: string;
+	export const VITE_MESSAGING_SENDER_ID: string;
+	export const VITE_APP_ID: string;
+	export const VITE_MEASUREMENT_ID: string;
+	export const BUCKET_PATH: string;
+	export const VITE_FB_ADMIN_TYPE: string;
+	export const VITE_FB_ADMIN_PROJECT_ID: string;
+	export const VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
+	export const VITE_FB_ADMIN_PRIVATE_KEY: string;
+	export const VITE_FB_ADMIN_CLIENT_EMAIL: string;
+	export const VITE_FB_ADMIN_CLIENT_ID: string;
+	export const VITE_FB_ADMIN_AUTH_URI: string;
+	export const VITE_FB_ADMIN_TOKEN_URI: string;
+	export const VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
+	export const VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
+	export const VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
+	export const VITE_SUPABASE_KEY: string;
+	export const VITE_SUPABASE_DB: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -46,6 +69,7 @@ declare module '$env/static/private' {
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
 	export const NODE: string;
+	export const NODE_ENV: string;
 	export const NODE_EXE: string;
 	export const NPM_CLI_JS: string;
 	export const npm_command: string;
@@ -65,15 +89,8 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
-	export const npm_package_dev: string;
-	export const npm_package_dev_optional: string;
-	export const npm_package_engines_node: string;
-	export const npm_package_integrity: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
-	export const npm_package_optional: string;
-	export const npm_package_peer: string;
-	export const npm_package_resolved: string;
 	export const npm_package_version: string;
 	export const NPM_PREFIX_NPM_CLI_JS: string;
 	export const NUMBER_OF_PROCESSORS: string;
@@ -102,6 +119,7 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
+	export const VIPSHOME: string;
 	export const windir: string;
 	export const WSLENV: string;
 	export const WT_PROFILE_ID: string;
@@ -137,6 +155,29 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		VITE_ADMIN_KEY: string;
+		VITE_API_KEY: string;
+		VITE_AUTH_DOMAIN: string;
+		VITE_PROJECT_ID: string;
+		VITE_STORAGE_BUCKET: string;
+		VITE_DATABASE_URL: string;
+		VITE_MESSAGING_SENDER_ID: string;
+		VITE_APP_ID: string;
+		VITE_MEASUREMENT_ID: string;
+		BUCKET_PATH: string;
+		VITE_FB_ADMIN_TYPE: string;
+		VITE_FB_ADMIN_PROJECT_ID: string;
+		VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
+		VITE_FB_ADMIN_PRIVATE_KEY: string;
+		VITE_FB_ADMIN_CLIENT_EMAIL: string;
+		VITE_FB_ADMIN_CLIENT_ID: string;
+		VITE_FB_ADMIN_AUTH_URI: string;
+		VITE_FB_ADMIN_TOKEN_URI: string;
+		VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
+		VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
+		VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
+		VITE_SUPABASE_KEY: string;
+		VITE_SUPABASE_DB: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
@@ -157,6 +198,7 @@ declare module '$env/dynamic/private' {
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
 		NODE: string;
+		NODE_ENV: string;
 		NODE_EXE: string;
 		NPM_CLI_JS: string;
 		npm_command: string;
@@ -176,15 +218,8 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
-		npm_package_dev: string;
-		npm_package_dev_optional: string;
-		npm_package_engines_node: string;
-		npm_package_integrity: string;
 		npm_package_json: string;
 		npm_package_name: string;
-		npm_package_optional: string;
-		npm_package_peer: string;
-		npm_package_resolved: string;
 		npm_package_version: string;
 		NPM_PREFIX_NPM_CLI_JS: string;
 		NUMBER_OF_PROCESSORS: string;
@@ -213,6 +248,7 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
+		VIPSHOME: string;
 		windir: string;
 		WSLENV: string;
 		WT_PROFILE_ID: string;
