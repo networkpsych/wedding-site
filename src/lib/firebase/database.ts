@@ -1,5 +1,4 @@
-import { collection, query, doc, 
-		getDocs, setDoc, addDoc, getFirestore, Timestamp} from 'firebase/firestore';
+import { collection, addDoc, Timestamp} from 'firebase/firestore';
 
 import { fbDB } from './firebase.app';
 
@@ -18,7 +17,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 			
 		}
 
-		const item = await addDoc(collection(fbDB, "wedding_rsvp"), {
+		const item = await addDoc(collection(fbDB, "test_collection"), {
 			date: Timestamp.fromDate(new Date(Date.now())),
 			attendance: reservation.attendance,
 			name: reservation.name,
@@ -29,6 +28,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 		//console.log(item)
 		//console.log(item.id)
 		//console.log("Added item");
+		console.log(item)
 
 	}
 	catch (e: any) {
