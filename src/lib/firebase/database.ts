@@ -33,7 +33,12 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 
 		const { error } = await supabase
 			.from(supabaseDB)
-			.insert(reservation)
+			.insert([{
+				name: reservation.name,
+				email: reservation.email,
+				attending: reservation.attending,
+				guests: reservation.guests,
+			}])
 
 		console.log(reservation)
 		console.log(error)
