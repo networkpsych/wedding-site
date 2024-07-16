@@ -90,16 +90,17 @@
 	</div>
 </header>
 <main>
-<div>
-<Modal height="h-42" components={modalRegistry} />
-{#key pathname}
-	<div
-	in:fade={{ easing: cubicIn, duration:700, delay:500}} 
-	out:fade={{ easing: cubicOut, duration:500, delay:100}}
-	>
-		<slot />
-	</div>
-{/key}
-<Toast position="t" />
+<div >
+	<Modal height="h-42" components={modalRegistry} />
+	{#key pathname}
+		<div
+		in:fade={{ easing: cubicIn, duration:700, delay:500}} 
+		out:fade={{ easing: cubicOut, duration:500, delay:100}}
+		class="overflow-auto"
+		>
+			<slot />
+		</div>
+	{/key}
+	<Toast position="t" />
 </div>
 </main>
