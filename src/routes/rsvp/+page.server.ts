@@ -43,7 +43,7 @@ export const actions: Actions = {
 			const reservation: Reservation = {
 				name: String(data.get('name')),
 				email: String(data.get('email')),
-				attendance: Boolean(data.get('attending')),
+				attending: Boolean(data.get('attending')),
 				guests: Number(data.get('guests')),
 			}
 			addRSVP(reservation);
