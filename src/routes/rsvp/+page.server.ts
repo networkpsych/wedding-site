@@ -40,15 +40,15 @@ export const actions: Actions = {
 			return form;
 		}
 		else {
-			const reservation: Reservation = {
+			reserved = {
 				name: String(data.get('name')),
 				email: String(data.get('email')),
 				attending: Boolean(data.get('attending')),
 				guests: Number(data.get('guests')),
 			}
-			addRSVP(reservation);
+			addRSVP(reserved);
 			form.success = true;
-			console.log(reservation)
+			console.log(reserved)
 			return form
 		}
 	}

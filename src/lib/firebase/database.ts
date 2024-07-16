@@ -1,7 +1,20 @@
 import { collection, addDoc, Timestamp} from 'firebase/firestore';
 import { fbDB } from './firebase.app';
 
-import {supabase, supabaseDB} from './supabase'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = 'https://gqynqdjirfndnfbtsaqe.supabase.co';
+let supabaseKey;
+
+try{
+    supabaseKey = import.meta.env.VITE_SUPABASE_KEY
+}
+catch {
+    supabaseKey = process.env.VITE_SUPABASE_KEY
+}
+
+export const supabase = createClient(supabaseUrl, supabaseKey)
+export const supabaseDB = import.meta.env.VITE_SUPABASE_DB
 
 
 
@@ -22,6 +35,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 			.from(supabaseDB)
 			.insert(reservation)
 
+		console.log(reservation)
 		console.log(error)
 		//const item = await addDoc(collection(fbDB, "test_collection"), {
 		//	date: Timestamp.fromDate(new Date(Date.now())),
