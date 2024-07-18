@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Countdown from '$lib/countdown.svelte';
+	import { supabase } from '$lib/firebase/supabase.js';
 	//import pic1 from "$lib/assets/lil_d_wedding.jpg"
 </script>
 

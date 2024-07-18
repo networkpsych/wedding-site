@@ -1,15 +1,7 @@
 {
-	"/(errors)": [
-		"src/routes/+layout.ts",
-		"src/routes/+layout.server.ts"
-	],
 	"/": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts",
-		"src/routes/+layout.ts",
-		"src/routes/+layout.server.ts"
-	],
-	"/(errors)/404": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
@@ -17,12 +9,12 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/links": [
+	"/memories": [
+		"src/routes/memories/+page.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/memories": [
-		"src/routes/memories/+page.ts",
+	"/registry": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],

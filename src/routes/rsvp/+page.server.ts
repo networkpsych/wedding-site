@@ -2,6 +2,7 @@ import type { Actions } from '@sveltejs/kit';
 import { addRSVP, type Reservation } from '$lib/firebase/database';
 
 
+
 let reserved: Reservation;
 
 type Data = {
@@ -47,9 +48,8 @@ export const actions: Actions = {
 				guests: Number(data.get('guests')),
 			}
 			
-			addRSVP(reserved);
+			const userRes = await addRSVP(reserved);
 			form.success = true;
-			console.log(reserved)
 			return form
 		}
 	}

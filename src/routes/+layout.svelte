@@ -8,29 +8,40 @@
 	Modal, type ModalComponent
 	} from '@skeletonlabs/skeleton';
 	import modalStatus from '$lib/modalStatus.svelte'
+	import { page } from '$app/stores'
 
+	export let data;
+	$: ({ session, supabase } = data);
 	initializeStores();
 
 	onMount(() => {
 		fbApp;
+		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+			if (newSession?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth')
+			}
+		});
+
+		return () => data.subscription.unsubscribe();
+
 	});
 
 	import '../app.postcss';
-	import { onNavigate } from '$app/navigation';
+	import { invalidate, onNavigate } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import Navigation from '$lib/Navigation.svelte';
 
 
-	export let data;
-	$: pathname = data.pathname
-
+	
+	$: pathname = $page.url.pathname
+	
 	let wedding_links: string[][] = [
 		['Home', '/'],
 		['About', '/about'],
 		['Reserve', '/rsvp'],
 		['Memories', '/memories'],
-		['Links', '/links']
+		['Registry', '/registry']
 	];
 	
 	const modalRegistry: Record<string, ModalComponent> = {
@@ -43,7 +54,6 @@
 		weddingDrawer.open({});
 	}
 
-	
 	onNavigate((navigation) => {
 		//@ts-ignore
 		if (!document.startViewTransition) {
@@ -57,7 +67,6 @@
 			});
 		});
 	});
-
 </script>
 <style lang="postcss">
 	:global(body){
@@ -94,8 +103,7 @@
 	<Modal height="h-42" components={modalRegistry} />
 	{#key pathname}
 		<div
-		in:fade={{ easing: cubicIn, duration:700, delay:500}} 
-		out:fade={{ easing: cubicOut, duration:500, delay:100}}
+		in:fade={{ easing: cubicIn, duration:500, delay:400}}
 		class="overflow-auto"
 		>
 			<slot />
