@@ -48,6 +48,7 @@ declare module '$env/static/private' {
 	export const VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
 	export const VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
 	export const VITE_SUPABASE_URL: string;
+	export const VITE_SUPABASE_BUCKET: string;
 	export const VITE_SUPABASE_KEY: string;
 	export const VITE_SUPABASE_DB: string;
 	export const ALLUSERSPROFILE: string;
@@ -178,6 +179,7 @@ declare module '$env/dynamic/private' {
 		VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
 		VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
 		VITE_SUPABASE_URL: string;
+		VITE_SUPABASE_BUCKET: string;
 		VITE_SUPABASE_KEY: string;
 		VITE_SUPABASE_DB: string;
 		ALLUSERSPROFILE: string;

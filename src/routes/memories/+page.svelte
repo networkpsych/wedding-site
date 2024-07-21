@@ -1,148 +1,65 @@
 <script lang="ts">
-	import { FileDropzone, ProgressBar } from '@skeletonlabs/skeleton';
-	import { fade } from 'svelte/transition'
-	import { getStorage, ref, uploadBytesResumable } from 'firebase/storage';
-	import {getModalStore, type ModalSettings} from '@skeletonlabs/skeleton'
+	import { FileDropzone, Modal, ProgressBar } from '@skeletonlabs/skeleton';
+	import type { SubmitFunction } from '@sveltejs/kit';
+	import {getToastStore, type ToastSettings} from '@skeletonlabs/skeleton'
 	import Errors from '$lib/Errors.svelte';
 	import Warnings from '$lib/Warnings.svelte';
-
-	const storage = getStorage();
-	const path = 'gs://wedding-site-12f71.appspot.com/wedding_photos/wedding_memories_upload/';
-	const fileSizeLimit = 25000000; // 25 MB
+	
+	// set a FileList for the Dropzone
+	export let data
+	const toast = getToastStore();
+	let {supabase, session, bucket} = data
 
 	let files: FileList;
-	let filesArr: any[] = [];
-	let sacVal: any;
+	let formData: FormData;
+	let imageList: string[]
+
+	const t: ToastSettings = {
+		message: '',
+		background: 'variant-filled-error'
+	}
 
 	$: triggeredEvent = false;
-	$: images = [];
-	$: uploadProgress = 0;
-	$: uploadStatus = '';
-	$: err = false;
+	$: imageList = [];
 
-	const modalStore = getModalStore();
-    
-    const modal: ModalSettings = {
-        type: 'component',
-        component: 'status',
-		meta: {active:false}
-    }
-
-	function makeid(length: number) {
-		let result = '';
-		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-		const charactersLength = characters.length;
-		let counter = 0;
-		while (counter < length) {
-			result += characters.charAt(Math.floor(Math.random() * charactersLength));
-			counter += 1;
-		}
-		return result;
-	}
-
-	async function add_to_files_array() {
-		filesArr = [...filesArr, ...files];
-		Promise.all(filesArr.map(readImage)).then((values) => {
-			//@ts-ignore
-			images = values;
-		});
-	}
-
-	function resetPage(): void {
-		images = [];
-		uploadProgress = 0;
+	function reset(): void {
 		triggeredEvent = false;
 	}
 
-	function readImage(file: Blob) {
-		return new Promise((resolve, reject) => {
-			let viewer = new FileReader();
-			viewer.onload = () => {
-				resolve(viewer.result);
-			};
-			viewer.onerror = () => {
-				reject(viewer);
-			};
-			viewer.readAsDataURL(file);
-		});
-	}
 
-	async function onChangeHandler(e: Event): Promise<void> {
-		e.preventDefault();
+	async function onUpload(e: Event) {
+		e.preventDefault()
+		for (let i=0; i < files.length; i++){
+			
+			const {data, error } = await supabase.storage
+				.from(bucket)
+				.upload(
+					files[i].name,
+					files[i],
+				)
 
-		//@ts-ignore
-		let files = document.querySelector('input[type=file]')!.files;
-		add_to_files_array();
-
-		triggeredEvent = true;
-		for (let i = 0; i < files.length; i++) {
-			if (files[i].size > fileSizeLimit) {
-				console.log(`File size too big: ${files.name}: ${files.size}`);
-				return;
-			}
-
-			let uri = `${path}${makeid(7)}`;
-			const storageRef = ref(storage, `${uri}`);
-			let metadata = {
-				contentType: files[i].type,
-				dateUploaded: files[i].lastModifiedDate
-			};
-			console.log(metadata);
-
-			const uploadTask = uploadBytesResumable(storageRef, files[i], metadata);
-
-			uploadTask.on(
-				'state_changed',
-				(snapshot) => {
-					const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					uploadProgress = progress;
-					console.log(`Upload is ${progress}% done`);
-					switch (snapshot.state) {
-						case 'paused':
-							modal.title = "Paused"
-							modal.body = "Upload has been paused."
-							modalStore.trigger(modal)
-							break;
-						case 'running':
-							console.log('Upload is running');
-							break;
-					}
-				},
-				(error) => {
-					err = true
-					modal.backdropClasses = '!variant-glass-error'
-					// modal.title = "The submission had an error!"
-					// modal.body = `${respData.errors.reason}`
-					// modalStore.trigger(modal);
-					switch (error.code) {
-						case 'storage/unauthorized':
-							modal.title = 'Unauthorized';
-							modal.body = "You are not authorized to upload. Please contact site admin."
-							break;
-						case 'storage/canceled':
-							modal.title = 'Cancellation';
-							modal.body = "Upload has been canceled. If this was unintentional, then please contact site admin."
-							uploadStatus = 'canceled';
-							break;
-						case 'storage/unknown':
-							modal.title = 'Unknown';
-							modal.body = "An unknown error occured. Please contact site admin."
-							uploadStatus = 'unknown';
-							break;
-					}
+			if (error) {
+				console.log(error)
+				// @ts-ignore
+				if (error.statusCode === "409"){
+					// @ts-ignore
+					imageList.push(`${files[i].name} -- ${error.error}`)	
 				}
-			);
+				else {
+					t.message = `The following error occured. If this problem persists, please contact the site admin.\n${error.message}`
+					toast.trigger(t)
+					break;
+				}
+			}
+			console.log(data)
 		}
-		if (!err){
-		modal.backdropClasses = '!variant-glass-success'
-		modal.title = "Files Uploaded"
-		modal.meta = {active:true, files:filesArr}
-		}
-		modalStore.trigger(modal)
+		if (imageList.length > 0)
+			triggeredEvent = true
 	}
+
 
 </script>
-
+{#if !triggeredEvent}
 <div class="flex flex-col items-center justify-center px-12 pb-52">
 	<div class="flex flex-col items-center text-black">
 		<div class="space-y-2 text-4xl font-semibold">Want to share a photo?</div>
@@ -160,39 +77,28 @@
 			slotMeta="opacity-90 text-md text-primary-900"
 			name="files"
 			accept="image/*"
+			method="POST"
 			bind:files
-			on:change={onChangeHandler}
+			on:change={onUpload}
 			multiple
 		>
 	
 			<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
-		</FileDropzone>		
-</div>
-<!--
-{#if triggeredEvent}
-	<div class="w-auto h-auto variant-glass-surface">
-		<ProgressBar
-			value={uploadProgress}
-			meter="bg-primary-900-50-token"
-			track="bg-primary-300-600-token"
-		/>
-		<div class="p-3">
-			<button
-				type="button"
-				class="variant-soft-primary btn text-lg font-bold text-surface-800 hover:variant-soft-secondary"
-				on:click={resetPage}>Reset Screen</button
-			>
-		</div>
-			<div class="grid grid-flow-row pb-3">
-				{#each filesArr as file, i}
-					<span>
-						<img class="size-24 space-y-2 rounded-full" src={images[i]} alt="" />
-					</span>
-					<span class="flex-auto text-lg font-bold">
-						{file.name} - {(file.size / (1024 * 1024)).toFixed(2)}MB
-					</span>
+		</FileDropzone>	
+	</div>
+	{:else}
+	<div class="relative card size-96 m-auto p-4 variant-soft-tertiary shadow-xl">
+		<div class="text-primary-500 font-nfPrintBold">
+			<h3 class="py-5 text-2xl">Uploaded Files</h3>
+			<ul class="flex flex-col justify-left p10">
+				{#each imageList as f}
+					<li>
+						{f}
+					</li>
 				{/each}
-			</div>
+			</ul>
+		</div>
+		<button class="button bg-primary-400 rounded-2xl h-12 w-24 m-auto absolute inset-x-0 bottom-10" 
+			on:click={reset}>Continue</button>
 	</div>
 {/if}
--->

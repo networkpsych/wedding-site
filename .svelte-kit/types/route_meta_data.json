@@ -9,8 +9,11 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/api": [
+		"src/routes/api/+server.ts"
+	],
 	"/memories": [
-		"src/routes/memories/+page.ts",
+		"src/routes/memories/+page.server.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],

@@ -3,6 +3,7 @@ import { createBrowserClient, createServerClient, isBrowser} from '@supabase/ssr
 
 const URL = import.meta.env.VITE_SUPABASE_URL
 const KEY = import.meta.env.VITE_SUPABASE_KEY
+
 export const load: LayoutLoad = async ({ fetch, data, depends}) => {
     depends('supabase:auth')
 
@@ -27,5 +28,7 @@ export const load: LayoutLoad = async ({ fetch, data, depends}) => {
             data: { session },
         } = await supabase.auth.getSession()
 
-        return { supabase, session }
+        const bucket = "wedding_photos"
+
+        return { supabase, session, bucket }
 }

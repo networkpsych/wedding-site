@@ -43,11 +43,7 @@
 		['Memories', '/memories'],
 		['Registry', '/registry']
 	];
-	
-	const modalRegistry: Record<string, ModalComponent> = {
-		status: { ref: modalStatus },
-	}
-	
+
 	const weddingDrawer = getDrawerStore();
 
 	function drawerOpen(): void {
@@ -72,7 +68,6 @@
 	:global(body){
 		@apply bg-cover bg-bnm-mobile lg:bg-bnm-bg;
 	}
-
 </style>
 <Drawer
 	position='top'
@@ -100,7 +95,6 @@
 </header>
 <main>
 <div >
-	<Modal height="h-42" components={modalRegistry} />
 	{#key pathname}
 		<div
 		in:fade={{ easing: cubicIn, duration:500, delay:400}}

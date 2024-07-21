@@ -5,7 +5,8 @@
 	import wedding_icon from '$lib/assets/icons/wedding-svgrepo-com.svg';
 	import type { ActionData } from './$types';
 	
-	export let form: ActionData;
+	// svelte-ignore unused-export-let
+	export let form: ActionData; form;
 	//export let formData: PageData;
 	
 	const toastStore = getToastStore();
@@ -19,6 +20,7 @@
 	const onFormSubmit: SubmitFunction = () => {
 		return async ({ result, update }) => {
 
+			// @ts-expect-error
 			let respData = await result.data
 
 			await update({ reset:true })

@@ -56,48 +56,4 @@ export const actions: Actions = {
 }
 
 
-/*export const actions: Actions = {
-	default: async (event) => {
-		const form = await event.request.formData();
 
-		const data: Data = {
-			success: false,
-			errors: {}
-		};
-
-		if (!form) {
-			data.errors.status = '400';
-			data.errors.rsvpForm = 'required';
-			return data;
-		}
-
-		const name = String(form.get('name'));
-		const email = String(form.get('email'));
-
-		if (!validateEmail(email)){
-			data.errors.status = '401';
-			data.errors.rsvpForm = 'Validation error'
-		}
-
-		if (!attendance) {
-			// logical not operator was doing the opposite of what I wanted????
-			const guests = Number(form.get('guests'));
-			addRSVP(name, email, attendance, guests);
-			
-		} else {
-			// 0 == zero guests
-			addRSVP(name, email, attendance, 0);
-		}
-		
-		data.success = true;
-		//rsvpForm = formData.getAll('chips');
-		// console.log(form);
-		// console.log(getRSVP());
-		// console.log(name, email, attendance, address, city, state, zipcode, guests);
-		form.get('chips');
-		event
-		// clearRSVP();
-		return data;
-		//return json(data)
-	}
-};*/
