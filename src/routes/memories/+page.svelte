@@ -50,8 +50,7 @@
 			}
 			console.log(data)
 		}
-		if (imageList.length > 0)
-			triggeredEvent = true
+		triggeredEvent = true;
 	}
 
 
