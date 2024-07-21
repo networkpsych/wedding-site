@@ -5,29 +5,38 @@
 	// set a FileList for the Dropzone
 	export let data
 	const toast = getToastStore();
-	let {supabase, session, bucket} = data
-
-	let files: FileList;
-	let formData: FormData;
-	let imageList: string[]
-
 	const t: ToastSettings = {
 		message: '',
 		background: 'variant-filled-error'
 	}
 
-	$: triggeredEvent = false;
-	$: imageList = [];
+	let {supabase, session, bucket} = data
+
+	let files: FileList;
+	let formData: FormData;
+	let imageList: string[] = [];
+	let triggeredEvent: boolean = false;
+	let startProg: boolean = false
+	let items: number;
+	let itemsMax: number;
+
+	$: items = 0
 
 	function reset(): void {
 		triggeredEvent = false;
 	}
 
-
 	async function onUpload(e: Event) {
 		e.preventDefault()
+		startProg = true;
+		itemsMax = files.length
+
+		if (itemsMax > 25){
+			t.message = `You have more items than 25 items .\n${itemsMax}`
+			toast.trigger(t)
+		}
+
 		for (let i=0; i < files.length; i++){
-			
 			const {data, error } = await supabase.storage
 				.from(bucket)
 				.upload(
@@ -51,6 +60,7 @@
 			else {
 				imageList.push(files[i].name)
 			}
+			items = Math.floor(i/itemsMax)
 			console.log(data)
 		}
 		triggeredEvent = true;

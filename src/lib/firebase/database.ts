@@ -1,6 +1,3 @@
-import { collection, addDoc, Timestamp} from 'firebase/firestore';
-import { fbDB } from './firebase.app';
-
 import {supabase, supabaseDB} from './supabase'
 import { resolveRoute } from '$app/paths';
 

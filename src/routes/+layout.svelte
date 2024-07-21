@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fbApp } from '$lib/firebase/firebase.app';
 	import {
     initializeStores,
     Drawer, getDrawerStore,
@@ -13,7 +12,6 @@
 	initializeStores();
 
 	onMount(() => {
-		fbApp;
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
 			if (newSession?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth')
