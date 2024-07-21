@@ -48,6 +48,9 @@
 					break;
 				}
 			}
+			else {
+				imageList.push(files[i].name)
+			}
 			console.log(data)
 		}
 		triggeredEvent = true;
