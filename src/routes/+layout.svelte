@@ -4,10 +4,8 @@
 	import {
     initializeStores,
     Drawer, getDrawerStore,
-	Toast, getToastStore,
-	Modal, type ModalComponent
+	Toast,
 	} from '@skeletonlabs/skeleton';
-	import modalStatus from '$lib/modalStatus.svelte'
 	import { page } from '$app/stores'
 
 	export let data;
@@ -29,7 +27,7 @@
 	import '../app.postcss';
 	import { invalidate, onNavigate } from '$app/navigation';
 	import { fade } from 'svelte/transition';
-	import { cubicIn, cubicOut } from 'svelte/easing';
+	import { cubicIn } from 'svelte/easing';
 	import Navigation from '$lib/Navigation.svelte';
 
 

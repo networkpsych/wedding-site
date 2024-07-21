@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { FileDropzone, Modal, ProgressBar } from '@skeletonlabs/skeleton';
-	import type { SubmitFunction } from '@sveltejs/kit';
+	import { FileDropzone } from '@skeletonlabs/skeleton';
 	import {getToastStore, type ToastSettings} from '@skeletonlabs/skeleton'
-	import Errors from '$lib/Errors.svelte';
-	import Warnings from '$lib/Warnings.svelte';
-	
+
 	// set a FileList for the Dropzone
 	export let data
 	const toast = getToastStore();
