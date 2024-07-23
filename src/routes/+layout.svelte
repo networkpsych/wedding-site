@@ -1,42 +1,49 @@
 <script lang="ts">
-	import '../app.postcss';
-	import { onNavigate } from '$app/navigation';
-	import {
-		initializeStores,
-		Modal,
-		Drawer,
-		getDrawerStore,
-	} from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
-	import { cubicIn, cubicOut } from 'svelte/easing';
-	import { fbApp } from '$lib/firebase/firebase.app';
-	import Navigation from '$lib/Navigation.svelte';
-	import bg_standard from '$lib/assets/bnm_bg.jpg';
-	import bg_mobile from '$lib/assets/bnm_bg_mobile.jpg';
+	import {
+    initializeStores,
+    Drawer, getDrawerStore,
+	Toast, 
+	} from '@skeletonlabs/skeleton';
+	import { page } from '$app/stores'
+	import Progress from '$lib/Progress.svelte';
 
 	export let data;
-	$: pathname = data.pathname
+	$: ({ session, supabase } = data);
+	initializeStores();
+
+	onMount(() => {
+		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+			if (newSession?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth')
+			}
+		});
+
+		return () => data.subscription.unsubscribe();
+
+	});
+
+	import '../app.postcss';
+	import { invalidate, onNavigate } from '$app/navigation';
+	import { fade } from 'svelte/transition';
+	import { cubicIn } from 'svelte/easing';
+	import Navigation from '$lib/Navigation.svelte';
+
+	const weddingDrawer = getDrawerStore();
 
 	let wedding_links: string[][] = [
 		['Home', '/'],
 		['About', '/about'],
 		['Reserve', '/rsvp'],
 		['Memories', '/memories'],
-		['Links', '/links']
+		['Registry', '/registry']
 	];
-	// console.log(wedding_links);
-
-	initializeStores();
-	const weddingDrawer = getDrawerStore();
-
+	
+	$: pathname = $page.url.pathname
+	
 	function drawerOpen(): void {
 		weddingDrawer.open({});
 	}
-
-	onMount(() => {
-		fbApp;
-	});
 
 	onNavigate((navigation) => {
 		//@ts-ignore
@@ -51,17 +58,15 @@
 			});
 		});
 	});
-
 </script>
 <style lang="postcss">
 	:global(body){
-		@apply bg-cover bg-bnm-mobile lg:bg-bnm-bg;
+		@apply bg-cover bg-bnm-mobile-2 lg:bg-bnm-bg;
 	}
-
 </style>
 <Drawer
 	position='top'
-	bgDrawer='variant-glass-surface'
+	bgDrawer='variant-filled-tertiary'
 	bgBackdrop='bg-none'
 	opacityTransition={true}
 	>
@@ -71,7 +76,7 @@
 	<div class="flex items-center lg:invisible">
 		<button class="lg:hidden btn btn-lg mr-4" on:click={drawerOpen}>
 		<span>
-			<svg viewBox="0 0 100 80" class="fill-tertiary-800 w-8 h-8">
+			<svg viewBox="0 0 100 80" class="fill-secondary-600 w-8 h-8">
 				<rect width="100" height="20" />
 				<rect y="30" width="100" height="20" />
 				<rect y="60" width="100" height="20" />
@@ -84,14 +89,15 @@
 	</div>
 </header>
 <main>
-<div>
-{#key pathname}
-	<div
-	in:fade={{ easing: cubicIn, duration:700, delay:500}} 
-	out:fade={{ easing: cubicOut, duration:500, delay:100}}
-	>
-		<slot />
-	</div>
-{/key}
+<div >
+	{#key pathname}
+		<div
+		in:fade={{ easing: cubicIn, duration:500, delay:400}}
+		class="overflow-auto"
+		>
+			<slot />
+		</div>
+	{/key}
+	<Toast position="t" />
 </div>
 </main>

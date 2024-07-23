@@ -14,7 +14,7 @@
 {#each links as [key, val]}
 	<div class="size-fit p-4 text-left text-2xl
 	font-nfExtraBold
-	text-secondary-500
+	text-primary-300 lg:text-tertiary-500
 	rounded-2xl
 	hover:variant-ghost-primary
 	hover:scale-110

@@ -4,6 +4,103 @@ export const wedding_theme: CustomThemeConfig = {
 	name: 'wedding-theme',
 	properties: {
 		// =~= Theme Properties =~=
+		"--theme-font-family-base": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+		"--theme-font-family-heading": `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
+		"--theme-font-color-base": "0 0 0",
+		"--theme-font-color-dark": "255 255 255",
+		"--theme-rounded-base": "6px",
+		"--theme-rounded-container": "12px",
+		"--theme-border-base": "2px",
+		// =~= Theme On-X Colors =~=
+		"--on-primary": "0 0 0",
+		"--on-secondary": "0 0 0",
+		"--on-tertiary": "255 255 255",
+		"--on-success": "0 0 0",
+		"--on-warning": "0 0 0",
+		"--on-error": "255 255 255",
+		"--on-surface": "0 0 0",
+		// =~= Theme Colors  =~=
+		// primary | #B9B950 
+		"--color-primary-50": "245 245 229", // #f5f5e5
+		"--color-primary-100": "241 241 220", // #f1f1dc
+		"--color-primary-200": "238 238 211", // #eeeed3
+		"--color-primary-300": "227 227 185", // #e3e3b9
+		"--color-primary-400": "206 206 133", // #cece85
+		"--color-primary-500": "185 185 80", // #B9B950
+		"--color-primary-600": "167 167 72", // #a7a748
+		"--color-primary-700": "139 139 60", // #8b8b3c
+		"--color-primary-800": "111 111 48", // #6f6f30
+		"--color-primary-900": "91 91 39", // #5b5b27
+		// secondary | #d1a66e 
+		"--color-secondary-50": "248 242 233", // #f8f2e9
+		"--color-secondary-100": "246 237 226", // #f6ede2
+		"--color-secondary-200": "244 233 219", // #f4e9db
+		"--color-secondary-300": "237 219 197", // #eddbc5
+		"--color-secondary-400": "223 193 154", // #dfc19a
+		"--color-secondary-500": "209 166 110", // #d1a66e
+		"--color-secondary-600": "188 149 99", // #bc9563
+		"--color-secondary-700": "157 125 83", // #9d7d53
+		"--color-secondary-800": "125 100 66", // #7d6442
+		"--color-secondary-900": "102 81 54", // #665136
+		// tertiary | #5d4c3d 
+		"--color-tertiary-50": "231 228 226", // #e7e4e2
+		"--color-tertiary-100": "223 219 216", // #dfdbd8
+		"--color-tertiary-200": "215 210 207", // #d7d2cf
+		"--color-tertiary-300": "190 183 177", // #beb7b1
+		"--color-tertiary-400": "142 130 119", // #8e8277
+		"--color-tertiary-500": "93 76 61", // #5d4c3d
+		"--color-tertiary-600": "84 68 55", // #544437
+		"--color-tertiary-700": "70 57 46", // #46392e
+		"--color-tertiary-800": "56 46 37", // #382e25
+		"--color-tertiary-900": "46 37 30", // #2e251e
+		// success | #C4878C 
+		"--color-success-50": "246 237 238", // #f6edee
+		"--color-success-100": "243 231 232", // #f3e7e8
+		"--color-success-200": "240 225 226", // #f0e1e2
+		"--color-success-300": "231 207 209", // #e7cfd1
+		"--color-success-400": "214 171 175", // #d6abaf
+		"--color-success-500": "196 135 140", // #C4878C
+		"--color-success-600": "176 122 126", // #b07a7e
+		"--color-success-700": "147 101 105", // #936569
+		"--color-success-800": "118 81 84", // #765154
+		"--color-success-900": "96 66 69", // #604245
+		// warning | #78BE21 
+		"--color-warning-50": "235 245 222", // #ebf5de
+		"--color-warning-100": "228 242 211", // #e4f2d3
+		"--color-warning-200": "221 239 200", // #ddefc8
+		"--color-warning-300": "201 229 166", // #c9e5a6
+		"--color-warning-400": "161 210 100", // #a1d264
+		"--color-warning-500": "120 190 33", // #78BE21
+		"--color-warning-600": "108 171 30", // #6cab1e
+		"--color-warning-700": "90 143 25", // #5a8f19
+		"--color-warning-800": "72 114 20", // #487214
+		"--color-warning-900": "59 93 16", // #3b5d10
+		// error | #B42400 
+		"--color-error-50": "244 222 217", // #f4ded9
+		"--color-error-100": "240 211 204", // #f0d3cc
+		"--color-error-200": "236 200 191", // #ecc8bf
+		"--color-error-300": "225 167 153", // #e1a799
+		"--color-error-400": "203 102 77", // #cb664d
+		"--color-error-500": "180 36 0", // #B42400
+		"--color-error-600": "162 32 0", // #a22000
+		"--color-error-700": "135 27 0", // #871b00
+		"--color-error-800": "108 22 0", // #6c1600
+		"--color-error-900": "88 18 0", // #581200
+		// surface | #a8a498 
+		"--color-surface-50": "242 241 240", // #f2f1f0
+		"--color-surface-100": "238 237 234", // #eeedea
+		"--color-surface-200": "233 232 229", // #e9e8e5
+		"--color-surface-300": "220 219 214", // #dcdbd6
+		"--color-surface-400": "194 191 183", // #c2bfb7
+		"--color-surface-500": "168 164 152", // #a8a498
+		"--color-surface-600": "151 148 137", // #979489
+		"--color-surface-700": "126 123 114", // #7e7b72
+		"--color-surface-800": "101 98 91", // #65625b
+		"--color-surface-900": "82 80 74", // #52504a
+		
+	}
+	/*properties: {
+		// =~= Theme Properties =~=
 		'--theme-font-family-base': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		'--theme-font-family-heading': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		'--theme-font-color-base': '0 0 0',
@@ -97,5 +194,5 @@ export const wedding_theme: CustomThemeConfig = {
 		'--color-surface-700': '168 89 16', // #a85910
 		'--color-surface-800': '134 71 13', // #86470d
 		'--color-surface-900': '110 58 10' // #6e3a0a
-	}
+	}*/
 };

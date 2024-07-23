@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { flip } from 'svelte/animate';
-	import { quintOut } from 'svelte/easing';
 
 	let curr_date = new Date();
 	let wedding_date = new Date(2025, 4, 31, 15, 59, 59);
@@ -36,7 +34,7 @@
 	});
 </script>
 <div class="hidden lg:block">
-	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfPrintRegular text-primary-700">
+	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfExtraBold text-tertiary-700">
 		{#each dates as { id, time }}
 			{#if time > 1}
 				<span class="row-start-1 text-center align-baseline">{id}s</span>
@@ -52,35 +50,3 @@
 	</div>
 </div>
 
-<!--<div class="text-3xl">
-    {Math.floor(days_left)}
-    <br>
-    {#each dates as {id, time}}
-            <br>{id}<br>{time}
-    {/each}
-    <br>
-    {dst}
-</div>-->
-
-<!--<div class="container size-1/2 m-3 p-5 font-quicksand">
-    <canvas id="canvas"></canvas>
-    <div>
-        <p class="flex-1 text-5xl">{display_date}</p>
-        <ul class="flex items-baseline space-y-5 font-bold">
-            {#each dates as {id, time}}
-            <li>
-                <h3 class="text-center md:me-5 text-3xl align-baseline">
-                {#if time > 1}
-                    {id}s<br>{time}
-                {:else if time == 1}
-                    {id}<br>{time}
-                {:else if time == 0 && id == "Second"}
-                    {id}<br>{time}
-                {/if}
-                </h3>
-            </li>
-            {/each}
-        </ul>
-    </div>
-</div>
--->

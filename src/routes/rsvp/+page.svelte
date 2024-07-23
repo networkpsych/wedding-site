@@ -1,15 +1,47 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { SubmitFunction } from '@sveltejs/kit';
-	import { RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
-	import { assets } from '$app/paths';
+	import { getToastStore, RadioGroup, RadioItem, type ToastSettings } from '@skeletonlabs/skeleton';
 	import wedding_icon from '$lib/assets/icons/wedding-svgrepo-com.svg';
+	import type { ActionData } from './$types';
+	
+	// svelte-ignore unused-export-let
+	export let form: ActionData; form;
+	//export let formData: PageData;
+	
+	const toastStore = getToastStore();
+	
+	const msg: ToastSettings = {
+		message: ''
+	}
 
 	$: attendance = false
 	
 	const onFormSubmit: SubmitFunction = () => {
-		return async ({ update }) => {
-			await update({ reset: false });
+		return async ({ result, update }) => {
+
+			// @ts-expect-error
+			let respData = await result.data
+
+			await update({ reset:true })
+			console.log(respData)
+			
+            switch (respData.success) {
+				case true:
+					msg.message = "Form Submitted Successfully"
+					msg.background = "variant-filled-success"
+					toastStore.trigger(msg)
+					break;
+				case false:
+					msg.message = `${respData.errors.reason}`
+					msg.background = "variant-filled-error"
+					toastStore.trigger(msg)
+					break;
+				default:
+					console.log(result.type, result.status)
+					break;
+			}
+
 		};
 	};
 </script>
@@ -68,7 +100,7 @@
 				<button class="variant-filled-tertiary btn mx-4 flex items-center space-y-2">
 					<span class="m-2 text-2xl font-bold">Submit</span>
 					<div>
-						<img src={wedding_icon} alt="" class="h-12 w-12" />
+						<img src={wedding_icon} alt="two glasses clinking together" class="h-12 w-12" />
 					</div>
 				</button>
 			</form>

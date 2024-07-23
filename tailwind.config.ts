@@ -13,11 +13,12 @@ export default {
 		extend: {
 			backgroundImage: {
 				'bnm-bg': "url('/src/lib/assets/bnm_bg.jpg')",
-				'bnm-mobile': "url('/src/lib/assets/bnm_bg_mobile.jpg')"
+				'bnm-bg-2': "url('/src/lib/assets/bnm_bg_2.jpg')",
+				'bnm-mobile': "url('/src/lib/assets/bnm_bg_mobile.jpg')",
+				'bnm-mobile-2': "url('/src/lib/assets/bnm_bg_mobile_2.jpg')"
 			}
 		},
 		fontFamily: {
-			bungeeshade: ['BungeeShade'],
 			nfRegular: ['NationalForestRegular'],
 			nfPrintRegular: ['NationalForestPrintRegular'],
 			nfPrintBold: ['NationalForestExtraBold'],
