@@ -1,113 +1,119 @@
 <script lang="ts">
-	import { FileDropzone } from '@skeletonlabs/skeleton';
+	import { FileButton,  ProgressBar, ProgressRadial } from '@skeletonlabs/skeleton'
+	import Progress from "$lib/Progress.svelte"
 	import {getToastStore, type ToastSettings} from '@skeletonlabs/skeleton'
+
+	import { fade } from 'svelte/transition'
 
 	// set a FileList for the Dropzone
 	export let data
-	const toast = getToastStore();
+	
+	const toast = getToastStore()
 	const t: ToastSettings = {
 		message: '',
 		background: 'variant-filled-error'
 	}
-
+	
 	let {supabase, session, bucket} = data
 
-	let files: FileList;
-	let formData: FormData;
-	let imageList: string[] = [];
-	let triggeredEvent: boolean = false;
-	let startProg: boolean = false
-	let items: number;
-	let itemsMax: number;
+	let files: FileList
+	let imageList: any
+	let itemsMax: number
+	let completion: number
+	let uploading: boolean
 
-	$: items = 0
-
-	function reset(): void {
-		triggeredEvent = false;
-	}
+	$: imageList = {}
+	$: itemsMax = 0
+	$: completion = 0
+	$: uploading = false
 
 	async function onUpload(e: Event) {
 		e.preventDefault()
-		startProg = true;
 		itemsMax = files.length
-
-		if (itemsMax > 25){
+		uploading = true
+		if (files.length > 25){
 			t.message = `You have more items than 25 items .\n${itemsMax}`
 			toast.trigger(t)
+			return
 		}
+		else {
+			for (let i=0; i < files.length; i++){
+				let size = Math.round(files[i].size / 1024 / 1024 * 100) / 100
+				const {data, error } = await supabase.storage
+					.from(bucket)
+					.upload(
+						files[i].name,
+						files[i],
+					)
 
-		for (let i=0; i < files.length; i++){
-			const {data, error } = await supabase.storage
-				.from(bucket)
-				.upload(
-					files[i].name,
-					files[i],
-				)
-
-			if (error) {
-				console.log(error)
-				// @ts-ignore
-				if (error.statusCode === "409"){
+				if (error) {
+					// console.log(error)
 					// @ts-ignore
-					imageList.push(`${files[i].name} -- ${error.error}`)	
+					if (error.statusCode === "409"){
+						// @ts-ignore
+						imageList[files[i].name] = `${String(size)}MB`
+					}
+					else {
+						t.message = `The following error occured. If this problem persists, please contact the site admin.\n${error.message}`
+						toast.trigger(t)
+						break
+					}
 				}
 				else {
-					t.message = `The following error occured. If this problem persists, please contact the site admin.\n${error.message}`
-					toast.trigger(t)
-					break;
+					imageList[files[i].name] = `${String(size)}MB`
 				}
+			completion += i
 			}
-			else {
-				imageList.push(files[i].name)
-			}
-			items = Math.floor(i/itemsMax)
-			console.log(data)
+			
 		}
-		triggeredEvent = true;
+		
 	}
+
+	
 
 
 </script>
-{#if !triggeredEvent}
-<div class="flex flex-col items-center justify-center px-12 pb-52">
-	<div class="flex flex-col items-center text-black">
-		<div class="space-y-2 text-4xl font-semibold">Want to share a photo?</div>
-		<div class="w-3/4 text-balance text-center text-2xl m-5">
-			<span>
-				If you do, we would like to share those photos during the reception! These photos can
-				include any moment that has Brayden and/or Madeline.
+
+<div class="grid grid-rows-2 md:grid-rows-[300px_minmax(900px,_1fr)_100px] min-h-screen md:h-[360px] w-1/2 md:w-[700px] m-auto">
+	<div class="text-secondary-50 card h-fit bg-gradient-to-br variant-glass-tertiary">
+		<div class="p-5 text-center">
+			<h3 class="space-y-2 text-4xl font-semibold py-5 font-nfExtraBold text-black
+			">Share Your Photos!</h3>
+			<span class="text-black text-balance md:text-xl">
+				<p>If you do, we would like to share those photos during the reception! These photos can include any moment that has Brayden and/or Madeline.</p>
 			</span>
-		</div>
-	</div>
-	<hr />
-		<FileDropzone
-			class="variant-glass-surface w-[200px] md:w-[700px] text-primary-900"
+			<FileButton
+			class="w-fill text-tertiary-900 p-5"
 			border="border-solid"
-			slotMeta="opacity-90 text-md text-primary-900"
 			name="files"
 			accept="image/*"
 			method="POST"
 			bind:files
 			on:change={onUpload}
 			multiple
-		>
-	
-			<svelte:fragment slot="meta">PNG, JPG, and GIF are allowed</svelte:fragment>
-		</FileDropzone>	
+			>
+				Upload
+			</FileButton>
+		</div>
+		
+		{#if uploading}
+		<div class="w-3/4 mx-auto p-1">
+			<ProgressBar
+			height="h-4"
+			meter="bg-secondary-200"
+			track="bg-tertiary-600/40"
+			value={completion}
+			max={itemsMax}
+			/>
+		</div>
+		{/if}
+		
+	</div>
+	{#if uploading}
+	<div>
+		<Progress uploadList={imageList}/>
 	</div>
 	{:else}
-	<div class="relative card size-96 m-auto p-4 variant-soft-tertiary shadow-xl">
-		<div class="text-primary-500 font-nfPrintBold">
-			<h3 class="py-5 text-2xl">Uploaded Files</h3>
-			<ul class="flex flex-col justify-left p10">
-				{#each imageList as f}
-					<li>
-						{f}
-					</li>
-				{/each}
-			</ul>
-		</div>
-		<button class="button bg-primary-400 rounded-2xl h-12 w-24 m-auto absolute inset-x-0 bottom-10" 
-			on:click={reset}>Continue</button>
-	</div>
-{/if}
+	<div></div>
+	{/if}
+</div>

@@ -3,9 +3,10 @@
 	import {
     initializeStores,
     Drawer, getDrawerStore,
-	Toast,
+	Toast, 
 	} from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores'
+	import Progress from '$lib/Progress.svelte';
 
 	export let data;
 	$: ({ session, supabase } = data);
@@ -28,10 +29,8 @@
 	import { cubicIn } from 'svelte/easing';
 	import Navigation from '$lib/Navigation.svelte';
 
+	const weddingDrawer = getDrawerStore();
 
-	
-	$: pathname = $page.url.pathname
-	
 	let wedding_links: string[][] = [
 		['Home', '/'],
 		['About', '/about'],
@@ -39,9 +38,9 @@
 		['Memories', '/memories'],
 		['Registry', '/registry']
 	];
-
-	const weddingDrawer = getDrawerStore();
-
+	
+	$: pathname = $page.url.pathname
+	
 	function drawerOpen(): void {
 		weddingDrawer.open({});
 	}
@@ -62,12 +61,12 @@
 </script>
 <style lang="postcss">
 	:global(body){
-		@apply bg-cover bg-bnm-mobile lg:bg-bnm-bg;
+		@apply bg-cover bg-bnm-mobile-2 lg:bg-bnm-bg;
 	}
 </style>
 <Drawer
 	position='top'
-	bgDrawer='variant-glass-surface'
+	bgDrawer='variant-filled-tertiary'
 	bgBackdrop='bg-none'
 	opacityTransition={true}
 	>
@@ -77,7 +76,7 @@
 	<div class="flex items-center lg:invisible">
 		<button class="lg:hidden btn btn-lg mr-4" on:click={drawerOpen}>
 		<span>
-			<svg viewBox="0 0 100 80" class="fill-tertiary-800 w-8 h-8">
+			<svg viewBox="0 0 100 80" class="fill-secondary-600 w-8 h-8">
 				<rect width="100" height="20" />
 				<rect y="30" width="100" height="20" />
 				<rect y="60" width="100" height="20" />

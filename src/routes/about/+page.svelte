@@ -2,9 +2,9 @@
 </script>
 
 
-<div class="flex flex-col justify-center items-center text-primary-300 lg:text-tertiary-900">
+<div class="flex flex-col justify-center items-center lg:text-tertiary-900">
 	<div class="space-y-2 p-2">
-		<div class="flex items-center justify-center text-4xl lg:text-6xl font-nfRegular text-primary-500 lg:text-secondary-500">
+		<div class="flex items-center justify-center text-4xl lg:text-6xl font-nfRegular text-primary-700">
 			<h3>We're getting married!</h3>
 		</div>
 	<div class="card w-[300px] lg:w-[500px] mx-auto p-5 text-wrap justify-center variant-glass-tertiary lg:variant-ringed-tertiary">
