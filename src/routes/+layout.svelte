@@ -6,11 +6,11 @@
 	Toast, 
 	} from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores'
-	import Progress from '$lib/Progress.svelte';
 
 	export let data;
 	$: ({ session, supabase } = data);
 	initializeStores();
+
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -58,15 +58,18 @@
 			});
 		});
 	});
+	
 </script>
+
 <style lang="postcss">
 	:global(body){
 		@apply bg-cover bg-bnm-mobile-2 lg:bg-bnm-bg;
 	}
 </style>
+
 <Drawer
 	position='top'
-	bgDrawer='variant-filled-tertiary'
+	bgDrawer='variant-glass-surface'
 	bgBackdrop='bg-none'
 	opacityTransition={true}
 	>
@@ -89,11 +92,13 @@
 	</div>
 </header>
 <main>
+	<div>
+
+	</div>
 <div >
 	{#key pathname}
 		<div
-		in:fade={{ easing: cubicIn, duration:500, delay:400}}
-		class="overflow-auto"
+		in:fade={{ easing: cubicIn, duration:700, delay:200}}
 		>
 			<slot />
 		</div>

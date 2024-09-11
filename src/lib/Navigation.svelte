@@ -12,11 +12,11 @@
 
 <div class="lg:flex lg:justify-start lg:m-3 lg:p-4 lg:pl-10 gap-x-2 text-left h-20 w-full">
 {#each links as [key, val]}
-	<div class="size-fit p-4 text-left text-2xl
+	<div class="size-fit p-4 text-start text-xl lg:text-2xl
 	font-nfExtraBold
-	text-primary-300 lg:text-tertiary-500
-	rounded-2xl
-	hover:variant-ghost-primary
+	text-secondary-500
+	rounded-3xl
+	hover:variant-ghost-surface
 	hover:scale-110
 	hover:translate-y-2
 	hover:duration-500

@@ -47,8 +47,8 @@
 </script>
 
 
-<div class="flex flex-col justify-center align-end m-auto h-[500px] lg:h-[500px] w-4/5 lg:w-3/5">
-	<div class="flex justify-center pt-5 text-center text-primary-600 lg:text-tertiary-800 font-nfRegular">
+<div class="card flex flex-col justify-center align-end m-auto h-[500px] lg:h-[500px] w-4/5 lg:w-2/5 variant-glass-secondary">
+	<div class="flex justify-center pt-5 text-center text-tertiary-500 lg:text-tertiary-800 font-nfRegular">
 		<span class="text-5xl lg:text-7xl"> Come to our wedding! </span>
 	</div>
 	<div class="flex justify-center">
@@ -68,7 +68,7 @@
 				</label>
 				<label class="block text-secondary-600 font-nfPrintBold bg-tertiary-300 rounded-2xl">
 						<input
-							class="input box-border h-[42px] w-fit font-medium dark:bg-tertiary-300 text-black placeholder:text-primary-800"
+							class="input box-border h-[42px] w-fit font-medium dark:bg-primary-300 text-black placeholder:text-secondary-700"
 							name="name"
 							type="text"
 							placeholder=" Name "
@@ -78,7 +78,7 @@
 				</label>
 				<label class="label text-secondary-600">
 					<input
-						class="input box-border h-[42px] w-fit font-medium dark:bg-tertiary-300 text-black placeholder:text-primary-800 font-nfPrintBold"
+						class="input box-border h-[42px] w-fit font-medium dark:bg-primary-300 text-black placeholder:text-secondary-700 font-nfPrintBold"
 						name="email"
 						type="text"
 						placeholder=" Email Address"
@@ -88,7 +88,7 @@
 				{#if attendance == true}
 					<label class="label text-secondary-600">
 						<input
-							class="input box-border h-[42px] w-fit font-medium dark:bg-tertiary-300 text-black placeholder:text-primary-800 font-nfPrintBold"
+							class="input box-border h-[42px] w-fit font-medium dark:bg-primary-300 text-black placeholder:text-secondary-700 font-nfPrintBold"
 							name="guests"
 							type="text"
 							placeholder=" Number of Guests "
@@ -97,7 +97,7 @@
 					</label>
 				{/if}
 				<!-- type="button" breaks functionality. Don't know why though...-->
-				<button class="variant-filled-tertiary btn mx-4 flex items-center space-y-2">
+				<button class="variant-filled-primary btn mx-4 flex items-center space-y-2">
 					<span class="m-2 text-2xl font-bold">Submit</span>
 					<div>
 						<img src={wedding_icon} alt="two glasses clinking together" class="h-12 w-12" />
