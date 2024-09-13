@@ -4,6 +4,7 @@
 	import { getToastStore, RadioGroup, RadioItem, type ToastSettings } from '@skeletonlabs/skeleton';
 	import wedding_icon from '$lib/assets/icons/wedding-svgrepo-com.svg';
 	import type { ActionData } from './$types';
+	import hero2 from '$lib/assets/carousel/lil_d_wedding.jpg'
 	
 	// svelte-ignore unused-export-let
 	export let form: ActionData; form;
@@ -46,10 +47,12 @@
 	};
 </script>
 
-
-<div class="card flex flex-col justify-center align-end m-auto h-[500px] lg:h-[500px] w-4/5 lg:w-2/5 variant-glass-secondary">
-	<div class="flex justify-center pt-5 text-center text-tertiary-500 lg:text-tertiary-800 font-nfRegular">
-		<span class="text-5xl lg:text-7xl"> Come to our wedding! </span>
+<div class="flex">
+	<img class="h-3/5 absolute -z-50 top-0 lg:left-16 lg:top-40 m-auto rounded-xl" src={hero2} alt="background p i c t u r e" />
+</div>
+<div class="flex flex-col justify-start m-auto h-svh lg:h-[500px] w-screen lg:w-4/5">
+	<div class="flex justify-center pt-5 text-center text-secondary-100 lg:text-tertiary-800 font-nfRegular">
+		<span class="text-6xl lg:text-7xl"> Come to our wedding! </span>
 	</div>
 	<div class="flex justify-center">
 		<div
