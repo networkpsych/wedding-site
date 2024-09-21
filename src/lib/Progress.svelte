@@ -18,7 +18,7 @@
         <div class="hidden lg:flex justify-start items-center m-auto">Image</div>
         <div class="size-20 lg:size-28 flex justify-center items-center m-auto">Name</div>
         <div class="size-20 lg:size-28 flex justify-center items-center m-auto">Size</div>
-    </div>
+    </div> 
     <div class="">
         {#each Object.entries(uploadList) as [key, val]}
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-10 lg:text-2xl pb-2 font-nfExtraBold text-wrap">

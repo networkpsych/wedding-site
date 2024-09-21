@@ -63,7 +63,7 @@
 
 <Drawer
 	position='top'
-	bgDrawer='variant-filled-primary'
+	bgDrawer='variant-glass-surface'
 	bgBackdrop='bg-none'
 	opacityTransition={true}
 	>
@@ -72,7 +72,7 @@
 <svelte:head>{@html '<script>(' + autoModeWatcher.toString() + ')();</script>'}</svelte:head>
 <header class="sticky m-3 py-5">
 	<div class="flex items-center lg:invisible">
-		<button class="lg:hidden btn btn-lg mr-4" on:click={drawerOpen}>
+		<button class="btn btn-lg mr-4 lg:hidden" on:click={drawerOpen}>
 		<span>
 			<svg viewBox="0 0 100 80" class="fill-secondary-600 w-8 h-8">
 				<rect width="100" height="20" />
@@ -86,7 +86,7 @@
 		<Navigation links={wedding_links}/>
 	</div>
 </header>
-<main>
+<main class="">
 	<div >
 		{#key pathname}
 			<div

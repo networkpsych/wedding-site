@@ -7,55 +7,57 @@
 </script>
 	<div class="flex flex-col justify-center items-center lg:text-tertiary-900 pb-10">
 		<div class="w-[400px] lg:w-3/5 mx-auto p-5 text-center">
-			<div class="grid row-span-2 text-surface-700 text-balance">
+			<div class="grid row-span-2 text-surface-700 dark:text-primary-200 text-balance">
 				<span class="font-nfRegular text-3xl lg:text-6xl">We're getting married!</span>
 				<span class="text-xl lg:text-3xl">Here is some of the information you will need!</span>
 			</div>
 		</div>
 	</div>
 	<div class="flex justify-between items-center">
-		<div class="card flex flex-col size-24 lg:size-96 m-auto variant-filled-secondary text-center lg:variant-filled-primary rounded-full">
-			<header class="card-header">
-				<a href="https://maps.app.goo.gl/sjpnAmiqD4HVWkph7" target="_blank">
-					<img src={map} alt="train svg" class="
-					transition ease-in-out duration-400
-					flex-shrink size-fit lg:size-40 m-auto p-2 
-					hover:origin-top-left hover:-rotate-12 hover:scale-110"/>
-				</a>
-			</header>
-			<div class="hidden lg:flex flex-col flex-grow gap-5">
-				<span class="text-xl lg:text-4xl">The Location</span>
-				<span class="text-xl lg:text-2xl">
-					Gale Woods Farm <br> Minnetrista, MN
-				</span>
-			</div>
+		
+		<div class="transition ease-in-out duration-500 origin-bottom card size-1/6 p-1
+					m-auto text-center variant-ghost-primary dark:variant-ghost-secondary
+					hover:translate-y-6 hover:translate-x-6 hover:-skew-y-6 hover:shadow-2xl hover:scale-110">
+		<a href="https://maps.app.goo.gl/sjpnAmiqD4HVWkph7" target="_blank">
+				<header class="card-header">
+						<img src={map} alt="train svg" class="m-auto p-2 content-none"/>
+				</header>
+				<section>
+					<span class="lg:text-4xl p-1">City</span>
+				</section>
+				<footer class="card-footer">
+					<span class="hidden lg:flex lg:justify-center lg:text-lg p-1">Minnetrista, MN</span>
+				</footer>
+			</a>
 		</div>
-		<div class="card flex flex-col size-24 lg:size-96 m-auto variant-filled-secondary text-center lg:variant-filled-primary">
+		<div class="transition ease-in-out duration-500 card flex flex-col size-1/6 p-1
+					m-auto text-center variant-ghost-primary dark:variant-ghost-secondary
+					hover:translate-y-6 hover:shadow-2xl hover:scale-110">
+		<a href="https://www.threeriversparks.org/location/gale-woods-farm-pavilion" target="_blank">
 			<header class="card-header">
-				<a href="https://www.threeriversparks.org/location/gale-woods-farm-pavilion" target="_blank">
-					<img src={venue} alt="building svg" class="
-					transition ease-in-out duration-400
-					flex-shrink size-fit lg:size-40 m-auto p-2 
-					hover:origin-top-left hover:-translate-y-3 hover:scale-110"/>
-				</a>
-			</header>
-			<div class="hidden lg:flex flex-col flex-grow gap-5">
-				<span class="text-xl lg:text-4xl">The Venue</span>
-				<span class="text-xl lg:text-2xl">Gale Woods Farm Pavilion</span>
-			</div>
+					<img src={venue} alt="building svg" class="m-auto p-2 content-none"/>
+				</header>
+				<section>
+					<span class="lg:text-4xl">Venue</span>
+				</section>
+				<footer class="card-footer text-nowrap text-center">
+					<span class="hidden lg:flex lg:justify-center lg:text-lg p-1">Gale Woods Farm Pavilion</span>
+				</footer>
+			</a>
 		</div>
-		<div class="card flex flex-col size-24 lg:size-96 m-auto variant-filled-secondary text-center lg:variant-filled-primary">
+		<div class="transition ease-in-out duration-500 card flex flex-col size-1/6 p-1
+					m-auto text-center variant-ghost-primary dark:variant-ghost-secondary
+					hover:translate-y-6 hover:-translate-x-6 hover:skew-y-6 hover:shadow-2xl hover:scale-110">
+			<a href="https://lookoutbarandgrill.com/" target="_blank">
 			<header class="card-header">
-				<a href="https://lookoutbarandgrill.com/" target="_blank">
-					<img src={food} alt="train svg" class="
-					transition ease-in-out duration-400
-					flex-shrink size-fit lg:size-40 m-auto p-2 
-					hover:origin-top-left hover:rotate-12 hover:scale-110"/>
-				</a>
-			</header>
-			<div class="hidden lg:flex flex-col flex-grow gap-5">
-				<span class="text-xl lg:text-4xl">The Food</span>
-				<span class="text-xl lg:text-2xl">The Lookout Bar and Grill</span>
-			</div>
+					<img src={food} alt="train svg" class="m-auto p-2"/>
+				</header>
+				<section>
+					<span class="lg:text-4xl">Food</span>
+				</section>
+				<footer class="card-footer text-nowrap text-center">
+					<span class="hidden lg:flex lg:justify-center lg:text-lg p-1">The Lookout Bar and Grill</span>
+				</footer>
+			</a>
 		</div>
-	</div>	
+	</div>

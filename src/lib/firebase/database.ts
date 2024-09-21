@@ -1,10 +1,12 @@
-import {supabase, supabaseDB} from './supabase'
-import { resolveRoute } from '$app/paths';
+import {supabase} from './supabase'
+// import { resolveRoute } from '$app/paths';
 
 export type Reservation = {
 	name: string;
 	email: string;
 	attending: boolean;
+	entree: string;
+	note: string;
 	guests: number;
 };
 
@@ -20,6 +22,8 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 				name: reservation.name,
 				email: reservation.email,
 				attending: reservation.attending,
+				entree: reservation.entree,
+				note: reservation.note,
 				guests: reservation.guests,
 			})
 		console.log(reservation)
@@ -27,7 +31,7 @@ export async function addRSVP(reservation: Reservation): Promise<void> {
 		console.log(error)
 
 	}
-	catch (e: any) {
+	catch (e) {
 		console.error("Error with item: ", e.stack)
 	}
 }

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { FileButton } from '@skeletonlabs/skeleton'
-	import Progress from "$lib/Progress.svelte"
 	import {getToastStore, type ToastSettings} from '@skeletonlabs/skeleton'
-
-	import { fade } from 'svelte/transition'
-
+	import Progress from "$lib/Progress.svelte"
+	import Carousel from '$lib/carousel.svelte';
+	
 	// set a FileList for the Dropzone
 	export let data
 	
@@ -27,8 +26,6 @@
 	$: itemsMax = 0
 	$: completion = 0
 	$: uploading = false
-
-
 
 	async function onUpload(e: Event) {
 		e.preventDefault()
@@ -60,7 +57,6 @@
 					)
 
 				if (error) {
-					// console.log(error)
 					// @ts-ignore
 					if (error.statusCode === "409"){
 						// @ts-ignore
@@ -116,8 +112,14 @@
 			</FileButton>
 		</div>
 	</div>
-	
-	<div class="flex lg:col-span-2">
-		<Progress uploadList={imageList}/>
-	</div>
+	{#if !uploading}
+		<Carousel />
+	{:else}
+		<div class="flex lg:col-span-2">
+			<Progress uploadList={imageList}/>
+		</div>
+		<button class="button-base-styles" on:click={() => {uploading = false; imageList = {};}}>
+			Clear
+		</button>
+	{/if}
 </div>

@@ -16,14 +16,15 @@ function validateEmail(email: string){
 		return false;
 	}
 
-	let emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	return emailPattern.test(email)
 }
+
 
 export const actions: Actions = {
 	default: async({ request }) => {
 		const data = await request.formData();
-
+		console.log(data)
 		const form: Data = {
 			success: false,
 			errors: {}
@@ -44,11 +45,14 @@ export const actions: Actions = {
 			reserved = {
 				name: String(data.get('name')),
 				email: String(data.get('email')),
-				attending: Boolean(data.get('attending')),
+				attending: Boolean(data.get('slider')),
+				entree: String(data.get('entree')),
+				note: String(data.get('note')),
 				guests: Number(data.get('guests')),
 			}
-			
-			const userRes = await addRSVP(reserved);
+			console.log(reserved)
+			// const userRes = await addRSVP(reserved);
+			// if (userRes)
 			form.success = true;
 			return form
 		}
