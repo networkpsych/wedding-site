@@ -13,8 +13,7 @@
 
 	let curr_date = new Date();
 	let wedding_date = new Date(2025, 4, 31, 15, 59, 59);
-	let d = 0
-	//let d = Math.floor((wedding_date.getTime() - curr_date.getTime()) / 1000 / 60 / 60 / 24);
+	let d = Math.floor((wedding_date.getTime() - curr_date.getTime()) / 1000 / 60 / 60 / 24);
 
 </script>
 {#if d > 180}
