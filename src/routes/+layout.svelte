@@ -3,14 +3,14 @@
 	import {
     initializeStores,
     Drawer, getDrawerStore,
-	Toast, 
+	Toast, autoModeWatcher
 	} from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores'
-	import Progress from '$lib/Progress.svelte';
 
 	export let data;
 	$: ({ session, supabase } = data);
 	initializeStores();
+
 
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
@@ -58,23 +58,21 @@
 			});
 		});
 	});
+	
 </script>
-<style lang="postcss">
-	:global(body){
-		@apply bg-cover bg-bnm-mobile-2 lg:bg-bnm-bg;
-	}
-</style>
+
 <Drawer
 	position='top'
-	bgDrawer='variant-filled-tertiary'
+	bgDrawer='variant-glass-surface'
 	bgBackdrop='bg-none'
 	opacityTransition={true}
 	>
 <Navigation links={wedding_links} />
 </Drawer>
-<header class="m-3 py-5">
+<svelte:head>{@html '<script>(' + autoModeWatcher.toString() + ')();</script>'}</svelte:head>
+<header class="sticky m-3 py-5">
 	<div class="flex items-center lg:invisible">
-		<button class="lg:hidden btn btn-lg mr-4" on:click={drawerOpen}>
+		<button class="btn btn-lg mr-4 lg:hidden" on:click={drawerOpen}>
 		<span>
 			<svg viewBox="0 0 100 80" class="fill-secondary-600 w-8 h-8">
 				<rect width="100" height="20" />
@@ -88,16 +86,15 @@
 		<Navigation links={wedding_links}/>
 	</div>
 </header>
-<main>
-<div >
-	{#key pathname}
-		<div
-		in:fade={{ easing: cubicIn, duration:500, delay:400}}
-		class="overflow-auto"
-		>
-			<slot />
-		</div>
-	{/key}
-	<Toast position="t" />
-</div>
+<main class="">
+	<div >
+		{#key pathname}
+			<div
+			in:fade={{ easing: cubicIn, duration:700, delay:200}}
+			>
+				<slot />
+			</div>
+		{/key}
+		<Toast position="t" />
+	</div>
 </main>

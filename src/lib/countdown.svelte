@@ -5,6 +5,7 @@
 	let wedding_date = new Date(2025, 4, 31, 15, 59, 59);
 	let curr_month = curr_date.getMonth();
 	let dst: Boolean = curr_month > 2 && curr_month < 10 ? true : false;
+	let last_day = wedding_date.getTime() / 1000
 
 	// refactored to look "prettier"
 	$: d = Math.floor((wedding_date.getTime() - curr_date.getTime()) / 1000 / 60 / 60 / 24);
@@ -21,8 +22,8 @@
 		{ id: 'Minute', time: m },
 		{ id: 'Second', time: s }
 	];
-
-	$: percent_done = (wedding_date.getTime() - curr_date.getTime()) / wedding_date.getTime();
+	console.log(wedding_date)
+	$: percent_done = Math.floor(last_day - (curr_date.getTime() / 1000));
 	onMount(() => {
 		const interval = setInterval(() => {
 			curr_date = new Date();
@@ -33,6 +34,7 @@
 		};
 	});
 </script>
+
 <div class="hidden lg:block">
 	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfExtraBold text-tertiary-700">
 		{#each dates as { id, time }}

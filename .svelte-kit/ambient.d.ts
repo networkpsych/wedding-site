@@ -5,9 +5,9 @@
 /// <reference types="@sveltejs/kit" />
 
 /**
- * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), this module cannot be imported into client-side code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
+ * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), this module cannot be imported into client-side code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://svelte.dev/docs/kit/configuration#env) (if configured).
  * 
- * _Unlike_ [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), the values exported from this module are statically injected into your bundle at build time, enabling optimisations like dead code elimination.
+ * _Unlike_ [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), the values exported from this module are statically injected into your bundle at build time, enabling optimisations like dead code elimination.
  * 
  * ```ts
  * import { API_KEY } from '$env/static/private';
@@ -26,31 +26,6 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const VITE_ADMIN_KEY: string;
-	export const VITE_API_KEY: string;
-	export const VITE_AUTH_DOMAIN: string;
-	export const VITE_PROJECT_ID: string;
-	export const VITE_STORAGE_BUCKET: string;
-	export const VITE_DATABASE_URL: string;
-	export const VITE_MESSAGING_SENDER_ID: string;
-	export const VITE_APP_ID: string;
-	export const VITE_MEASUREMENT_ID: string;
-	export const BUCKET_PATH: string;
-	export const VITE_FB_ADMIN_TYPE: string;
-	export const VITE_FB_ADMIN_PROJECT_ID: string;
-	export const VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
-	export const VITE_FB_ADMIN_PRIVATE_KEY: string;
-	export const VITE_FB_ADMIN_CLIENT_EMAIL: string;
-	export const VITE_FB_ADMIN_CLIENT_ID: string;
-	export const VITE_FB_ADMIN_AUTH_URI: string;
-	export const VITE_FB_ADMIN_TOKEN_URI: string;
-	export const VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
-	export const VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
-	export const VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
-	export const VITE_SUPABASE_URL: string;
-	export const VITE_SUPABASE_BUCKET: string;
-	export const VITE_SUPABASE_KEY: string;
-	export const VITE_SUPABASE_DB: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -71,7 +46,6 @@ declare module '$env/static/private' {
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
 	export const NODE: string;
-	export const NODE_ENV: string;
 	export const NODE_EXE: string;
 	export const NPM_CLI_JS: string;
 	export const npm_command: string;
@@ -91,13 +65,19 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_dev: string;
+	export const npm_package_dev_optional: string;
+	export const npm_package_engines_node: string;
+	export const npm_package_integrity: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
+	export const npm_package_optional: string;
+	export const npm_package_peer: string;
+	export const npm_package_resolved: string;
 	export const npm_package_version: string;
 	export const NPM_PREFIX_NPM_CLI_JS: string;
 	export const NUMBER_OF_PROCESSORS: string;
 	export const OneDrive: string;
-	export const OneDriveConsumer: string;
 	export const OS: string;
 	export const Path: string;
 	export const PATHEXT: string;
@@ -121,7 +101,6 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
-	export const VIPSHOME: string;
 	export const windir: string;
 	export const WSLENV: string;
 	export const WT_PROFILE_ID: string;
@@ -129,7 +108,7 @@ declare module '$env/static/private' {
 }
 
 /**
- * Similar to [`$env/static/private`](https://kit.svelte.dev/docs/modules#$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/static/private`](https://svelte.dev/docs/kit/$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Values are replaced statically at build time.
  * 
@@ -142,7 +121,7 @@ declare module '$env/static/public' {
 }
 
 /**
- * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/main/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
+ * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/main/packages/adapter-node) (or running [`vite preview`](https://svelte.dev/docs/kit/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://svelte.dev/docs/kit/configuration#env) (if configured).
  * 
  * This module cannot be imported into client-side code.
  * 
@@ -157,31 +136,6 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		VITE_ADMIN_KEY: string;
-		VITE_API_KEY: string;
-		VITE_AUTH_DOMAIN: string;
-		VITE_PROJECT_ID: string;
-		VITE_STORAGE_BUCKET: string;
-		VITE_DATABASE_URL: string;
-		VITE_MESSAGING_SENDER_ID: string;
-		VITE_APP_ID: string;
-		VITE_MEASUREMENT_ID: string;
-		BUCKET_PATH: string;
-		VITE_FB_ADMIN_TYPE: string;
-		VITE_FB_ADMIN_PROJECT_ID: string;
-		VITE_FB_ADMIN_PRIVATE_KEY_ID: string;
-		VITE_FB_ADMIN_PRIVATE_KEY: string;
-		VITE_FB_ADMIN_CLIENT_EMAIL: string;
-		VITE_FB_ADMIN_CLIENT_ID: string;
-		VITE_FB_ADMIN_AUTH_URI: string;
-		VITE_FB_ADMIN_TOKEN_URI: string;
-		VITE_FB_ADMIN_AUTH_PROVIDER_X509_CERT_URL: string;
-		VITE_FB_ADMIN_CLIENT_X509_CERT_URL: string;
-		VITE_FB_ADMIN_UNIVERSE_DOMAIN: string;
-		VITE_SUPABASE_URL: string;
-		VITE_SUPABASE_BUCKET: string;
-		VITE_SUPABASE_KEY: string;
-		VITE_SUPABASE_DB: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
@@ -202,7 +156,6 @@ declare module '$env/dynamic/private' {
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
 		NODE: string;
-		NODE_ENV: string;
 		NODE_EXE: string;
 		NPM_CLI_JS: string;
 		npm_command: string;
@@ -222,13 +175,19 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_dev: string;
+		npm_package_dev_optional: string;
+		npm_package_engines_node: string;
+		npm_package_integrity: string;
 		npm_package_json: string;
 		npm_package_name: string;
+		npm_package_optional: string;
+		npm_package_peer: string;
+		npm_package_resolved: string;
 		npm_package_version: string;
 		NPM_PREFIX_NPM_CLI_JS: string;
 		NUMBER_OF_PROCESSORS: string;
 		OneDrive: string;
-		OneDriveConsumer: string;
 		OS: string;
 		Path: string;
 		PATHEXT: string;
@@ -252,7 +211,6 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
-		VIPSHOME: string;
 		windir: string;
 		WSLENV: string;
 		WT_PROFILE_ID: string;
@@ -263,7 +221,7 @@ declare module '$env/dynamic/private' {
 }
 
 /**
- * Similar to [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use `$env/static/public` instead.
  * 

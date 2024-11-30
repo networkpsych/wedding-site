@@ -1,21 +1,30 @@
 <script lang="ts">
 	import Countdown from '$lib/countdown.svelte';
+	import hero from "$lib/assets/bnm_hero.jpg"
+	import hero2 from "$lib/assets/bnm_hero2.jpg"
+	import hero_mobile from "$lib/assets/bnm_bg_mobile_2.jpg"
+
 </script>
 
-<div class="w-2/4 m-auto p-4">
-	<div class="flex flex-col justify-center items-center text-center">
-		<div class="
-			card
-			variant-glass-secondary
-			rounded-lg
-			justify-center text-wrap text-6xl 
-			">
-			<p class="hidden lg:flex p-2 drop-shadow-xl font-nfRegular text-primary-700 invisible lg:visible">Brayden & Madeline</p>
-			<p class="p-2 drop-shadow-xl font-nfPrintBold text-tertiary-800 lg:text-primary-700">5/31/2025</p>
-			
-		</div>
-		<div>
-			<Countdown />
-		</div>
+<div class="flex flex-col items-center content-center mx-auto text-nowrap">
+	<div class="drop-shadow-xl text-primary-500 dark:text-secondary-500 lg:text-surface-500 font-nfRegular text-4xl lg:text-6xl">Brayden & Madeline</div>
+	<div class="drop-shadow-xl text-primary-500 dark:text-secondary-500 lg:text-surface-500 font-nfPrintBold text-4xl lg:text-6xl ">
+		5/31/2025
+	</div>
+	<div class="hidden lg:block p-4">
+		<Countdown />
 	</div>
 </div>
+<div class="hidden lg:flex lg:h-screen ">
+	<img class="absolute inset-y-0 top-40 left-5 -z-10 m-auto h-4/6 object-contain rounded-xl" src={hero} alt="background for site"/>
+	<img class="absolute inset-y-0 top-40 right-5 -z-10 m-auto h-4/6 object-contain rounded-xl" src={hero2} alt="background for site"/>
+</div>
+
+<div class="relative h-screen m-auto lg:hidden">
+	<img class="absolute top-0 inset-x-0 z-10 h-2/3 m-auto object-fit rounded-full" src={hero_mobile} alt="background for site"/>
+</div>
+
+
+
+
+

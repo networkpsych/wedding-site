@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { FileButton,  ProgressBar, ProgressRadial } from '@skeletonlabs/skeleton'
-	import Progress from "$lib/Progress.svelte"
+	import { FileButton } from '@skeletonlabs/skeleton'
 	import {getToastStore, type ToastSettings} from '@skeletonlabs/skeleton'
-
-	import { fade } from 'svelte/transition'
-
+	import Progress from "$lib/Progress.svelte"
+	import Carousel from '$lib/carousel.svelte';
+	
 	// set a FileList for the Dropzone
 	export let data
 	
@@ -21,7 +20,8 @@
 	let itemsMax: number
 	let completion: number
 	let uploading: boolean
-
+	let testing: boolean = true;
+	let imgStyle: string = "hidden lg:flex justify-start transition ease-in-out duration-300 origin-left size-20 lg:size-28 object-fit hover:scale-110 hover:rotate-6 hover:-translate-x-3 hover:shadow-2xl"
 	$: imageList = {}
 	$: itemsMax = 0
 	$: completion = 0
@@ -37,6 +37,16 @@
 			return
 		}
 		else {
+			if (testing){
+				for (let i=0; i<files.length; i++){
+					let name = files[i].name;
+					console.log(name)
+					let size = Math.round(files[i].size / 1024 / 1024 * 100) / 100
+					imageList[name] = `${String(size)}MB`
+					completion += i
+				}
+			}
+			else{
 			for (let i=0; i < files.length; i++){
 				let size = Math.round(files[i].size / 1024 / 1024 * 100) / 100
 				const {data, error } = await supabase.storage
@@ -47,7 +57,6 @@
 					)
 
 				if (error) {
-					// console.log(error)
 					// @ts-ignore
 					if (error.statusCode === "409"){
 						// @ts-ignore
@@ -64,23 +73,30 @@
 				}
 			completion += i
 			}
+		}
+		await new Promise(r => setTimeout(r, 300))
+		for (let i=0; i<files.length; i++){
+			let name = files[i].name;
+			const imageContainer = document.getElementById(`cell-${name}`);
+			const img = document.createElement('img');
+			img.className = imgStyle
+			img.src = URL.createObjectURL(files[i])
+			imageContainer?.appendChild(img)
+		}
 			
 		}
 		
 	}
 
-	
-
-
 </script>
 
-<div class="grid grid-rows-2 md:grid-rows-[300px_minmax(900px,_1fr)_100px] min-h-screen md:h-[360px] w-1/2 md:w-[700px] m-auto">
-	<div class="text-secondary-50 card h-fit bg-gradient-to-br variant-glass-tertiary">
+<div class="flex flex-col gap-4">
+	<div class="flex justify-center text-secondary-50 h-fit">
 		<div class="p-5 text-center">
 			<h3 class="space-y-2 text-4xl font-semibold py-5 font-nfExtraBold text-black
 			">Share Your Photos!</h3>
 			<span class="text-black text-balance md:text-xl">
-				<p>If you do, we would like to share those photos during the reception! These photos can include any moment that has Brayden and/or Madeline.</p>
+				Share some of your favorite photos of the couple!
 			</span>
 			<FileButton
 			class="w-fill text-tertiary-900 p-5"
@@ -95,25 +111,15 @@
 				Upload
 			</FileButton>
 		</div>
-		
-		{#if uploading}
-		<div class="w-3/4 mx-auto p-1">
-			<ProgressBar
-			height="h-4"
-			meter="bg-secondary-200"
-			track="bg-tertiary-600/40"
-			value={completion}
-			max={itemsMax}
-			/>
-		</div>
-		{/if}
-		
 	</div>
-	{#if uploading}
-	<div>
-		<Progress uploadList={imageList}/>
-	</div>
+	{#if !uploading}
+		<Carousel />
 	{:else}
-	<div></div>
+		<div class="flex lg:col-span-2">
+			<Progress uploadList={imageList}/>
+		</div>
+		<button class="button-base-styles" on:click={() => {uploading = false; imageList = {};}}>
+			Clear
+		</button>
 	{/if}
 </div>
