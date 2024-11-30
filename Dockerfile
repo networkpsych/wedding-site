@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 3000 5173
 
-CMD ["npm", "run", "dev", "--", "--host", "127.0.0.1"]
+CMD ["npm", "run", "dev", "--", "--host"]
 
