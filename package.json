@@ -51,7 +51,6 @@
   "dependencies": {
     "@supabase/ssr": "^0.4.1",
     "@sveltejs/adapter-vercel": "^5.5.0",
-    "gsap": "^3.12.5",
     "protobufjs": "^7.2.6",
     "vite-plugin-environment": "^1.1.3"
   },
