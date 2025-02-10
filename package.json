@@ -53,6 +53,7 @@
   "dependencies": {
     "@skeletonlabs/tw-plugin": "^0.4.0",
     "@supabase/ssr": "^0.5.0",
+    "@sveltejs/adapter-vercel": "^5.5.2",
     "protobufjs": "^7.2.6",
     "update": "^0.7.4",
     "vite-plugin-environment": "^1.1.3"
