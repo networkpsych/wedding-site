@@ -26,18 +26,18 @@
 <div class="grid grid-cols-1 place-items-center content-center gap-5 p-3 lg:!grid-rows-3">
 		<a href={registrySiteTwo}>
 			<img src={target} alt="link to target registry" 
-				class="ease-in-out duration-300 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
+				class="ease-in-out duration-500 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
 			/>
 		</a>
 		<a href={registrySiteOne}>
 		<img src={amazon} alt="link to amazon registry" 
-			class="ease-in-out duration-300 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
+			class="ease-in-out duration-500 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
 		/>
 		
 		</a>
 		<a href={spotifyLink}>
 			<img src={spotify} alt="link to spotify playlist" 
-				class="ease-in-out duration-300 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
+				class="ease-in-out duration-500 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
 			/>
 		</a>
 	</div>

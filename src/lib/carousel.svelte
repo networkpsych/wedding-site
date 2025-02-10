@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { createBubbler } from 'svelte/legacy';
+	import {type CustomImage} from './types'
+
 	import { fade } from 'svelte/transition';
 	import image_1 from '$lib/assets/carousel/50th anniversary-1.jpg';
 	import image_2 from '$lib/assets/carousel/ag_day_bbq.jpg';
@@ -10,28 +13,28 @@
 	import image_8 from '$lib/assets/valentines_2021.jpg'
 
 	// using enhanced:img will break this.
-	let file_store: {[id: string]: any;} = {
-		"Snowbird 50th": image_1,
-		"Ag day bbq at USU": image_2, 
-		"Bees Game photo": image_3, 
-		"CCDC competition": image_4, 
-		"Hogle Zoo trip": image_5, 
-		"Bryce canyon trip": image_6, 
-		"Wedding photo": image_7,
-		"Valentines 2021": image_8
-	};
+	let file_store: CustomImage[] = [
+		{uri: image_1, desc:"Snowbird 50th" },
+		{uri: image_2, desc: "Ag day bbq at USU"}, 
+		{uri: image_3, desc: "Bees Game photo"},
+		{uri:image_4, desc: "CCDC competition"},
+		{uri:image_5, desc: "Hogle Zoo trip"},
+		{uri:image_6, desc: "Bryce canyon trip"}, 
+		{uri:image_7, desc: "Wedding photo"},
+		{uri:image_8, desc: "Valentines 2021"},
+];
+
+	let img_desc = "ease-in-out duration-300 size-4/5 rounded-xl object-contain m-auto hover:scale-110"
 </script>
 
-<svelte:body on:touchmove />
-<div class="grid grid-cols-4 content-start gap-2">
-		{#each Object.entries(file_store) as [key, val]}
-		<div class="items-start m-auto">
-				<img class="ease-in-out duration-300 size-3/4 rounded-xl object-contain m-auto
-				hover:scale-110
-				"
-				in:fade={{ duration: 500, delay:200 }}
-				src={val} alt={key} />
-		</div>
-		{/each}
+{#snippet div(image: CustomImage)}
+	<div class="items-start m-auto">
+		<img class={img_desc} in:fade={{ duration: 500, delay:200 }} src={image.uri} alt={image.desc} />
+	</div>
+{/snippet}
 
+<div class="grid grid-cols-4 content-start gap-2">
+	{#each file_store as image}
+		{@render div(image)}	
+	{/each}
 </div>

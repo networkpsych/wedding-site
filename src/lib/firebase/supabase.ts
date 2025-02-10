@@ -11,4 +11,5 @@ catch {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
-export const supabaseDB = import.meta.env.VITE_SUPABASE_DB
+export const supabaseDB = import.meta.env.VITE_SUPABASE_DB_GUESTS
+export const supabaseDB_food = import.meta.env.VITE_SUPABASE_DB_FOOD
