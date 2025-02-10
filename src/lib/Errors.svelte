@@ -3,10 +3,14 @@
 	import error_icon from '$lib/assets/icons/banned-wrong-svgrepo-com.svg';
 	import { onDestroy } from 'svelte';
 
-	export let status: string;
+	interface Props {
+		status: string;
+		children?: import('svelte').Snippet;
+	}
 
-	$: status = '';
-	let error: string;
+	let { status = $bindable(), children }: Props = $props();
+		
+	let error: string | undefined = $state();
 
 	switch (status) {
 		case 'unknown':
@@ -38,6 +42,6 @@
 			<span class="text-xl md:text-2xl">Warning</span>
 			<p>{error}</p>
 		</div>
-		<slot />
+		{@render children?.()}
 	</aside>
 </div>

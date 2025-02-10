@@ -1,101 +1,229 @@
-import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
+import type { Theme } from '@skeletonlabs/skeleton/themes';
 
-export const wedding_theme: CustomThemeConfig = {
-	name: 'wedding-theme',
-	properties: {
-		// =~= Theme Properties =~=
-		'--theme-font-family-base': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-		'--theme-font-family-heading': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-		'--theme-font-color-base': '0 0 0',
-		'--theme-font-color-dark': '255 255 255',
-		'--theme-rounded-base': '8px',
-		'--theme-rounded-container': '16px',
-		'--theme-border-base': '1px',
-		// =~= Theme On-X Colors =~=
-		'--on-primary': '0 0 0',
-		'--on-secondary': '0 0 0',
-		'--on-tertiary': '0 0 0',
-		'--on-success': '0 0 0',
-		'--on-warning': '0 0 0',
-		'--on-error': '0 0 0',
-		'--on-surface': '0 0 0',
-		// =~= Theme Colors  =~=
-		// primary | #83984d 
-		"--color-primary-50": "236 240 228", // #ecf0e4
-		"--color-primary-100": "230 234 219", // #e6eadb
-		"--color-primary-200": "224 229 211", // #e0e5d3
-		"--color-primary-300": "205 214 184", // #cdd6b8
-		"--color-primary-400": "168 183 130", // #a8b782
-		"--color-primary-500": "131 152 77", // #83984d
-		"--color-primary-600": "118 137 69", // #768945
-		"--color-primary-700": "98 114 58", // #62723a
-		"--color-primary-800": "79 91 46", // #4f5b2e
-		"--color-primary-900": "64 74 38", // #404a26
-		// secondary | #f0b51f 
-		"--color-secondary-50": "253 244 221", // #fdf4dd
-		"--color-secondary-100": "252 240 210", // #fcf0d2
-		"--color-secondary-200": "251 237 199", // #fbedc7
-		"--color-secondary-300": "249 225 165", // #f9e1a5
-		"--color-secondary-400": "245 203 98", // #f5cb62
-		"--color-secondary-500": "240 181 31", // #f0b51f
-		"--color-secondary-600": "216 163 28", // #d8a31c
-		"--color-secondary-700": "180 136 23", // #b48817
-		"--color-secondary-800": "144 109 19", // #906d13
-		"--color-secondary-900": "118 89 15", // #76590f
-		// tertiary | #ea700b 
-		"--color-tertiary-50": "252 234 218", // #fceada
-		"--color-tertiary-100": "251 226 206", // #fbe2ce
-		"--color-tertiary-200": "250 219 194", // #fadbc2
-		"--color-tertiary-300": "247 198 157", // #f7c69d
-		"--color-tertiary-400": "240 155 84", // #f09b54
-		"--color-tertiary-500": "234 112 11", // #ea700b
-		"--color-tertiary-600": "211 101 10", // #d3650a
-		"--color-tertiary-700": "176 84 8", // #b05408
-		"--color-tertiary-800": "140 67 7", // #8c4307
-		"--color-tertiary-900": "115 55 5", // #733705
-		// success | #d1dd93 
-		"--color-success-50": "248 250 239", // #f8faef
-		"--color-success-100": "246 248 233", // #f6f8e9
-		"--color-success-200": "244 247 228", // #f4f7e4
-		"--color-success-300": "237 241 212", // #edf1d4
-		"--color-success-400": "223 231 179", // #dfe7b3
-		"--color-success-500": "209 221 147", // #d1dd93
-		"--color-success-600": "188 199 132", // #bcc784
-		"--color-success-700": "157 166 110", // #9da66e
-		"--color-success-800": "125 133 88", // #7d8558
-		"--color-success-900": "102 108 72", // #666c48
-		// warning | #EAB308 
-		"--color-warning-50": "252 244 218", // #fcf4da
-		"--color-warning-100": "251 240 206", // #fbf0ce
-		"--color-warning-200": "250 236 193", // #faecc1
-		"--color-warning-300": "247 225 156", // #f7e19c
-		"--color-warning-400": "240 202 82", // #f0ca52
-		"--color-warning-500": "234 179 8", // #EAB308
-		"--color-warning-600": "211 161 7", // #d3a107
-		"--color-warning-700": "176 134 6", // #b08606
-		"--color-warning-800": "140 107 5", // #8c6b05
-		"--color-warning-900": "115 88 4", // #735804
-		// error | #f3460c 
-		"--color-error-50": "253 227 219", // #fde3db
-		"--color-error-100": "253 218 206", // #fddace
-		"--color-error-200": "252 209 194", // #fcd1c2
-		"--color-error-300": "250 181 158", // #fab59e
-		"--color-error-400": "247 126 85", // #f77e55
-		"--color-error-500": "243 70 12", // #f3460c
-		"--color-error-600": "219 63 11", // #db3f0b
-		"--color-error-700": "182 53 9", // #b63509
-		"--color-error-800": "146 42 7", // #922a07
-		"--color-error-900": "119 34 6", // #772206
-		// surface | #336b8b 
-		"--color-surface-50": "224 233 238", // #e0e9ee
-		"--color-surface-100": "214 225 232", // #d6e1e8
-		"--color-surface-200": "204 218 226", // #ccdae2
-		"--color-surface-300": "173 196 209", // #adc4d1
-		"--color-surface-400": "112 151 174", // #7097ae
-		"--color-surface-500": "51 107 139", // #336b8b
-		"--color-surface-600": "46 96 125", // #2e607d
-		"--color-surface-700": "38 80 104", // #265068
-		"--color-surface-800": "31 64 83", // #1f4053
-		"--color-surface-900": "25 52 68", // #193444
-	}
-};
+const weddingtheme = {
+  "name": "weddingtheme",
+  "properties": {
+    "--type-scale-factor": "1.0",
+    "--type-scale-1": "calc(0.75rem * var(--type-scale-factor))",
+    "--type-scale-2": "calc(0.875rem * var(--type-scale-factor))",
+    "--type-scale-3": "calc(1rem * var(--type-scale-factor))",
+    "--type-scale-4": "calc(1.125rem * var(--type-scale-factor))",
+    "--type-scale-5": "calc(1.25rem * var(--type-scale-factor))",
+    "--type-scale-6": "calc(1.5rem * var(--type-scale-factor))",
+    "--type-scale-7": "calc(1.875rem * var(--type-scale-factor))",
+    "--type-scale-8": "calc(2.25rem * var(--type-scale-factor))",
+    "--type-scale-9": "calc(3rem * var(--type-scale-factor))",
+    "--type-scale-10": "calc(3.75rem * var(--type-scale-factor))",
+    "--type-scale-11": "calc(4.5rem * var(--type-scale-factor))",
+    "--type-scale-12": "calc(6rem * var(--type-scale-factor))",
+    "--type-scale-13": "calc(8rem * var(--type-scale-factor))",
+    "--base-font-color": "var(--color-surface-950)",
+    "--base-font-color-dark": "var(--color-surface-50)",
+    "--base-font-family": "system-ui",
+    "--base-font-size": "inherit",
+    "--base-line-height": "inherit",
+    "--base-font-weight": "normal",
+    "--base-font-style": "normal",
+    "--base-letter-spacing": "0em",
+    "--heading-font-color": "inherit",
+    "--heading-font-color-dark": "inherit",
+    "--heading-font-family": "inherit",
+    "--heading-font-weight": "bold",
+    "--heading-font-style": "normal",
+    "--heading-letter-spacing": "inherit",
+    "--anchor-font-color": "var(--color-primary-500)",
+    "--anchor-font-color-dark": "var(--color-primary-400)",
+    "--anchor-font-family": "inherit",
+    "--anchor-font-size": "inherit",
+    "--anchor-line-height": "inherit",
+    "--anchor-font-weight": "inherit",
+    "--anchor-font-style": "inherit",
+    "--anchor-letter-spacing": "inherit",
+    "--anchor-text-decoration": "none",
+    "--anchor-text-decoration-hover": "underline",
+    "--anchor-text-decoration-active": "none",
+    "--anchor-text-decoration-focus": "none",
+    "--space-scale-factor": "1",
+    "--radii-default": "6px",
+    "--radii-container": "6px",
+    "--border-width-default": "1px",
+    "--divide-width-default": "1px",
+    "--outline-width-default": "1px",
+    "--ring-width-default": "1px",
+    "--body-background-color": "var(--color-surface-50)",
+    "--body-background-color-dark": "var(--color-surface-950)",
+    "--color-primary-50": "236 240 228",
+    "--color-primary-100": "215 222 198",
+    "--color-primary-200": "194 205 168",
+    "--color-primary-300": "173 187 137",
+    "--color-primary-400": "152 170 107",
+    "--color-primary-500": "131 152 77",
+    "--color-primary-600": "118 136 69",
+    "--color-primary-700": "104 121 61",
+    "--color-primary-800": "91 105 54",
+    "--color-primary-900": "77 90 46",
+    "--color-primary-950": "64 74 38",
+    "--color-primary-contrast-dark": "var(--color-primary-950)",
+    "--color-primary-contrast-light": "var(--color-primary-50)",
+    "--color-primary-contrast-50": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-100": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-200": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-300": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-400": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-500": "var(--color-primary-contrast-dark)",
+    "--color-primary-contrast-600": "var(--color-primary-contrast-light)",
+    "--color-primary-contrast-700": "var(--color-primary-contrast-light)",
+    "--color-primary-contrast-800": "var(--color-primary-contrast-light)",
+    "--color-primary-contrast-900": "var(--color-primary-contrast-light)",
+    "--color-primary-contrast-950": "var(--color-primary-contrast-light)",
+    "--color-secondary-50": "253 244 221",
+    "--color-secondary-100": "250 231 183",
+    "--color-secondary-200": "248 219 145",
+    "--color-secondary-300": "245 206 107",
+    "--color-secondary-400": "243 194 69",
+    "--color-secondary-500": "240 181 31",
+    "--color-secondary-600": "216 163 28",
+    "--color-secondary-700": "191 144 25",
+    "--color-secondary-800": "167 126 21",
+    "--color-secondary-900": "142 107 18",
+    "--color-secondary-950": "118 89 15",
+    "--color-secondary-contrast-dark": "var(--color-secondary-950)",
+    "--color-secondary-contrast-light": "var(--color-secondary-50)",
+    "--color-secondary-contrast-50": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-100": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-200": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-300": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-400": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-500": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-600": "var(--color-secondary-contrast-dark)",
+    "--color-secondary-contrast-700": "var(--color-secondary-contrast-light)",
+    "--color-secondary-contrast-800": "var(--color-secondary-contrast-light)",
+    "--color-secondary-contrast-900": "var(--color-secondary-contrast-light)",
+    "--color-secondary-contrast-950": "var(--color-secondary-contrast-light)",
+    "--color-tertiary-50": "252 234 218",
+    "--color-tertiary-100": "248 210 177",
+    "--color-tertiary-200": "245 185 135",
+    "--color-tertiary-300": "241 161 94",
+    "--color-tertiary-400": "238 136 52",
+    "--color-tertiary-500": "234 112 11",
+    "--color-tertiary-600": "210 101 10",
+    "--color-tertiary-700": "186 89 9",
+    "--color-tertiary-800": "163 78 7",
+    "--color-tertiary-900": "139 66 6",
+    "--color-tertiary-950": "115 55 5",
+    "--color-tertiary-contrast-dark": "var(--color-tertiary-950)",
+    "--color-tertiary-contrast-light": "var(--color-tertiary-50)",
+    "--color-tertiary-contrast-50": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-100": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-200": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-300": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-400": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-500": "var(--color-tertiary-contrast-dark)",
+    "--color-tertiary-contrast-600": "var(--color-tertiary-contrast-light)",
+    "--color-tertiary-contrast-700": "var(--color-tertiary-contrast-light)",
+    "--color-tertiary-contrast-800": "var(--color-tertiary-contrast-light)",
+    "--color-tertiary-contrast-900": "var(--color-tertiary-contrast-light)",
+    "--color-tertiary-contrast-950": "var(--color-tertiary-contrast-light)",
+    "--color-success-50": "248 250 239",
+    "--color-success-100": "240 244 221",
+    "--color-success-200": "232 238 202",
+    "--color-success-300": "225 233 184",
+    "--color-success-400": "217 227 165",
+    "--color-success-500": "209 221 147",
+    "--color-success-600": "188 198 132",
+    "--color-success-700": "166 176 117",
+    "--color-success-800": "145 153 102",
+    "--color-success-900": "123 131 87",
+    "--color-success-950": "102 108 72",
+    "--color-success-contrast-dark": "var(--color-success-950)",
+    "--color-success-contrast-light": "var(--color-success-50)",
+    "--color-success-contrast-50": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-100": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-200": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-300": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-400": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-500": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-600": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-700": "var(--color-success-contrast-dark)",
+    "--color-success-contrast-800": "var(--color-success-contrast-light)",
+    "--color-success-contrast-900": "var(--color-success-contrast-light)",
+    "--color-success-contrast-950": "var(--color-success-contrast-light)",
+    "--color-warning-50": "252 244 218",
+    "--color-warning-100": "248 231 176",
+    "--color-warning-200": "245 218 134",
+    "--color-warning-300": "241 205 92",
+    "--color-warning-400": "238 192 50",
+    "--color-warning-500": "234 179 8",
+    "--color-warning-600": "210 161 7",
+    "--color-warning-700": "186 143 6",
+    "--color-warning-800": "163 124 6",
+    "--color-warning-900": "139 106 5",
+    "--color-warning-950": "115 88 4",
+    "--color-warning-contrast-dark": "var(--color-warning-950)",
+    "--color-warning-contrast-light": "var(--color-warning-50)",
+    "--color-warning-contrast-50": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-100": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-200": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-300": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-400": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-500": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-600": "var(--color-warning-contrast-dark)",
+    "--color-warning-contrast-700": "var(--color-warning-contrast-light)",
+    "--color-warning-contrast-800": "var(--color-warning-contrast-light)",
+    "--color-warning-contrast-900": "var(--color-warning-contrast-light)",
+    "--color-warning-contrast-950": "var(--color-warning-contrast-light)",
+    "--color-error-50": "253 227 219",
+    "--color-error-100": "251 196 178",
+    "--color-error-200": "249 164 136",
+    "--color-error-300": "247 133 95",
+    "--color-error-400": "245 101 53",
+    "--color-error-500": "243 70 12",
+    "--color-error-600": "218 63 11",
+    "--color-error-700": "193 56 10",
+    "--color-error-800": "169 48 8",
+    "--color-error-900": "144 41 7",
+    "--color-error-950": "119 34 6",
+    "--color-error-contrast-dark": "var(--color-error-950)",
+    "--color-error-contrast-light": "var(--color-error-50)",
+    "--color-error-contrast-50": "var(--color-error-contrast-dark)",
+    "--color-error-contrast-100": "var(--color-error-contrast-dark)",
+    "--color-error-contrast-200": "var(--color-error-contrast-dark)",
+    "--color-error-contrast-300": "var(--color-error-contrast-dark)",
+    "--color-error-contrast-400": "var(--color-error-contrast-dark)",
+    "--color-error-contrast-500": "var(--color-error-contrast-light)",
+    "--color-error-contrast-600": "var(--color-error-contrast-light)",
+    "--color-error-contrast-700": "var(--color-error-contrast-light)",
+    "--color-error-contrast-800": "var(--color-error-contrast-light)",
+    "--color-error-contrast-900": "var(--color-error-contrast-light)",
+    "--color-error-contrast-950": "var(--color-error-contrast-light)",
+    "--color-surface-50": "224 233 238",
+    "--color-surface-100": "189 208 218",
+    "--color-surface-200": "155 183 198",
+    "--color-surface-300": "120 157 179",
+    "--color-surface-400": "86 132 159",
+    "--color-surface-500": "51 107 139",
+    "--color-surface-600": "46 96 125",
+    "--color-surface-700": "41 85 111",
+    "--color-surface-800": "35 74 96",
+    "--color-surface-900": "30 63 82",
+    "--color-surface-950": "25 52 68",
+    "--color-surface-contrast-dark": "var(--color-surface-950)",
+    "--color-surface-contrast-light": "var(--color-surface-50)",
+    "--color-surface-contrast-50": "var(--color-surface-contrast-dark)",
+    "--color-surface-contrast-100": "var(--color-surface-contrast-dark)",
+    "--color-surface-contrast-200": "var(--color-surface-contrast-dark)",
+    "--color-surface-contrast-300": "var(--color-surface-contrast-dark)",
+    "--color-surface-contrast-400": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-500": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-600": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-700": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-800": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-900": "var(--color-surface-contrast-light)",
+    "--color-surface-contrast-950": "var(--color-surface-contrast-light)"
+  },
+  "metadata": {
+    "version": "3.0.0"
+  }
+} satisfies Theme;
+
+export default weddingtheme;

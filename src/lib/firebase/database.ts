@@ -1,38 +1,66 @@
-import {supabase} from './supabase'
+import type { PostgrestError } from '@supabase/supabase-js';
+import { supabase } from './supabase';
 // import { resolveRoute } from '$app/paths';
 
 export type Reservation = {
-	name: string;
+	first_name: string;
+	last_name: string;
 	email: string;
 	attending: boolean;
-	entree: string;
 	note: string;
 	guests: number;
 };
 
-export async function addRSVP(reservation: Reservation): Promise<void> {
+export type Meal = {
+	email: string;
+	entree: string;
+	has_allergy: boolean;
+	allergy_type: string;
+};
 
+export async function addRSVP(reservation: Reservation): Promise<PostgrestError | null> {
 	try {
-
 		// If using .select(), then the RLS needs to have
 		// an allowance to use select.
-		const { data, error } = await supabase
-			.from("wedding_rsvp")
-			.insert({
-				name: reservation.name,
-				email: reservation.email,
-				attending: reservation.attending,
-				entree: reservation.entree,
-				note: reservation.note,
-				guests: reservation.guests,
-			})
-		console.log(reservation)
-		console.log(data)
-		console.log(error)
+		const { data, error } = await supabase.from('wedding_guests').insert({
+			first_name: reservation.first_name,
+			last_name: reservation.last_name,
+			email: reservation.email,
+			attending: reservation.attending,
+			note: reservation.note,
+			guests: reservation.guests
+		});
+		console.log(reservation);
 
+		if (!error) {
+			console.log('data ', data);
+		}
+		console.log('error ', error);
+		return error;
+	} catch (e) {
+		console.error('Error with item: ', e.stack);
 	}
-	catch (e) {
-		console.error("Error with item: ", e.stack)
-	}
+
+	return null;
 }
 
+export async function addMeal(meals: Meal): Promise<PostgrestError | null> {
+	try {
+		const { data, error } = await supabase.from('wedding_guest_meals').insert({
+			email: meals.email,
+			entree: meals.entree,
+			has_allergy: meals.has_allergy,
+			allergy_type: meals.allergy_type
+		});
+		console.log(meals);
+		if (!error) {
+			console.log('data ', data);
+			console.log('error ', error);
+		}
+		return error;
+	} catch (e) {
+		console.error('Error with item: ', e.stack);
+	}
+
+	return null;
+}

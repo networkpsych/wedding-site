@@ -5,7 +5,7 @@
 	import logo from '$lib/assets/B&M.png';
 	import title from '$lib/assets/icons/title.svg';
 
-	let canvas: any;
+	let canvas: any = $state();
 
 	onMount(() => {
 		const ctx = canvas.getContext('2d');
@@ -40,10 +40,10 @@
 		};
 	});
 
-	$: innerWidth = 0;
+	let innerWidth = $derived(0);
 </script>
 
-<canvas bind:this={canvas} width={400} height={350} />
+<canvas bind:this={canvas} width={400} height={350}></canvas>
 
 <style>
 	canvas {

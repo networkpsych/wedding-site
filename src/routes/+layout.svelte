@@ -1,17 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
-    initializeStores,
-    Drawer, getDrawerStore,
-	Toast, autoModeWatcher
-	} from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores'
+	import { Modal, ToastProvider } from '@skeletonlabs/skeleton-svelte';
+	import { page } from '$app/state'
 
-	export let data;
-	$: ({ session, supabase } = data);
-	initializeStores();
-
-
+	let modalState = $state(false);
+	
 	onMount(() => {
 		const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
 			if (newSession?.expires_at !== session?.expires_at) {
@@ -28,21 +21,30 @@
 	import { fade } from 'svelte/transition';
 	import { cubicIn } from 'svelte/easing';
 	import Navigation from '$lib/Navigation.svelte';
+	import { type NavLinks } from '$lib/types';
 
-	const weddingDrawer = getDrawerStore();
+	interface Props {
+		data: any;
+		children?: import('svelte').Snippet;
+	}
 
-	let wedding_links: string[][] = [
-		['Home', '/'],
-		['About', '/about'],
-		['Reserve', '/rsvp'],
-		['Memories', '/memories'],
-		['Registry', '/registry']
+	let { data, children }: Props = $props();
+
+
+	let wedding_links: NavLinks[] = [
+		{name:'Home', link: '/'},
+		{name:'About', link: '/about'},
+		{name:'Reserve', link: '/rsvp'},
+		{name:'Memories', link: '/memories'},
+		{name:'Registry', link: '/registry'}
 	];
 	
-	$: pathname = $page.url.pathname
-	
-	function drawerOpen(): void {
-		weddingDrawer.open({});
+	function modalToggle(): void {
+		if (!modalState){
+			modalState = true;
+		} else {
+			modalState = false;
+		}
 	}
 
 	onNavigate((navigation) => {
@@ -59,42 +61,48 @@
 		});
 	});
 	
+	let { session, supabase } = $derived(data);
+	let pathname = $state(page.url.pathname)
 </script>
 
-<Drawer
-	position='top'
-	bgDrawer='variant-glass-surface'
-	bgBackdrop='bg-none'
-	opacityTransition={true}
-	>
-<Navigation links={wedding_links} />
-</Drawer>
-<svelte:head>{@html '<script>(' + autoModeWatcher.toString() + ')();</script>'}</svelte:head>
-<header class="sticky m-3 py-5">
-	<div class="flex items-center lg:invisible">
-		<button class="btn btn-lg mr-4 lg:hidden" on:click={drawerOpen}>
-		<span>
+<header class="sticky m-1 p-1">
+	<div class="visible lg:invisible">
+		<Modal
+			bind:open={modalState}
+			triggerBase="btn preset-tonal"
+			contentBase='bg-surface-600-400 p-10'
+			positionerJustify="justify-start"
+			positionerAlign=""
+			positionerPadding=""
+			transitionsPositionerIn={{ x: -480, duration: 200 }}
+			transitionsPositionerOut={{ x: -480, duration: 200 }}
+			>
+			{#snippet trigger()}
 			<svg viewBox="0 0 100 80" class="fill-secondary-600 w-8 h-8">
-				<rect width="100" height="20" />
+				<rect y="0" width="100" height="20" />
 				<rect y="30" width="100" height="20" />
 				<rect y="60" width="100" height="20" />
 			</svg>
-		</span>
-		</button>
+			{/snippet}
+			{#snippet content()}
+			<Navigation links={wedding_links} />
+			{/snippet}
+		</Modal>
 	</div>
 	<div class="invisible lg:visible">
 		<Navigation links={wedding_links}/>
 	</div>
 </header>
-<main class="">
+<main>
 	<div >
 		{#key pathname}
 			<div
 			in:fade={{ easing: cubicIn, duration:700, delay:200}}
 			>
-				<slot />
+			<ToastProvider placement="top-start">
+				{@render children?.()}
+			</ToastProvider>
 			</div>
 		{/key}
-		<Toast position="t" />
 	</div>
 </main>
