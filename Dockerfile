@@ -4,11 +4,11 @@ WORKDIR /src
 
 COPY package.json .
 
-RUN npm install
+RUN pnpm install
 
 COPY . .
 
 EXPOSE 3000 5173
 
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["pnpm", "run", "build", "--", "--host"]
 
