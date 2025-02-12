@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 3000 5173
 
-CMD ["pnpm", "run", "dev", "--", "--host"]
+CMD ["pnpm", "run", "build", "--", "--host"]
 
