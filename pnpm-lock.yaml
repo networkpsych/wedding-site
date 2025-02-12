@@ -14,14 +14,15 @@ importers:
       '@supabase/ssr':
         specifier: ^0.5.2
         version: 0.5.2(@supabase/supabase-js@2.44.4)
-
       '@sveltejs/adapter-vercel':
         specifier: ^5.6.1
         version: 5.6.1(@sveltejs/kit@2.17.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.19.10)(vite@5.4.14(@types/node@20.17.17)))(svelte@5.19.10)(vite@5.4.14(@types/node@20.17.17)))(rollup@4.34.6)
-
       protobufjs:
         specifier: ^7.4.0
         version: 7.4.0
+      run-parallel:
+        specifier: ^1.2.0
+        version: 1.2.0
       update:
         specifier: ^0.7.4
         version: 0.7.4
@@ -45,8 +46,8 @@ importers:
         specifier: 2.44.4
         version: 2.44.4
       '@sveltejs/adapter-auto':
-        specifier: ^3.0.0
-        version: 3.3.1(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.16.1)(vite@5.4.11(@types/node@20.16.5)))(svelte@5.16.1)(vite@5.4.11(@types/node@20.16.5)))
+        specifier: ^3.3.1
+        version: 3.3.1(@sveltejs/kit@2.17.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.19.10)(vite@5.4.14(@types/node@20.17.17)))(svelte@5.19.10)(vite@5.4.14(@types/node@20.17.17)))
       '@sveltejs/enhanced-img':
         specifier: ^0.3.10
         version: 0.3.10(rollup@4.34.6)(svelte@5.19.10)(vite@5.4.14(@types/node@20.17.17))
