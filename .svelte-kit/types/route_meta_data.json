@@ -9,6 +9,10 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/about/hotel": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/memories": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"

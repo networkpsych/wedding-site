@@ -12,7 +12,7 @@
 		{image: map, alt: "train svg",topic: "City",desc:"Minnetrista, MN",url: "https://maps.app.goo.gl/sjpnAmiqD4HVWkph7"},
 		{image: venue , alt: "building svg" ,topic: "Venue",desc: "Gale Woods Farm Pavilion",url: "https://www.threeriversparks.org/location/gale-woods-farm-pavilion" },
 		{image: food , alt: "food svg",topic: "Food",desc: "The Lookout Bar and Grill",url:menu },
-		{image: hotel, alt: "hotel svg", topic: "Hotel",desc: "AmeriVu Inn Waconia",url:"https://www.amerivuinn.com/waconia/"}
+		{image: hotel, alt: "hotel svg", topic: "Hotel",desc: "AmeriVu Inn Waconia",url:"/about/hotel"}
 	]
 
 /*
