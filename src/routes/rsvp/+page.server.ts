@@ -1,5 +1,5 @@
 import type { Actions } from '@sveltejs/kit';
-import { addRSVP, addMeal, type Reservation, type Meal } from '$lib/firebase/database';
+import { addRSVP, addMeal, checkEmail, type Reservation, type Meal } from '$lib/firebase/database';
 import type { PostgrestError } from '@supabase/supabase-js';
 
 let reserved: Reservation;
@@ -32,7 +32,7 @@ function errorUpdate(
 		if (resp?.code == '23505') {
 			reason = 'Email entry already exists';
 		} else if (resp?.code == '23502') {
-			reason = 'Please check the fi'
+			reason = 'Please check that that the form is filled'
 		}
 
 	} else {
@@ -56,7 +56,7 @@ function errorUpdate(
 }
 
 export const actions: Actions = {
-	guest: async ({ request }) => {
+	emailCheck: async ({request}) =>{
 		const data = await request.formData();
 		console.log(data);
 		const form: Data = {
@@ -70,7 +70,31 @@ export const actions: Actions = {
 		} else if (!validateEmail(String(data.get('email')))) {
 			errorUpdate(undefined, form.errors, 'email-invalid');
 			return form;
-		} 
+		}
+
+		const resp = await checkEmail(String(data.get('email')))
+		console.log(resp)
+		if (resp !== null){
+			console.log(resp)
+			if (resp == true || resp == false){
+				form.success = true
+			form.errors = {status:'200', reason:'Email exists'}
+			} else {
+				errorUpdate(resp, form.errors, undefined);
+			}
+		} else {
+			form.success = true
+			form.errors = {status:'200', reason:'Email does not exist'}
+		}
+		return form
+	},
+	guest: async ({ request }) => {
+		const data = await request.formData();
+		console.log(data);
+		const form: Data = {
+			success: false,
+			errors: {}
+		};
 
 		reserved = {
 			first_name: String(data.get('first_name')),
@@ -80,7 +104,6 @@ export const actions: Actions = {
 			note: String(data.get('note')),
 			guests: Number(data.get('guests'))
 		};
-
 		if (reserved.attending && reserved.guests < 1){
 			errorUpdate(undefined, form.errors, 'low-guests')
 			return form

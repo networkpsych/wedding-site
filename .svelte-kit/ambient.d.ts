@@ -31,6 +31,7 @@ declare module '$env/static/private' {
 	export const VITE_SUPABASE_KEY: string;
 	export const VITE_SUPABASE_DB_GUESTS: string;
 	export const VITE_SUPABASE_DB_FOOD: string;
+	export const VITE_SERVICEROLE_KEY: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
@@ -130,6 +131,7 @@ declare module '$env/dynamic/private' {
 		VITE_SUPABASE_KEY: string;
 		VITE_SUPABASE_DB_GUESTS: string;
 		VITE_SUPABASE_DB_FOOD: string;
+		VITE_SERVICEROLE_KEY: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
