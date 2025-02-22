@@ -15,10 +15,7 @@
 		{image: hotel, alt: "hotel svg", topic: "Hotel",desc: "AmeriVu Inn Waconia",url:"/about/hotel"}
 	]
 
-/*
-  Call or email hotel prior May 1st, 2025 for 10% off. Ask for Peterson-Christensen Block
-  wachoniahotel@gmail.com, (952) 442-8787
- */
+
 </script>
 	<div class="flex flex-col justify-center items-center lg:text-tertiary-900 pb-10">
 		<div class="w-[400px] lg:w-3/5 mx-auto p-5 text-center">

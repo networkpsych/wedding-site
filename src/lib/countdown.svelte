@@ -21,7 +21,7 @@
 		{ id: 'Day', time: d },
 		{ id: 'Hour', time: dst ? h + 1 : h },
 		{ id: 'Minute', time: m },
-		{ id: 'Second', time: s }
+		{ id: 'Seconds', time: s }
 	]);
 	console.log(wedding_date)
 	let percent_done = $derived(Math.floor(last_day - (curr_date.getTime() / 1000)));
@@ -45,7 +45,7 @@
 {/snippet}
 
 <div class="hidden lg:block">
-	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfExtraBold text-tertiary-700">
+	<div class="grid grid-cols-[repeat(4,minmax(200px,_120px))] text-3xl font-nfExtraBold text-primary-50">
 		{#each dates as dt}
 			{@render span(dt)}
 		{/each}
