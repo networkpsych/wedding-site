@@ -1,6 +1,5 @@
 import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, supaEmail } from './supabase';
-import { createClient } from '@supabase/supabase-js'
 // import { resolveRoute } from '$app/paths';
 
 export type Reservation = {
