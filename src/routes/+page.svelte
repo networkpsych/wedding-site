@@ -16,8 +16,9 @@
 	<div class="drop-shadow-xl text-primary-500 dark:text-secondary-300 lg:text-surface-500 font-nfRegular text-4xl lg:text-6xl">Brayden & Madeline</div>
 	<div class="text-center drop-shadow-xl text-primary-500 dark:text-secondary-300 lg:text-surface-500 font-nfPrintRegular text-4xl lg:text-6xl">
 		<span>5/31/2025</span>
-		<div class="grid text-3xl">
-			<span>Cocktail hour @ 4:30pm | Dinner @ 5:30pm</span>
+		<div class="grid text-2xl">
+			<span>Cocktail hour @ 4:30pm</span>
+			<span>Dinner @ 5:30pm</span>
 		</div>
 	</div>
 	<div class="hidden lg:block p-10">

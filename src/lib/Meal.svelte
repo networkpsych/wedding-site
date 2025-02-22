@@ -8,7 +8,6 @@
     
     export const toast: ToastContext = getContext('toast');
     let { 
-        trigger = $bindable(),
         email = $bindable(),
     
     } = $props()

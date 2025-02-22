@@ -1,5 +1,6 @@
 import type { PostgrestError } from '@supabase/supabase-js';
-import { supabase } from './supabase';
+import { supabase, supaEmail } from './supabase';
+import { createClient } from '@supabase/supabase-js'
 // import { resolveRoute } from '$app/paths';
 
 export type Reservation = {
@@ -63,4 +64,30 @@ export async function addMeal(meals: Meal): Promise<PostgrestError | null> {
 	}
 
 	return null;
+}
+
+export async function checkEmail(email: string): Promise<PostgrestError | boolean | null >{
+	
+	try{
+		const {data, error} = await supaEmail
+			.from('wedding_guests')
+			.select('attending')
+			.eq('email', email)
+		console.log(data)
+		if (data != null){
+			console.log(data[0]?.attending)
+			return data[0].attending
+		}
+		if (error){
+			console.error("Error with item: ", error.stack)
+			return error
+		}
+	} catch (e){
+		if (e instanceof TypeError) {
+			return null
+		} else {
+			console.error('Error with item: ', e.stack)
+		}
+	}
+	return null
 }

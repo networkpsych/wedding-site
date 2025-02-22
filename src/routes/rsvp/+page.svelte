@@ -7,31 +7,42 @@
 	import { fade } from 'svelte/transition'
 	import Meal from '$lib/Meal.svelte';
 	import RSVP from '$lib/RSVP.svelte';
+	import CheckEmail from '$lib/CheckEmail.svelte'
 
 	let { 
-		
-		trigger = $bindable(), 
-		is_attending=$bindable(), 
+		email_check = $bindable(),
+		toFood = $bindable(),
+		rsvpCheck = $bindable(),
+		is_attending= $bindable(), 
 		email = $bindable(),
 		first_name = $bindable(),
 	} = $props()
 
 	function toggle(){
-		if (!trigger){
-			trigger = true
+		if (!email_check){
+			email_check = true
 		} else {
-			trigger = false
+			email_check = false
+		}
+		if (!rsvpCheck){
+			rsvpCheck = true
+		} else {
+			rsvpCheck = false
 		}
 	}
-	console.log(trigger)
+	console.log(rsvpCheck)
+	console.log(email_check)
+	console.log(toFood)
 </script>
-
-
-{#if !trigger}
+{#if !email_check}
 <div transition:fade|global={{duration: 650}}>
-	<RSVP bind:trigger bind:is_attending bind:email bind:first_name/>
+	<CheckEmail bind:email bind:email_check bind:toFood/>
 </div>
-{:else if is_attending && trigger}
+{:else if email_check && !rsvpCheck && !toFood}
+<div transition:fade|global={{duration: 650}}>
+	<RSVP bind:rsvpCheck bind:is_attending bind:email bind:first_name/>
+</div>
+{:else if is_attending && rsvpCheck && email_check || toFood}
 <div transition:fade={{duration: 650}}>
 	<Meal bind:email/>
 </div>
