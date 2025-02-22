@@ -74,7 +74,7 @@ export async function checkEmail(email: string): Promise<PostgrestError | boolea
 			.select('attending')
 			.eq('email', email)
 		console.log(data)
-		if (data != null){
+		if (data != undefined){
 			console.log(data[0]?.attending)
 			return data[0].attending
 		}

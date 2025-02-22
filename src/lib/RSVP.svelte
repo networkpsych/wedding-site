@@ -22,7 +22,7 @@ import not_going from '$lib/assets/icons/not_going.svg'
     }
 
 let { 
-	trigger = $bindable(),
+	rsvpCheck = $bindable(),
 	is_attending = $bindable(),
 	email = $bindable(),
 	first_name = $bindable(),
@@ -58,7 +58,7 @@ const onFormSubmit: SubmitFunction = () => {
 					title = "Success"
 					message = "Form Submitted Successfully"
 					triggerMsg(title, message, "success")
-					trigger = true
+					rsvpCheck = true
 					await update({reset:false})
 					break;
 				case false:

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Countdown from '$lib/countdown.svelte';
 	import hero from "$lib/assets/bnm_bg3.jpg"
-	import hero2 from "$lib/assets/bnm_hero2.jpg"
 	import hero_mobile from "$lib/assets/bnm_bg_mobile_2.jpg"
 
 
