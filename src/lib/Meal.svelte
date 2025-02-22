@@ -15,10 +15,6 @@
     let userMsg: string = $state('');
 
     let entree: string = $state('')
-    let has_allergies: boolean = $state(false)
-    let allergy_types: string | undefined = $state()
-
-    let has_allergies_toggle: string = $derived(has_allergies ? "Yes Food Allergies" : "No Food Allergies")
     function triggerMsg(
         title: string | undefined, message: string | undefined, 
         status: 'info'|'error'|'success'|undefined){
@@ -44,7 +40,6 @@
 					title = "Success"
 					message = "Form Submitted Successfully"
 					triggerMsg(title, message, "success")
-                    has_allergies = false;
 					break;
 				case false:
 					title = "An error occurred"
@@ -61,17 +56,13 @@
 </script>
 
 <div class="flex flex-col justify-start m-auto h-svh lg:h-[500px] w-4/5">
-	<div class="flex flex-col justify-center gap-2 text-center text-secondary-700 dark:text-secondary-300 text-balance lg:text-nowrap">
-		<span class="text-4xl lg:text-6xl font-nfRegular"> Thank you for attending! </span>
-		<span class="lg:text-xl font-nfPrintRegular whitespace-pre-line text-pretty">
+	<div class="flex flex-col justify-center gap-2 text-center text-balance lg:text-nowrap">
+		<span class="text-4xl lg:text-6xl font-nfRegular text-secondary-700 dark:text-secondary-300"> Thank you for attending! </span>
+		<span class="lg:text-xl font-nfPrintRegular whitespace-pre-line text-pretty text-secondary-700 dark:text-secondary-300">
 			 We ask that you select the meal option for the reception.
 		</span>
-        <span class="lg:text-xl font-nfPrintRegular whitespace-pre-line text-pretty">
-            <a href={pdf} target="_blank">
-                If you have any food allergies,
-                you can see the ingredients here. 
-            </a>
-            
+        <span class="text-error-300">
+            Please complete the form for the amount of guests that you have.
         </span>
 	</div>
 	<div class="flex justify-center">
@@ -102,22 +93,6 @@
                         <Segment.Item value="ravioli">Vegan Ravioli</Segment.Item>
                     </Segment>
                 </label>
-                <label for="has_allergies" class="label flex items-center text-secondary-600 w-fit md:w-full text-pretty space-x-3">
-                    <span>{has_allergies_toggle}</span>
-                    <Switch name="compact" onCheckedChange={() => console.log(has_allergies)} bind:checked={has_allergies}
-                        classes="bg-primary-400 dark:bg-secondary-500">
-                    </Switch>
-                </label>
-                {#if has_allergies}
-                <label for="allergy_types" class="label flex items-center text-secondary-600 w-fit md:w-full text-pretty space-x-3">
-                    <textarea
-							class="input box-border h-[42px] w-fit font-medium dark:bg-primary-300 text-black placeholder:text-secondary-700"
-							name="allergy_types"
-							bind:value={allergy_types}
-							placeholder="Enter Allergens"
-						></textarea>
-                </label>
-                {/if}
                 <button class="preset-filled-primary-500 btn mx-4 flex items-center space-y-2
 							transition
 							ease-out

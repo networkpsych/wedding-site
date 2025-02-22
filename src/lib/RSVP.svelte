@@ -5,6 +5,8 @@ import { getContext } from 'svelte';
 import { type SubmitFunction } from '@sveltejs/kit';
 import { Switch, type ToastContext } from '@skeletonlabs/skeleton-svelte';
 import wedding_icon from '$lib/assets/icons/wedding-svgrepo-com.svg';
+import going from '$lib/assets/icons/going.svg'
+import not_going from '$lib/assets/icons/not_going.svg'
 
 
 	export const toast: ToastContext = getContext('toast');
@@ -28,9 +30,9 @@ let {
 
 let last_name = $state('');
 let userMsg: string = $state('');
-let attendance: boolean = $state(false);
+let attendance: boolean = $state(true);
 let charMax: number = $derived(250 - userMsg.length);
-let attendMsg: string = $derived(attendance ? 'Attending' : 'Not Attending');
+let attendMsg: string = $derived(attendance ? 'I Am Attending' : 'I Am Not Attending');
 let num = $state();
 	
 
@@ -79,7 +81,7 @@ const onFormSubmit: SubmitFunction = () => {
 	</div>
 	<div class="flex justify-center">
 		<div
-			class="h-[700px] w-3/4 overflow-hidden rounded-3xl text-nfPrintBold"
+			class="h-[900px] w-3/4 overflow-hidden rounded-2xl text-nfPrintBold"
 		>
 			<form
 				id="guest_form"
@@ -88,14 +90,14 @@ const onFormSubmit: SubmitFunction = () => {
 				use:enhance={onFormSubmit}
 				class="flex flex-col items-center space-y-2 py-2"
 			>
-
-				<label for="attending" class="flex m-auto font-bold">
-					<Switch name="slider" bind:checked={attendance}
-						 controlActive="bg-primary-400 dark:bg-secondary-500">
-						{attendMsg}
+			<span class="text-3xl text-secondary-200 font-nfPrintBold">{attendMsg}</span>
+				<label for="attending" class="flex font-bold">
+					<Switch name="compact" bind:checked={attendance} controlActive="preset-filled-surface-600" controlInactive="preset-filled-surface-600" compact>
+						 {#snippet inactiveChild()}<img src="{not_going}" alt="not going">{/snippet}
+						 {#snippet activeChild()}<img src="{going}" alt="going">{/snippet}
 					</Switch>
 				</label>
-				<label class="block text-secondary-700 font-nfPrintBold rounded-2xl">
+				<label class="block text-secondary-700 font-nfPrintBold rounded-4xl">
 						<input
 							class="input box-border h-[20px] w-fit font-medium dark:bg-primary-400 text-black placeholder:text-secondary-700 font-nfPrintBold"
 							name="first_name"
@@ -106,7 +108,7 @@ const onFormSubmit: SubmitFunction = () => {
 							required
 						/>
 				</label>
-				<label class="block text-secondary-700 font-nfPrintBold rounded-2xl">
+				<label class="block text-secondary-700 font-nfPrintBold rounded-4xl">
 					<input
 						class="input box-border h-[20px] w-fit font-medium dark:bg-primary-400 text-black placeholder:text-secondary-700 font-nfPrintBold"
 						name="last_name"
@@ -117,7 +119,7 @@ const onFormSubmit: SubmitFunction = () => {
 						required
 					/>
 				</label>
-				<label class="block text-secondary-700 font-nfPrintBold rounded-2xl">
+				<label class="block text-secondary-700 font-nfPrintBold rounded-4xl">
 					<input
 						class="input box-border h-[20px] w-fit font-medium dark:bg-primary-400 text-black placeholder:text-secondary-700 font-nfPrintBold"
 						name="email"

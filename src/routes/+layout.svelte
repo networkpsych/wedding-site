@@ -94,7 +94,7 @@
 	</div>
 </header>
 <main>
-	<div >
+	<div>
 		{#key pathname}
 			<div
 			in:fade={{ easing: cubicIn, duration:700, delay:200}}
