@@ -3,6 +3,9 @@
 	import {type ToastContext} from '@skeletonlabs/skeleton-svelte'
 	import Progress from "$lib/Progress.svelte"
 	import Carousel from '$lib/carousel.svelte';
+	import { cubicIn } from 'svelte/easing';
+	import {cubicOut} from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 	
 	// set a FileList for the Dropzone
 
@@ -97,7 +100,7 @@
 
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4" in:fade={{easing: cubicIn, duration:700, delay:450}} out:fade={{easing: cubicOut, duration:300}}>
 	<div class="flex justify-center text-secondary-50 h-fit">
 		<div class="p-5 text-center">
 			<h3 class="space-y-2 text-4xl font-semibold py-5 font-nfExtraBold text-primary-500 dark:text-primary-100
@@ -128,3 +131,4 @@
 	<div></div>
 
 </div>
+

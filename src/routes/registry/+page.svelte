@@ -3,7 +3,9 @@
 	import amazon from "$lib/assets/amazon.svg"
 	import target from "$lib/assets/target.svg"
 	import spotify from "$lib/assets/spotify.svg"
-	
+	import { cubicIn } from 'svelte/easing';
+	import {cubicOut} from 'svelte/easing'
+	import { fade } from 'svelte/transition';
 
 	
 	let spotifyLink ='https://open.spotify.com/playlist/3cZWlFZhFbIsPRMxwE0Z0Z?si=feb4a52de40c4850&pt=069734137ccd443c481a7f71da35b3d5';
@@ -16,6 +18,7 @@
 	let d = Math.floor((wedding_date.getTime() - curr_date.getTime()) / 1000 / 60 / 60 / 24);
 
 </script>
+<div class="flex flex-col gap-4" in:fade={{easing: cubicIn, duration:700, delay:450}} out:fade={{easing: cubicOut, duration:300}}>
 {#if d > 180}
 	<div class="grid grid-cols-1 place-items-center content-center">
 		<span class="content-center text-center text-6xl text-error-400 font-nfRegular">
@@ -23,7 +26,8 @@
 		</span>
 	</div>
 {:else}
-<div class="grid grid-cols-1 place-items-center content-center gap-5 p-3 lg:!grid-rows-3">
+<div class="grid grid-cols-1 place-items-center content-center gap-5 p-3 lg:!grid-rows-3" 
+	in:fade={{easing: cubicIn, duration:700, delay:450}} out:fade={{easing: cubicOut }}>
 		<a href={registrySiteTwo}>
 			<img src={target} alt="link to target registry" 
 				class="ease-in-out duration-500 hover:scale-125 hover:-translate-x-4 hover:translate-y-4 hover:skew-x-6"
@@ -42,3 +46,4 @@
 		</a>
 	</div>
 {/if}
+</div>

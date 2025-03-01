@@ -20,6 +20,7 @@
 	import { invalidate, onNavigate } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import { cubicIn } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 	import Navigation from '$lib/Navigation.svelte';
 	import { type NavLinks } from '$lib/types';
 
@@ -97,7 +98,7 @@
 	<div>
 		{#key pathname}
 			<div
-			in:fade={{ easing: cubicIn, duration:700, delay:200}}
+			in:fade|global={{easing: cubicIn, duration:700, delay:450}} out:fade|global={{easing: cubicOut, duration:400}}
 			>
 			<ToastProvider placement="top-start">
 				{@render children?.()}
