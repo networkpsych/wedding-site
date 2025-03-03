@@ -100,7 +100,7 @@ export const actions: Actions = {
 			first_name: String(data.get('first_name')),
 			last_name: String(data.get('last_name')),
 			email: String(data.get('email')),
-			attending: Boolean(data.get('slider')),
+			attending: Boolean(data.get('attendance')),
 			note: String(data.get('note')),
 			guests: Number(data.get('guests'))
 		};
