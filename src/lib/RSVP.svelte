@@ -34,6 +34,11 @@ let attendance: boolean = $state(true);
 let charMax: number = $derived(250 - userMsg.length);
 let attendMsg: string = $derived(attendance ? 'I Am Attending' : 'I Am Not Attending');
 let num = $state();
+
+function setAttendance(checked: boolean){
+	attendance = checked
+	console.log({attendance})
+}
 	
 
 const onFormSubmit: SubmitFunction = () => {
@@ -50,7 +55,7 @@ const onFormSubmit: SubmitFunction = () => {
 			//} else {
 			//	await update({reset:false})
 			//}
-			attendance = false;
+			await update({reset:false})
 			console.log(respData)
 			
             switch (respData.success) {
@@ -59,13 +64,11 @@ const onFormSubmit: SubmitFunction = () => {
 					message = "Form Submitted Successfully"
 					triggerMsg(title, message, "success")
 					rsvpCheck = true
-					await update({reset:false})
 					break;
 				case false:
 					title = "An error occurred"
 					message = `${respData.errors.reason}`
 					triggerMsg(title, message, "error")
-					await update({reset:true})
 					break;
 				default:
 					console.log(result.type, result.status)
@@ -92,9 +95,10 @@ const onFormSubmit: SubmitFunction = () => {
 			>
 			<span class="text-3xl text-secondary-200 font-nfPrintBold">{attendMsg}</span>
 				<label for="attending" class="flex font-bold">
-					<Switch name="compact" bind:checked={attendance} controlActive="preset-filled-surface-600" controlInactive="preset-filled-surface-600" compact>
-						 {#snippet inactiveChild()}<img src="{not_going}" alt="not going">{/snippet}
-						 {#snippet activeChild()}<img src="{going}" alt="going">{/snippet}
+					<Switch name="attendance" bind:checked={attendance} controlActive="preset-filled-surface-600" controlInactive="preset-filled-surface-600" compact
+					onCheckedChange={(e) => setAttendance(e.checked)}>
+						{#snippet activeChild()}<img src="{going}" alt="going">{/snippet}
+						{#snippet inactiveChild()}<img src="{not_going}" alt="not going">{/snippet}
 					</Switch>
 				</label>
 				<label class="block text-secondary-700 font-nfPrintBold rounded-4xl">
@@ -123,6 +127,7 @@ const onFormSubmit: SubmitFunction = () => {
 					<input
 						class="input box-border h-[20px] w-fit font-medium dark:bg-primary-400 text-black placeholder:text-secondary-700 font-nfPrintBold"
 						name="email"
+						bind:value={email}
 						type="text"
 						placeholder=" Email Address "
 						required

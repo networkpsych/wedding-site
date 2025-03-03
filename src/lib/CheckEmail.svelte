@@ -20,10 +20,9 @@
         email_check = $bindable(),
 		toFood = $bindable(),
     } = $props()
-
+	let set_email = ""
     email_check = false
 	toFood = false
-    
 
  const onFormSubmit: SubmitFunction = () => {
         let title: string;
@@ -32,9 +31,9 @@
 		return async ({ result, update }) => {
 			// @ts-expect-error
 			let respData = await result.data
-			await update({ reset:true })
+			await update({ reset:false })
 			console.log("results ", respData)
-			
+			email = set_email
             switch (respData.success) {
 				case true:
 					if (respData.errors.reason == "Email exists"){
@@ -43,6 +42,7 @@
 						triggerMsg(title, message, "success")
 						toFood = true
 						email_check = true
+						email = set_email
 					} else {
 						title = "Success"
 						message = "Form Submitted Successfully"
@@ -83,7 +83,7 @@
 					class="input box-border h-[20px] w-fit font-medium dark:bg-primary-400 text-black placeholder:text-secondary-700 font-nfPrintBold"
 					name="email"
 					type="text"
-					bind:value={email}
+					bind:value={set_email}
 					placeholder=" Email Address "
 					required
 				/>

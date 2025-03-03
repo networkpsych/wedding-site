@@ -30,7 +30,7 @@
 		return async ({ result, update }) => {
 			// @ts-expect-error
 			let respData = await result.data
-			await update({ reset:true })
+			await update({ reset:false })
 			console.log("results ", respData)
             console.log(entree)
 			
